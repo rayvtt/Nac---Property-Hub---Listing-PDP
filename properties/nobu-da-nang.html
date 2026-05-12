@@ -487,7 +487,7 @@
             <span data-en="">This dossier conforms to IMC (Investment Memorandum &amp; Compliance) standards. Figures triangulated from developer, distribution partner and independent market sources. Updated Q2/2026.</span>
           </p>
           <div class="nac-cert-meta">
-            <div class="nac-cert-tag"><span class="nac-cert-tag-key">IMC</span><span class="nac-cert-tag-val">v2.1 · 2026</span></div>
+            <div class="nac-cert-tag"><span class="nac-cert-tag-key">Cert</span><span class="nac-cert-tag-val">IMC</span></div>
             <div class="nac-cert-tag"><span class="nac-cert-tag-key">Partner</span><span class="nac-cert-tag-val">iQi Global</span></div>
             <div class="nac-cert-tag"><span class="nac-cert-tag-key">Property ID</span><span class="nac-cert-tag-val" data-notion="property_id">NAC-4</span></div>
             <div class="nac-cert-tag"><span class="nac-cert-tag-key">Status</span><span class="nac-cert-tag-val">Listed</span></div>
@@ -779,7 +779,7 @@
 .nac-chip-live { color:#a7e6c0; border-color:rgba(167,230,192,.4); background:rgba(30,122,74,.25); display:inline-flex; align-items:center; gap:.4rem; }
 .nac-chip-dot { width:6px; height:6px; border-radius:50%; background:#5fd391; box-shadow:0 0 0 4px rgba(95,211,145,.2); animation:nacPulse 2s ease-in-out infinite; }
 @keyframes nacPulse { 0%,100%{ opacity:1 } 50%{ opacity:.5 } }
-.nac-hero-stats { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:flex-start; }
+.nac-hero-stats { display:flex; flex-wrap:wrap; column-gap:.6rem; row-gap:calc(.6rem + 5px); justify-content:flex-start; }
 @media(max-width:680px) { .nac-hero-stats { justify-content:center; } }
 .nac-stat { padding:.85rem 1.25rem; border-radius:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(20px); min-width:108px; color:#fff; }
 .nac-stat-hero { background:rgba(30,122,74,.25); border-color:rgba(167,230,192,.4); }
@@ -1247,7 +1247,7 @@
 .nac-cert-lbl { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); font-weight:500; margin-bottom:.85rem; }
 .nac-cert-title { font-family:var(--ff-display); font-size:1.55rem; font-weight:500; color:var(--display); letter-spacing:-.005em; line-height:1.2; margin-bottom:.9rem; }
 .nac-cert-txt { font-size:.92rem; line-height:1.75; color:var(--text); margin-bottom:1.5rem; }
-.nac-cert-meta { display:flex; gap:.65rem; flex-wrap:wrap; }
+.nac-cert-meta { display:flex; column-gap:.65rem; row-gap:calc(.65rem + 5px); flex-wrap:wrap; }
 .nac-cert-tag { display:flex; align-items:center; gap:.45rem; padding:.4rem .85rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--line); }
 .nac-cert-tag-key { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; }
 .nac-cert-tag-val { font-family:var(--ff-display); font-size:.85rem; font-weight:500; color:var(--gold); }
