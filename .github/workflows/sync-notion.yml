@@ -2,8 +2,8 @@ name: Sync Notion → PDP HTML
 
 on:
   schedule:
-    # every 10 minutes
-    - cron: "*/10 * * * *"
+    # every 5 minutes (GitHub cron drifts under load — actual cadence ~5–12 min)
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     # allow manual trigger from the Actions tab
 

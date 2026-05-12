@@ -55,7 +55,7 @@ Two design templates that should be the source-of-truth for future PDPs:
 
 ## Notion sync
 
-- Cron every 10 minutes via `.github/workflows/sync-notion.yml`.
+- Cron every 5 minutes via `.github/workflows/sync-notion.yml` (GitHub may drift to ~7–12 min under load). Use Actions tab → "Run workflow" for immediate sync.
 - Source DB ID: `35848ec25e86803283acc7ad989649c9` (🏠 NAC - Property Listings).
 - Script: `scripts/sync-notion.mjs`. Filters by `Hub Status = Live`, patches HTML via cheerio targeting `data-notion="*"`, `data-notion-list="*"`, `data-notion-json="*"`, `data-notion-roi`, `data-notion-bg`.
 - Donut score (`.nac-donut-score`) is a special case — sync only updates `data-count-to`, never the inner text (preserves the count-up-from-0 animation).
