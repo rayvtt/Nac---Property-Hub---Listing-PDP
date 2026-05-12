@@ -132,7 +132,7 @@ async function syncOne(prop) {
   }
 
   if (!prop.listingUrl) {
-    return { slug: prop.slug, error: `no "${NOTION_LISTING_URL_FIELD}" set in Notion — cannot locate WP page` };
+    return { slug: prop.slug, skipped: `no "${NOTION_LISTING_URL_FIELD}" in Notion yet — WP automation may still be writing it back` };
   }
 
   const page = await findByListingUrl(prop.listingUrl);
