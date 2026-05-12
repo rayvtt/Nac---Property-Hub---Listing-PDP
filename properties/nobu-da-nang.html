@@ -1232,7 +1232,10 @@
 .nac-assess-body { font-size:1rem; line-height:1.8; color:var(--text); margin-bottom:0; }
 
 /* SIGN-OFF */
-.nac-signoff { background:var(--signoff-bg); border-top:1px solid var(--line); padding:6rem 2rem 4rem; }
+#nac-assessment .nac-spine-content { padding-bottom:0; }
+.nac-signoff { background:var(--signoff-bg); border-top:none; padding:0 2rem 4rem; }
+/* fade separator between spine and sign-off */
+.nac-signoff::before { content:''; display:block; height:1px; margin:0 auto 3rem; width:min(480px,60%); background:linear-gradient(to right, transparent, var(--line) 30%, var(--line) 70%, transparent); }
 .nac-signoff-inner { max-width:1080px; margin:0 auto; }
 
 .nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); margin-bottom:4rem; }
