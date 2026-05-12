@@ -579,6 +579,23 @@
     </div>
   </section>
 
+  <!-- STICKY SETTINGS PILL (theme + lang, collapses to active state) -->
+  <div class="nac-settings" aria-label="Display settings">
+    <div class="nac-settings-grp nac-settings-theme">
+      <button data-theme-set="light" aria-label="Light" class="on">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button data-theme-set="dark" aria-label="Dark">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      </button>
+    </div>
+    <span class="nac-settings-sep"></span>
+    <div class="nac-settings-grp nac-settings-lang">
+      <button data-lang-set="vi" class="on">VI</button>
+      <button data-lang-set="en">EN</button>
+    </div>
+  </div>
+
   <!-- PH TOOLS PILL (3 buttons, dark grey) -->
   <div class="nac-tools">
     <a href="https://wa.me/447388646000" target="_blank" rel="noreferrer" class="nac-tool nac-tool--wa" aria-label="WhatsApp">
@@ -1206,6 +1223,68 @@
   .nac-tools.is-open .nac-tool { padding:.45rem .8rem; }
   .nac-tools.is-open .nac-tool-txt { max-width:100px; }
 }
+
+/* STICKY SETTINGS PILL (theme + lang) */
+.nac-settings {
+  position:fixed; top:1rem; right:1rem; z-index:80;
+  display:flex; align-items:center; gap:.35rem;
+  padding:.35rem .45rem;
+  border-radius:100px;
+  backdrop-filter:blur(28px) saturate(160%);
+  -webkit-backdrop-filter:blur(28px) saturate(160%);
+  border:1px solid;
+  opacity:0; pointer-events:none; transform:translateY(-8px);
+  transition:opacity .35s ease, transform .35s ease, padding .28s cubic-bezier(.4,.0,.2,1), gap .28s cubic-bezier(.4,.0,.2,1);
+}
+.nac-settings.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+.nac-pdp[data-theme="dark"] .nac-settings {
+  background:rgba(12,12,16,.97);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 8px 28px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 40px rgba(196,146,60,.14);
+}
+.nac-pdp[data-theme="light"] .nac-settings {
+  background:rgba(255,255,255,.96);
+  border-color:rgba(15,26,54,.10);
+  box-shadow:0 8px 28px rgba(15,26,54,.12), 0 0 0 1px rgba(15,26,54,.04), inset 0 1px 0 rgba(255,255,255,.9), 0 0 40px rgba(196,146,60,.14);
+}
+.nac-settings-grp { display:inline-flex; align-items:center; gap:.1rem; }
+.nac-settings-sep {
+  display:inline-block; width:1px; height:14px;
+  background:currentColor; opacity:.18;
+  max-width:0; transition:max-width .28s cubic-bezier(.4,.0,.2,1), opacity .22s ease;
+}
+.nac-settings:hover .nac-settings-sep,
+.nac-settings.is-open .nac-settings-sep { max-width:1px; opacity:.22; }
+.nac-settings button {
+  background:none; border:none; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.35rem .5rem; border-radius:100px;
+  font-family:var(--ff-mono); font-size:.72rem; font-weight:600;
+  transition:max-width .28s cubic-bezier(.4,.0,.2,1), opacity .22s ease, padding .28s cubic-bezier(.4,.0,.2,1), color .2s ease, background .2s ease, transform .28s cubic-bezier(.4,.0,.2,1);
+  overflow:hidden; white-space:nowrap;
+}
+.nac-pdp[data-theme="dark"] .nac-settings button { color:#9ea1a8; }
+.nac-pdp[data-theme="light"] .nac-settings button { color:#6b7280; }
+.nac-settings button.on { color:#c4922c; }
+.nac-pdp[data-theme="dark"] .nac-settings button.on { color:#f5d07a; }
+/* Collapsed: hide non-active buttons */
+.nac-settings button:not(.on) {
+  max-width:0; opacity:0; padding-left:0; padding-right:0; transform:scale(.85);
+}
+.nac-settings:hover button:not(.on),
+.nac-settings.is-open button:not(.on) {
+  max-width:60px; opacity:1; padding-left:.5rem; padding-right:.5rem; transform:scale(1);
+}
+.nac-settings button:hover { color:#c4922c; }
+.nac-pdp[data-theme="dark"] .nac-settings button:hover { color:#f5d07a; }
+.nac-settings button svg { display:block; }
+
+@media(max-width:680px) {
+  .nac-settings { top:.7rem; right:.7rem; padding:.3rem .4rem; gap:.25rem; }
+  .nac-settings button { padding:.3rem .4rem; font-size:.68rem; }
+  .nac-settings:hover button:not(.on),
+  .nac-settings.is-open button:not(.on) { padding-left:.4rem; padding-right:.4rem; }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -1334,10 +1413,13 @@
     cineCaps.forEach(function(cap, i){ cap.classList.toggle('active', i === idx); });
     cineDots.forEach(function(dot, i){ dot.classList.toggle('active', i === idx); });
   }
+  var stickySettings = document.querySelector('.nac-settings');
   function updateMini() {
-    if (!miniNav || !heroEl) return;
+    if (!heroEl) return;
     var heroBottom = heroEl.getBoundingClientRect().bottom;
-    miniNav.classList.toggle('visible', heroBottom < 100);
+    var pastHero = heroBottom < 100;
+    if (miniNav) miniNav.classList.toggle('visible', pastHero);
+    if (stickySettings) stickySettings.classList.toggle('visible', pastHero);
   }
 
   var ticking = false;
@@ -1676,23 +1758,23 @@
     recalc();
   }
 
-  // ---------- COLLAPSED CTA PILL: tap-to-expand on touch ----------
-  var tools = document.querySelector('.nac-tools');
-  if (tools) {
-    var isTouch = window.matchMedia('(hover: none)').matches;
-    if (isTouch) {
-      tools.addEventListener('click', function(e){
-        if (!tools.classList.contains('is-open')) {
-          e.preventDefault();
-          e.stopPropagation();
-          tools.classList.add('is-open');
-        }
-      }, true);
-      document.addEventListener('click', function(e){
-        if (!tools.contains(e.target)) tools.classList.remove('is-open');
-      });
-    }
+  // ---------- COLLAPSED PILLS: tap-to-expand on touch ----------
+  var isTouch = window.matchMedia('(hover: none)').matches;
+  function wireCollapsePill(el) {
+    if (!el || !isTouch) return;
+    el.addEventListener('click', function(e){
+      if (!el.classList.contains('is-open')) {
+        e.preventDefault();
+        e.stopPropagation();
+        el.classList.add('is-open');
+      }
+    }, true);
+    document.addEventListener('click', function(e){
+      if (!el.contains(e.target)) el.classList.remove('is-open');
+    });
   }
+  wireCollapsePill(document.querySelector('.nac-tools'));
+  wireCollapsePill(document.querySelector('.nac-settings'));
 })();
 </script>
 
