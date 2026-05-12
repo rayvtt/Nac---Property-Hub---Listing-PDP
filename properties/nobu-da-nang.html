@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
   <title>Nobu Residences Da Nang — NAC Property Hub</title>
   <style>body { margin:0; background:#07091a; }</style>
 </head>
@@ -647,7 +648,7 @@
 /* STATEMENT (CENTERED) */
 .nac-stmt { padding:8rem 2rem; max-width:1100px; margin:0 auto; text-align:center; }
 .nac-stmt-eye { font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); font-weight:500; margin-bottom:1.5rem; }
-.nac-stmt-text { font-family:var(--ff-display); font-size:clamp(1.8rem, 3.5vw, 3rem); font-weight:400; line-height:1.4; color:var(--display); letter-spacing:-.005em; max-width:28ch; margin:0 auto; }
+.nac-stmt-text { font-family:var(--ff-display); font-size:clamp(1.8rem, 3.5vw, 3rem); font-weight:400; line-height:1.4; color:var(--display); letter-spacing:-.005em; max-width:28ch; margin:0 auto; text-align:center; }
 .nac-stmt-text .word { display:inline-block; opacity:.12; transition:opacity .6s ease, color .6s ease; margin-right:.2em; }
 .nac-stmt-text .word.visible { opacity:1; }
 .nac-stmt-text .word.hl { color:var(--gold); font-style:italic; }
@@ -774,7 +775,7 @@
 .nac-bench-row--hi .nac-bench-val { color:var(--gold); }
 
 /* MARKET */
-.nac-mkt { display:grid; grid-template-columns:repeat(2,1fr); gap:.75rem; margin-bottom:1.5rem; }
+.nac-mkt { display:grid; grid-template-columns:repeat(2,1fr); gap:.75rem; margin-top:3rem; margin-bottom:1.5rem; }
 .nac-mkt-card { padding:1.4rem 1.25rem; border-radius:14px; background:var(--surface); border:1px solid var(--line); text-align:center; box-shadow:var(--shadow-sm); transition:all .25s ease; }
 .nac-mkt-card:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
 .nac-mkt-val { font-family:var(--ff-display); font-size:1.85rem; font-weight:500; color:var(--gold); letter-spacing:-.015em; line-height:1; }
@@ -785,7 +786,7 @@
 .nac-cine-eye { max-width:1320px; margin:0 auto; padding:4rem 2rem 1.5rem; display:flex; align-items:baseline; gap:1rem; color:rgba(232,191,114,.85); }
 .nac-cine-num { font-family:var(--ff-display); font-size:2.6rem; font-weight:400; color:rgba(232,191,114,.4); letter-spacing:.01em; line-height:1; }
 .nac-cine-h { font-family:var(--ff-display); font-size:1.6rem; font-weight:400; color:#ede8dc; font-style:italic; }
-.nac-cine-track { height:300vh; position:relative; }
+.nac-cine-track { height:500vh; position:relative; }
 .nac-cine-stick { position:sticky; top:0; height:100vh; overflow:hidden; }
 .nac-cine-stage { position:absolute; inset:0; }
 .nac-cine-img { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transform:scale(1.06); transition:opacity 1.1s cubic-bezier(.4,0,.2,1), transform 3s cubic-bezier(.4,0,.2,1); }
@@ -1033,12 +1034,19 @@
   position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:80;
   display:flex; align-items:center; gap:.25rem;
   padding:.45rem .5rem;
-  background:rgba(18,18,22,.95);
-  backdrop-filter:blur(28px) saturate(200%);
-  -webkit-backdrop-filter:blur(28px) saturate(200%);
-  border:1px solid rgba(255,255,255,.10);
+  background:rgba(12,12,16,.97);
+  backdrop-filter:blur(28px) saturate(160%);
+  -webkit-backdrop-filter:blur(28px) saturate(160%);
+  border:1px solid rgba(255,255,255,.12);
   border-radius:100px;
-  box-shadow:0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04), inset 0 1px 0 rgba(255,255,255,.08), 0 0 60px rgba(196,146,60,.10);
+  box-shadow:0 12px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 60px rgba(196,146,60,.18);
+}
+/* Force identical appearance in both themes */
+.nac-pdp[data-theme="light"] .nac-tools,
+.nac-pdp[data-theme="dark"] .nac-tools {
+  background:rgba(12,12,16,.97);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 12px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 60px rgba(196,146,60,.18);
 }
 .nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.55rem 1.1rem; border-radius:100px; font-family:var(--ff-body); font-size:.78rem; font-weight:500; color:#f4efdf; transition:all .2s ease; white-space:nowrap; background:transparent; }
 .nac-tool svg { opacity:1; flex-shrink:0; }
@@ -1128,6 +1136,14 @@
   var cineImgs = root.querySelectorAll('.nac-cine-img');
   var cineCaps = root.querySelectorAll('.nac-cine-cap');
   var cineDots = root.querySelectorAll('.nac-cine-dots span');
+  cineDots.forEach(function(dot, i){
+    dot.style.cursor = 'pointer';
+    dot.addEventListener('click', function(){
+      cineImgs.forEach(function(img, j){ img.classList.toggle('active', j === i); });
+      cineCaps.forEach(function(cap, j){ cap.classList.toggle('active', j === i); });
+      cineDots.forEach(function(d, j){ d.classList.toggle('active', j === i); });
+    });
+  });
   var miniNav = document.querySelector('.nac-mini');
   var heroEl = document.getElementById('nac-hero');
 
@@ -1414,11 +1430,14 @@
       hit.setAttribute('data-i', i);
       hit.addEventListener('mouseenter', function(){ setActive(i); });
       hit.addEventListener('focus', function(){ setActive(i); });
+      hit.addEventListener('click', function(e){ e.stopPropagation(); setActive(i); });
       hits.appendChild(hit);
     });
 
-    // Clear active when leaving the donut area
+    // Clear active when leaving the donut area (desktop hover)
     wrap.addEventListener('mouseleave', function(){ setActive(null); });
+    // Dismiss on click outside donut (mobile tap-away)
+    document.addEventListener('click', function(e){ if (!wrap.contains(e.target)) setActive(null); });
 
     root._refreshDonutLabels = function() {
       var lang = root.getAttribute('data-lang');
