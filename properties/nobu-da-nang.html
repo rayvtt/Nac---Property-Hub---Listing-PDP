@@ -56,11 +56,6 @@
           <button data-lang-set="vi" class="on">VI</button>
           <button data-lang-set="en">EN</button>
         </div>
-        <a href="https://calendly.com/ray-vtt/30min" target="_blank" rel="noreferrer" class="nac-cta-pill">
-          <span class="nac-cta-icon">✦</span>
-          <span data-vi>Tư vấn nhanh</span><span data-en>Consult</span>
-          <span class="nac-cta-arrow">→</span>
-        </a>
       </div>
     </div>
   </header>
@@ -230,6 +225,47 @@
             <div class="nac-donut-grade">★★★★ <span data-vi>Xuất Sắc</span><span data-en>Excellent</span></div>
           </div>
           <script type="application/json" id="nac-donut-data">[{"label_vi":"Thương Hiệu","label_en":"Brand","val":9.4,"val_pct":94,"delay":0,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Yield","label_en":"Yield","val":8.6,"val_pct":86,"delay":80,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Vị Trí","label_en":"Location","val":8.8,"val_pct":88,"delay":160,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Quản Lý","label_en":"Management","val":9,"val_pct":90,"delay":240,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Thanh Khoản","label_en":"Liquidity","val":6.2,"val_pct":62,"delay":320,"grade_vi":"Khá","grade_en":"Fair"},{"label_vi":"Rủi Ro","label_en":"Risk","val":7.5,"val_pct":75,"delay":400,"grade_vi":"Tốt","grade_en":"Good"}]</script>
+
+          <!-- Mobile fallback: legible list of scores (hidden on desktop) -->
+          <div class="nac-donut-list">
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Thương Hiệu</span><span data-en>Brand</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="94"></div></div>
+              <span class="nac-donut-row-val">9.4</span>
+            </div>
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Yield</span><span data-en>Yield</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="86"></div></div>
+              <span class="nac-donut-row-val">8.6</span>
+            </div>
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Vị Trí</span><span data-en>Location</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="88"></div></div>
+              <span class="nac-donut-row-val">8.8</span>
+            </div>
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Quản Lý</span><span data-en>Management</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="90"></div></div>
+              <span class="nac-donut-row-val">9</span>
+            </div>
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Thanh Khoản</span><span data-en>Liquidity</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="62"></div></div>
+              <span class="nac-donut-row-val">6.2</span>
+            </div>
+            
+            <div class="nac-donut-row">
+              <span class="nac-donut-row-lbl"><span data-vi>Rủi Ro</span><span data-en>Risk</span></span>
+              <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="75"></div></div>
+              <span class="nac-donut-row-val">7.5</span>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
@@ -423,14 +459,9 @@
 
       <div class="nac-cert">
         <div class="nac-cert-seal" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="84" height="84">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
-            <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M 50 14 A 36 36 0 0 1 86 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <text x="50" y="46" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-weight="600" fill="currentColor">NAC</text>
-            <text x="50" y="60" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" font-style="italic" fill="currentColor">advisory</text>
-            <text x="50" y="73" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" letter-spacing="1.2" fill="currentColor">CERTIFIED</text>
-          </svg>
+          <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/cropped-OTG-Passport-Icons.png" alt="NAC" class="nac-cert-logo">
+          <span class="nac-cert-x">×</span>
+          <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons.png" alt="IMC" class="nac-cert-logo">
         </div>
         <div class="nac-cert-body">
           <div class="nac-cert-lbl"><span data-vi>Chứng Nhận NAC</span><span data-en>NAC Certification</span></div>
@@ -671,7 +702,15 @@
 }
 .nac-pdp[data-lang="en"] .nac-mini button::before { content:attr(data-en); }
 .nac-mini button.active::before, .nac-mini button:hover::before { opacity:1; }
-@media(max-width:900px) { .nac-mini { display:none; } }
+
+@media(max-width:900px) {
+  /* compact pill on mobile — pinned above tools bar, centered */
+  .nac-mini { right:auto; left:50%; top:auto; bottom:5.5rem; transform:translate(-50%, 0); flex-direction:row; gap:.4rem; padding:.55rem .7rem; border-radius:100px; }
+  .nac-mini.visible { transform:translate(-50%, 0); }
+  .nac-mini button { width:7px; height:7px; }
+  .nac-mini button.active { width:18px; height:7px; border-radius:4px; }
+  .nac-mini button::before { display:none; } /* hide hover labels */
+}
 
 /* SPINE LAYOUT */
 .nac-spine { position:relative; display:grid; grid-template-columns:1fr 140px 1fr; gap:2.5rem; max-width:1320px; margin:0 auto; padding:5rem 2rem; }
@@ -788,10 +827,21 @@
 .nac-donut-out { font-family:var(--ff-mono); font-size:.72rem; color:var(--muted); margin-top:.15rem; }
 .nac-donut-cap { font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:.85rem; }
 .nac-donut-grade { font-family:var(--ff-display); font-style:italic; font-size:.98rem; color:var(--gold); margin-top:.4rem; }
+/* Donut mobile list fallback */
+.nac-donut-list { display:none; margin-top:1.5rem; flex-direction:column; gap:.85rem; }
+.nac-donut-row { display:grid; grid-template-columns:110px 1fr 38px; align-items:center; gap:.85rem; padding:.65rem .85rem; border-radius:10px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+.nac-donut-row-lbl { font-family:var(--ff-mono); font-size:.7rem; letter-spacing:.06em; color:var(--display); text-transform:uppercase; font-weight:500; }
+.nac-donut-row-bar { height:4px; background:var(--line-2); border-radius:999px; overflow:hidden; }
+.nac-donut-row-fill { height:100%; width:0; background:linear-gradient(90deg, var(--gold), var(--gold-2)); border-radius:999px; transition:width 1.2s cubic-bezier(.2,.7,.2,1); transition-delay:var(--rd, 0s); }
+.nac-donut-row-val { font-family:var(--ff-display); font-size:1.2rem; font-weight:500; color:var(--gold); text-align:right; }
+
 @media(max-width:680px) {
-  .nac-donut-labels text { font-size:8px; }
-  .nac-donut-labels text.val { font-size:14px; }
-  .nac-donut-score { font-size:2.8rem; }
+  .nac-donut-wrap { width:min(280px, 80vw); }
+  .nac-donut-labels { display:none; }
+  .nac-donut-dividers line { stroke-width:3; }
+  .nac-donut-score { font-size:2.4rem; }
+  .nac-donut-cap { font-size:.55rem; }
+  .nac-donut-list { display:flex; }
 }
 
 /* FEATURES */
@@ -866,7 +916,65 @@
 .nac-roi-bar:not(.this) .nac-roi-bar-fill { background:linear-gradient(90deg, var(--muted), var(--text)); opacity:.5; }
 .nac-roi-bar-val { font-family:var(--ff-mono); font-size:.82rem; font-weight:500; text-align:right; color:var(--text); }
 .nac-roi-bar.this .nac-roi-bar-val { color:var(--gold); }
-@media(max-width:680px) { .nac-roi-bar { grid-template-columns:110px 1fr 50px; gap:.65rem; } .nac-roi-bar-lbl { font-size:.74rem; } }
+@media(max-width:680px) { .nac-roi-bar { grid-template-columns:96px 1fr 44px; gap:.5rem; } .nac-roi-bar-lbl { font-size:.72rem; } .nac-roi-bar-val { font-size:.72rem; } }
+
+/* MOBILE: refined sections 5+ */
+@media(max-width:680px) {
+  /* Section content padding reduce */
+  .nac-spine-section .nac-spine-content,
+  .nac-spine-section .nac-spine-left,
+  .nac-spine-section .nac-spine-right { padding-bottom:2.5rem; }
+
+  /* Features: smaller padding */
+  .nac-feat { padding:.95rem 1rem; font-size:.88rem; gap:.75rem; }
+  .nac-feat-icon { font-size:1.2rem; }
+
+  /* Process: tighten gaps */
+  .nac-proc-step { gap:1rem; }
+  .nac-proc-dot { width:36px; height:36px; font-size:.7rem; }
+  .nac-proc-title { font-size:1.1rem; }
+  .nac-proc-body { padding-bottom:1.25rem; }
+
+  /* Pros/Cons: full-width blocks, tighter inside */
+  .nac-pc-block { padding:1.25rem 1.1rem; border-radius:14px; }
+  .nac-pc-item { font-size:.88rem; line-height:1.6; }
+
+  /* ROI sim: stacked, tighter */
+  .nac-roi { gap:1.5rem; }
+  .nac-roi-top { gap:1.5rem; }
+  .nac-roi-inputs { gap:1.1rem; }
+  .nac-roi-val { font-size:1.1rem; }
+  .nac-roi-results { padding:1.25rem; }
+  .nac-roi-result-val { font-size:1.7rem; }
+  .nac-roi-compare { padding:1.25rem 1.1rem; }
+  .nac-roi-compare-title { font-size:.6rem; margin-bottom:1rem; }
+
+  /* Assessment: smaller score, wrap meta */
+  .nac-assess { padding:1.5rem 1.25rem; border-radius:14px; }
+  .nac-assess-top { gap:1.1rem; padding-bottom:1.1rem; margin-bottom:1.1rem; flex-wrap:wrap; }
+  .nac-assess-score { font-size:3.2rem; }
+  .nac-assess-score span { font-size:1.1rem; }
+  .nac-assess-body { font-size:.92rem; line-height:1.7; }
+  .nac-assess-links a { font-size:.66rem; padding:.4rem .75rem; }
+
+  /* Sign-off: tighter */
+  .nac-signoff { padding:3.5rem 1.25rem 2.5rem; }
+  .nac-cert { margin-bottom:2.5rem; }
+  .nac-cert-title { font-size:1.25rem; }
+  .nac-cert-txt { font-size:.88rem; line-height:1.7; }
+  .nac-cert-tag { padding:.32rem .7rem; }
+  .nac-cert-tag-val { font-size:.78rem; }
+  .nac-final-cta { margin-bottom:2.5rem; }
+  .nac-final-h { font-size:1.5rem; }
+  .nac-end-card { padding:1.5rem 1rem; }
+
+  /* Tools pill bottom-spacing accommodate mini-nav above */
+  .nac-tools { bottom:.85rem; }
+  .nac-mini { bottom:4.5rem; }
+
+  /* Body padding-bottom to fit both bars */
+  .nac-pdp { padding-bottom:140px; }
+}
 
 /* ASSESSMENT */
 .nac-assess { padding:2.5rem; border-radius:18px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); border:1px solid var(--line); box-shadow:var(--shadow); text-align:left; }
@@ -886,7 +994,10 @@
 
 .nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); margin-bottom:4rem; }
 @media(max-width:680px) { .nac-cert { grid-template-columns:1fr; gap:1.5rem; padding:1.75rem; } }
-.nac-cert-seal { color:var(--gold); flex-shrink:0; }
+.nac-cert-seal { display:flex; align-items:center; gap:.85rem; flex-shrink:0; }
+.nac-cert-logo { width:64px; height:64px; object-fit:contain; }
+.nac-cert-x { font-family:var(--ff-display); font-size:1.6rem; color:var(--muted); opacity:.5; font-weight:300; }
+@media(max-width:680px) { .nac-cert-logo { width:54px; height:54px; } }
 .nac-cert-lbl { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); font-weight:500; margin-bottom:.85rem; }
 .nac-cert-title { font-family:var(--ff-display); font-size:1.55rem; font-weight:500; color:var(--display); letter-spacing:-.005em; line-height:1.2; margin-bottom:.9rem; }
 .nac-cert-txt { font-size:.92rem; line-height:1.75; color:var(--text); margin-bottom:1.5rem; }
@@ -927,16 +1038,16 @@
   border-radius:100px;
   box-shadow:0 18px 48px rgba(0,0,0,.32), 0 0 0 1px rgba(255,255,255,.03), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.nac-tools-label { font-family:var(--ff-display); font-size:.82rem; font-weight:500; letter-spacing:.28em; color:var(--gold-2); text-transform:uppercase; }
-.nac-tools-divider { width:1px; height:18px; background:rgba(255,255,255,.18); margin:0 .65rem 0 .25rem; }
-.nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .95rem; border-radius:100px; font-family:var(--ff-body); font-size:.76rem; font-weight:500; color:rgba(237,232,220,.78); transition:all .2s ease; white-space:nowrap; background:transparent; }
-.nac-tool svg { stroke-width:2; opacity:.85; }
-.nac-tool:hover { color:#fff; background:rgba(255,255,255,.06); }
+.nac-tools-label { font-family:var(--ff-display); font-size:.82rem; font-weight:500; letter-spacing:.28em; color:#f0ece1; text-transform:uppercase; }
+.nac-tools-divider { width:1px; height:18px; background:rgba(255,255,255,.22); margin:0 .65rem 0 .25rem; }
+.nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .95rem; border-radius:100px; font-family:var(--ff-body); font-size:.76rem; font-weight:500; color:#e8e4d8; transition:all .2s ease; white-space:nowrap; background:transparent; }
+.nac-tool svg { stroke-width:2; opacity:.95; }
+.nac-tool:hover { color:#fff; background:rgba(255,255,255,.08); }
 .nac-tool:hover svg { opacity:1; }
-.nac-tool--wa { color:#5fd391; }
-.nac-tool--wa:hover { color:#7eebab; background:rgba(95,211,145,.10); }
-.nac-tool--index { color:var(--gold-2); }
-.nac-tool--index:hover { color:#f1cc89; background:rgba(232,191,114,.10); }
+.nac-tool--wa { color:#6fdfa0; }
+.nac-tool--wa:hover { color:#88efb5; background:rgba(95,211,145,.12); }
+.nac-tool--index { color:#f1cc89; }
+.nac-tool--index:hover { color:#ffd89a; background:rgba(232,191,114,.12); }
 
 @media(max-width:680px) {
   .nac-tools { padding:.45rem; gap:.25rem; bottom:.85rem; }
@@ -1135,26 +1246,27 @@
       }, { threshold:0.2 });
       finObs.observe(fin);
     }
-    // Donut chart
+    // Donut chart + mobile list
     buildDonut();
     var donut = document.getElementById('nac-donut');
-    if (donut) {
+    var donutSection = document.getElementById('nac-analysis');
+    if (donut && donutSection) {
       var donutObs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if (e.isIntersecting) {
             donut.classList.add('visible');
-            donut.querySelectorAll('.nac-donut-segs path').forEach(function(p){
-              var len = parseFloat(p.getAttribute('data-fill-len'));
-              p.style.strokeDashoffset = '0';
-              // animate from dash length to 0
-              setTimeout(function(){ p.style.strokeDashoffset = '0'; }, 50);
+            donut.querySelectorAll('.nac-donut-segs path').forEach(function(p){ p.style.strokeDashoffset = '0'; });
+            // Animate mobile list fills (staggered)
+            donutSection.querySelectorAll('.nac-donut-row-fill').forEach(function(el, i){
+              el.style.setProperty('--rd', (i * 0.1) + 's');
+              el.style.width = el.getAttribute('data-fill') + '%';
             });
             countUp(root.querySelector('.nac-donut-score'));
             donutObs.disconnect();
           }
         });
-      }, { threshold:0.3 });
-      donutObs.observe(donut);
+      }, { threshold:0.2 });
+      donutObs.observe(donutSection);
     }
     // ROI Simulator
     initROI();
