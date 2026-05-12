@@ -31,5 +31,5 @@ Canonical URLs for every NAC button across all PDPs and assets. Source: NAC Back
 
 | Button | URL |
 |--------|-----|
-| WhatsApp | https://nomadassetcollective.com/so-sanh |
+| WhatsApp | https://wa.me/447388646000 |
 | Calendly | https://calendly.com/ray-vtt/30min |
