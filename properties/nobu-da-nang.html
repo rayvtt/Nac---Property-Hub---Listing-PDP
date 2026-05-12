@@ -1166,12 +1166,17 @@
   border-radius:100px;
   box-shadow:0 12px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 60px rgba(196,146,60,.18);
 }
-/* Force identical appearance in both themes */
-.nac-pdp[data-theme="light"] .nac-tools,
+/* DARK theme — dark pill */
 .nac-pdp[data-theme="dark"] .nac-tools {
   background:rgba(12,12,16,.97);
   border-color:rgba(255,255,255,.12);
   box-shadow:0 12px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 60px rgba(196,146,60,.18);
+}
+/* LIGHT theme — cream pill */
+.nac-pdp[data-theme="light"] .nac-tools {
+  background:rgba(255,255,255,.96);
+  border-color:rgba(15,26,54,.10);
+  box-shadow:0 12px 40px rgba(15,26,54,.14), 0 0 0 1px rgba(15,26,54,.04), inset 0 1px 0 rgba(255,255,255,.9), 0 0 60px rgba(196,146,60,.18);
 }
 .nac-tool { display:inline-flex; align-items:center; gap:0; padding:.55rem .65rem; border-radius:100px; font-family:var(--ff-body); font-size:.78rem; font-weight:600; color:#f4efdf; transition:gap .28s cubic-bezier(.4,.0,.2,1), padding .28s cubic-bezier(.4,.0,.2,1), color .2s ease, background .2s ease; white-space:nowrap; background:transparent; }
 .nac-tool svg { opacity:1; flex-shrink:0; }
@@ -1180,11 +1185,20 @@
 .nac-tools.is-open .nac-tool { gap:.45rem; padding:.55rem 1.1rem; }
 .nac-tools:hover .nac-tool-txt,
 .nac-tools.is-open .nac-tool-txt { max-width:120px; opacity:1; transform:translateX(0); }
-.nac-tool:hover { color:#fff; background:rgba(255,255,255,.12); }
-.nac-tool--wa { color:#25D366; }
-.nac-tool--wa:hover { color:#3ee87b; background:rgba(37,211,102,.18); }
-.nac-tool--index { color:#f5d07a; }
-.nac-tool--index:hover { color:#ffe49a; background:rgba(232,191,114,.18); }
+/* DARK theme button colors */
+.nac-pdp[data-theme="dark"] .nac-tool { color:#f4efdf; }
+.nac-pdp[data-theme="dark"] .nac-tool:hover { color:#fff; background:rgba(255,255,255,.12); }
+.nac-pdp[data-theme="dark"] .nac-tool--wa { color:#25D366; }
+.nac-pdp[data-theme="dark"] .nac-tool--wa:hover { color:#3ee87b; background:rgba(37,211,102,.18); }
+.nac-pdp[data-theme="dark"] .nac-tool--index { color:#f5d07a; }
+.nac-pdp[data-theme="dark"] .nac-tool--index:hover { color:#ffe49a; background:rgba(232,191,114,.18); }
+/* LIGHT theme button colors */
+.nac-pdp[data-theme="light"] .nac-tool { color:#14181f; }
+.nac-pdp[data-theme="light"] .nac-tool:hover { color:#0f1a36; background:rgba(15,26,54,.06); }
+.nac-pdp[data-theme="light"] .nac-tool--wa { color:#1eb955; }
+.nac-pdp[data-theme="light"] .nac-tool--wa:hover { color:#138a3e; background:rgba(30,185,85,.12); }
+.nac-pdp[data-theme="light"] .nac-tool--index { color:#c4922c; }
+.nac-pdp[data-theme="light"] .nac-tool--index:hover { color:#9a701f; background:rgba(196,146,60,.14); }
 
 @media(max-width:680px) {
   .nac-tools { padding:.4rem; gap:.2rem; bottom:.85rem; }
