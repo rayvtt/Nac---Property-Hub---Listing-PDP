@@ -9,9 +9,10 @@ on:
       - "scripts/package.json"
       - ".github/workflows/sync-wp.yml"
   schedule:
-    # Every 15 min retry — catches listings whose Listing URL was written back
+    # Every 5 min retry — catches listings whose Listing URL was written back
     # to Notion by the WP automation after the last push-triggered run.
-    - cron: "*/15 * * * *"
+    # Combined with create-pdp (5 min) this caps new-listing latency at ~10 min.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       only_slug:
