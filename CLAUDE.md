@@ -36,7 +36,7 @@ The mobile breakpoint is `@media(max-width:900px)`. Some component-level rules a
 
 4. **`.nac-spine-marker` on mobile** uses `position:relative` with `padding-left:22px` and an absolute-positioned `.nac-spine-dot` at `left:-9px` so the dot floats over the spine line. Don't apply margin-left to the marker — it shifts the section number text off-position.
 
-5. **Cinematic gallery** (`#nac-gallery`) is disabled on mobile (`@max-width:680px`) — track height becomes `auto`, stick becomes `position:relative` at 72vh. `updateCine()` exits early because `scrollable <= 0`. Only the dot-tap nav switches images on mobile. Desktop keeps the 500vh sticky-scroll experience.
+5. **Image breaks** — the old single cinematic gallery (`#nac-gallery`) was replaced with 3 individual full-bleed image sections (`#nac-img-1`, `#nac-img-2`, `#nac-img-3`) distributed at §04, §07, §10 in the spine. `#nac-img-3` has class `nac-cine--aspiration` (gradient overlay + CTA button). These are standard `position:relative` blocks — no sticky scroll.
 
 ## Workflow
 
@@ -47,15 +47,16 @@ The mobile breakpoint is `@media(max-width:900px)`. Some component-level rules a
 
 ## Templates
 
-Two design templates that should be the source-of-truth for future PDPs:
+Templates and references:
 
+- [`properties/_template-listing-pdp.html`](./properties/_template-listing-pdp.html) — **master PDP template** (snapshot 2026-05-12, post-PR #47). Duplicate this for every new listing.
 - [`NAC-STICKY-PILLS.md`](./NAC-STICKY-PILLS.md) — bottom-center CTA pill + top-right settings pill (theme + lang). Both collapsed-by-default, expand on hover/tap.
 - [`NAC-FOOTER.md`](./NAC-FOOTER.md) — bilingual gold title, wave underline, 5-icon social row, 3-col nav.
 - [`NAC-BACKLINKS.md`](./NAC-BACKLINKS.md) — canonical URLs for every NAC button across all PDPs.
 
 ## Notion sync
 
-- Cron every 5 minutes via `.github/workflows/sync-notion.yml` (GitHub may drift to ~7–12 min under load). Use Actions tab → "Run workflow" for immediate sync.
+- Cron every 2 minutes via `.github/workflows/sync-notion.yml` (GitHub may drift to ~2–7 min under load). Use Actions tab → "Run workflow" for immediate sync.
 - Source DB ID: `35848ec25e86803283acc7ad989649c9` (🏠 NAC - Property Listings).
 - Script: `scripts/sync-notion.mjs`. Filters by `Hub Status = Live`, patches HTML via cheerio targeting `data-notion="*"`, `data-notion-list="*"`, `data-notion-json="*"`, `data-notion-roi`, `data-notion-bg`.
 - Donut score (`.nac-donut-score`) is a special case — sync only updates `data-count-to`, never the inner text (preserves the count-up-from-0 animation).
