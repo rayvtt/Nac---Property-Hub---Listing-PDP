@@ -237,9 +237,10 @@
             </div>
           </div>
           <script type="application/json" id="nac-donut-data" data-notion-json="sub_scores">[{"label_vi":"Thương Hiệu","label_en":"Brand","val":9.4,"val_pct":94,"delay":0,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Lợi Suất","label_en":"Yield","val":8.6,"val_pct":86,"delay":80,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Vị Trí","label_en":"Location","val":8.8,"val_pct":88,"delay":160,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Quản Lý","label_en":"Management","val":9,"val_pct":90,"delay":240,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Thanh Khoản","label_en":"Liquidity","val":6.2,"val_pct":62,"delay":320,"grade_vi":"Khá","grade_en":"Fair"},{"label_vi":"Rủi Ro","label_en":"Risk","val":7.5,"val_pct":75,"delay":400,"grade_vi":"Tốt","grade_en":"Good"}]</script>
+        </div>
 
-          <!-- Mobile fallback: legible list of scores (hidden on desktop) -->
-          <div class="nac-donut-list" data-notion-list="donut_rows">
+        <!-- Mobile fallback: legible list of scores (hidden on desktop), now a sibling of donut-wrap -->
+        <div class="nac-donut-list" data-notion-list="donut_rows">
             
             <div class="nac-donut-row">
               <span class="nac-donut-row-lbl"><span data-vi>Thương Hiệu</span><span data-en>Brand</span></span>
@@ -276,8 +277,7 @@
               <div class="nac-donut-row-bar"><div class="nac-donut-row-fill" data-fill="75"></div></div>
               <span class="nac-donut-row-val">7.5</span>
             </div>
-            
-          </div>
+
         </div>
       </div>
     </div>
@@ -819,19 +819,40 @@
 
 @media(max-width:900px) {
   .nac-spine { padding:2.5rem 1.25rem 2.5rem 1rem; }
-  .nac-spine-section { grid-template-columns:28px 1fr; gap:1.4rem; }
+  /* single-column layout; marker becomes a horizontal header strip above content */
+  .nac-spine-section { grid-template-columns:1fr; gap:0; }
   .nac-spine-line { left:14px; }
   /* prevent any spine content from overflowing into the spine column */
   .nac-spine-content, .nac-spine-left, .nac-spine-right { min-width:0; }
-  .nac-spine-marker { grid-column:1; align-items:flex-start; padding-top:0; margin-bottom:2rem; }
-  .nac-spine-dot { box-shadow:0 0 0 4px var(--bg); }
-  .nac-spine-num { font-size:1.15rem; }
-  .nac-spine-label { display:none; }
+  .nac-spine-marker {
+    grid-column:1;
+    flex-direction:row;
+    align-items:center;
+    gap:.7rem;
+    padding-top:0;
+    padding-left:0;
+    margin-left:-9px;
+    margin-bottom:1.5rem;
+  }
+  .nac-spine-dot { margin-bottom:0; box-shadow:0 0 0 4px var(--bg); flex-shrink:0; }
+  .nac-spine-num { font-size:1.15rem; flex-shrink:0; }
+  .nac-spine-label {
+    display:inline-block;
+    margin-top:0;
+    text-align:left;
+    font-size:.62rem;
+    letter-spacing:.18em;
+    color:var(--display);
+    font-weight:600;
+    padding-left:.55rem;
+    border-left:1px solid var(--line-2);
+    line-height:1;
+  }
   .nac-spine-section[data-side="left"] .nac-spine-content,
   .nac-spine-section[data-side="right"] .nac-spine-content,
   .nac-spine-section[data-side="full"] .nac-spine-content,
   .nac-spine-section[data-side="both"] .nac-spine-left,
-  .nac-spine-section[data-side="both"] .nac-spine-right { grid-column:2; padding-bottom:3rem; max-width:none; transform:translateY(30px); }
+  .nac-spine-section[data-side="both"] .nac-spine-right { grid-column:1; padding-left:28px; padding-bottom:3rem; max-width:none; transform:translateY(30px); }
 }
 
 /* PROSE / FACTS */
@@ -952,14 +973,19 @@
 .nac-donut-row-val { font-family:var(--ff-display); font-size:1.2rem; font-weight:500; color:var(--gold); text-align:right; }
 
 @media(max-width:680px) {
-  .nac-donut-wrap { width:min(280px, 80vw); }
+  .nac-donut-wrap { width:min(240px, 70vw); }
   .nac-donut-labels { display:none; }
   .nac-donut-hits { display:none; }
   .nac-donut-dividers line { stroke-width:3; }
-  .nac-donut-score { font-size:2.4rem; }
-  .nac-donut-hover-val { font-size:2.2rem; }
-  .nac-donut-cap, .nac-donut-hover-cap { font-size:.55rem; }
-  .nac-donut-list { display:flex; }
+  .nac-donut-score { font-size:2.2rem; }
+  .nac-donut-out { font-size:.65rem; margin-top:.1rem; }
+  .nac-donut-hover-val { font-size:2rem; }
+  .nac-donut-cap, .nac-donut-hover-cap { font-size:.52rem; margin-top:.5rem; }
+  .nac-donut-grade, .nac-donut-hover-grade { font-size:.82rem; margin-top:.25rem; }
+  .nac-donut-list { display:flex; margin-top:2rem; }
+  .nac-donut-row { grid-template-columns:90px 1fr 32px; gap:.6rem; padding:.55rem .7rem; }
+  .nac-donut-row-lbl { font-size:.62rem; }
+  .nac-donut-row-val { font-size:1rem; }
 }
 
 /* FEATURES */
@@ -1069,12 +1095,15 @@
   .nac-roi-bar-lbl { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
   /* Assessment: smaller score, wrap meta */
-  .nac-assess { padding:1.5rem 1.25rem; border-radius:14px; }
-  .nac-assess-top { gap:1.1rem; padding-bottom:1.1rem; margin-bottom:1.1rem; flex-wrap:wrap; }
-  .nac-assess-score { font-size:3.2rem; }
-  .nac-assess-score span { font-size:1.1rem; }
-  .nac-assess-body { font-size:.92rem; line-height:1.7; }
-  .nac-assess-links a { font-size:.66rem; padding:.4rem .75rem; }
+  .nac-assess { padding:1.25rem 1.1rem; border-radius:14px; }
+  .nac-assess-top { gap:.85rem; padding-bottom:.85rem; margin-bottom:.95rem; flex-wrap:wrap; }
+  .nac-assess-score { font-size:2.6rem; }
+  .nac-assess-score span { font-size:.95rem; }
+  .nac-assess-grade { font-size:.95rem; margin-bottom:.25rem; }
+  .nac-assess-line { font-size:.62rem; }
+  .nac-assess-body { font-size:.86rem; line-height:1.6; margin-bottom:1.1rem; }
+  .nac-assess-links { gap:.45rem; }
+  .nac-assess-links a { font-size:.64rem; padding:.35rem .65rem; }
 
   /* Sign-off: tighter */
   .nac-signoff { padding:3.5rem 1.25rem 2.5rem; }
