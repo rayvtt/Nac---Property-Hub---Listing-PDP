@@ -63,10 +63,38 @@ Templates and references:
 
 ## WordPress sync
 
-- Triggered by every push to `main` that touches `properties/*.html` (and on demand) via `.github/workflows/sync-wp.yml`. So Notion edit → sync-notion commit → sync-wp run → WP page ACF updated, all automatic.
+- Triggered by every push to `main` that touches `properties/*.html`, plus an hourly cron and on-demand via `.github/workflows/sync-wp.yml`.
 - Script: `scripts/sync-wp.mjs`. Posts the **full HTML** of each `properties/<slug>.html` into ACF field `raw_html_code` on the matching WP page.
 - Lookup: reads the Notion `Listing URL` field, parses the slug from the URL, and matches the WP page by slug + full URL. Property ID is Notion-only and not used for matching.
-- **Never creates pages.** Fails loudly if `Listing URL` is missing or doesn't match — fix the Notion URL or create the WP page manually, then re-run.
-- Auth: HTTP Basic with `WP_USER` (default `admin_web`) and the `WP_APP_PASSWORD` secret (a WP Application Password). Also requires `NOTION_TOKEN` (already a secret for sync-notion).
+- **Never creates pages.** Skips (not fails) if `Listing URL` is empty (normal for newly scaffolded listings). Fails loudly if `Listing URL` is set but no WP page matches — fix the URL or create the page, then re-run.
+- Auth: HTTP Basic with `WP_USER` (default `admin_web`) and the `WP_APP_PASSWORD` secret (a WP Application Password). Also requires `NOTION_TOKEN`.
 - WP-side requirement: ACF field `raw_html_code` (textarea) with **Show in REST API** enabled. Template echoes `<?php the_field('raw_html_code'); ?>`.
 - Manual single-slug sync: Actions tab → **Sync PDP HTML → WordPress** → **Run workflow** → enter `only_slug` (e.g. `nobu-da-nang`).
+
+## New listing automation (Hub Status → Live)
+
+Two parallel automations run when a Notion row flips to **Hub Status = Live**:
+
+**Side A — WP automation (set up in Notion/WordPress, outside this repo):**
+- Creates a WP page using the `[NAC Residence Index]` template (with empty `raw_html_code` ACF field)
+- Writes back WP Page ID and Listing URL to the Notion row
+
+**Side B — Git automation (`.github/workflows/create-pdp.yml`, cron every 5 min):**
+1. Queries Notion for Live rows
+2. For each slug with no `properties/<slug>.html`, copies `_template-listing-pdp.html` to that path
+3. Immediately runs `sync-notion.mjs` to patch the new file with current Notion content
+4. Commits and pushes to `main` → triggers `sync-wp.yml`
+
+**Full end-to-end flow once both sides are active:**
+```
+Notion Hub Status → Live
+  │
+  ├── Side A: WP automation creates page → writes Listing URL back to Notion
+  │
+  └── Side B (within ~5 min):
+        create-pdp.yml: scaffold properties/<slug>.html → patch with Notion → push
+          └── sync-wp.yml: skips (Listing URL empty) on first push
+              ↳ hourly retry: once Listing URL is in Notion, push succeeds → WP page live
+```
+
+The hourly `sync-wp.yml` cron ensures the WP push happens automatically once Side A finishes, with no manual intervention required.

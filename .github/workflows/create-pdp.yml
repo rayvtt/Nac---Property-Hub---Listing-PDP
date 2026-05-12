@@ -1,0 +1,80 @@
+name: Create PDP HTML for new Live listings
+
+# Runs every 5 minutes.  For each Notion row with Hub Status = Live that has
+# no properties/<slug>.html yet, it:
+#   1. Creates the file from _template-listing-pdp.html
+#   2. Immediately patches it with current Notion content (sync-notion.mjs)
+#   3. Commits and pushes to main → triggers sync-wp.yml
+#
+# sync-wp.yml will skip listings with no Listing URL (populated later by the
+# WP automation) and succeed automatically once that field is filled.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: create-pdp
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        working-directory: scripts
+        run: npm install --no-audit --no-fund
+
+      - name: Create PDP HTML for new Live listings
+        working-directory: scripts
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
+        run: node create-pdp.mjs
+
+      - name: Patch new files with Notion content
+        working-directory: scripts
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
+        run: node sync-notion.mjs
+
+      - name: Commit and push (with rebase retry)
+        run: |
+          git config user.name "nac-notion-bot"
+          git config user.email "nac-notion-bot@users.noreply.github.com"
+          git add properties/
+          if git diff --cached --quiet; then
+            echo "No new PDP files to commit."
+            exit 0
+          fi
+          git commit -m "auto: scaffold PDP HTML for new Live listings"
+
+          for attempt in 1 2 3 4 5; do
+            if git push origin main; then
+              echo "Push succeeded on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed — fetching and rebasing"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase conflict — bailing out"
+              git rebase --abort
+              exit 1
+            fi
+            sleep $((attempt * 2))
+          done
+          echo "Push failed after 5 attempts"
+          exit 1
