@@ -368,7 +368,7 @@
     </div>
 
     <!-- 09 ROI SIMULATOR -->
-    <div class="nac-spine-section nac-roi" id="nac-roi" data-side="full"
+    <div class="nac-spine-section nac-roi" id="nac-roi" data-side="both"
          data-notion-roi
          data-price="280000"
          data-yield="6.2"
@@ -378,7 +378,7 @@
         <div class="nac-spine-dot"></div><div class="nac-spine-num">09</div>
         <div class="nac-spine-label"><span data-vi>Mô Phỏng ROI</span><span data-en>ROI Sim</span></div>
       </div>
-      <div class="nac-spine-content reveal">
+      <div class="nac-spine-left reveal">
         <div class="nac-roi-top">
           <div class="nac-roi-inputs">
             <div class="nac-roi-field">
@@ -429,7 +429,8 @@
             </div>
           </div>
         </div>
-
+      </div>
+      <div class="nac-spine-right reveal">
         <div class="nac-roi-compare">
           <div class="nac-roi-compare-title"><span data-vi>So Sánh Với Các Kênh Đầu Tư Khác</span><span data-en>Compared to Other Investment Channels</span></div>
           <div class="nac-roi-bars" id="nac-roi-bars">
@@ -1071,7 +1072,8 @@
 .nac-roi-result--hi .nac-roi-result-val { color:var(--gold); }
 .nac-roi-result-sub { font-family:var(--ff-mono); font-size:.65rem; color:var(--muted); margin-top:.3rem; }
 
-.nac-roi-compare { margin-top:2rem; padding:1.75rem; border-radius:18px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+.nac-roi-compare { padding:1.75rem; border-radius:18px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+@media(max-width:900px) { .nac-roi-compare { margin-top:2rem; } }
 .nac-roi-compare-title { font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; margin-bottom:1.25rem; }
 .nac-roi-bars { display:flex; flex-direction:column; gap:.95rem; }
 .nac-roi-bar { display:grid; grid-template-columns:140px 1fr 60px; align-items:center; gap:1rem; }
