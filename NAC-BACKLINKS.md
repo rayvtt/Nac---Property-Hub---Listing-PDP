@@ -33,3 +33,11 @@ Canonical URLs for every NAC button across all PDPs and assets. Source: NAC Back
 |--------|-----|
 | WhatsApp | https://wa.me/447388646000 |
 | Calendly | https://calendly.com/ray-vtt/30min |
+
+## Brand Assets
+
+| Asset | URL |
+|-------|-----|
+| NAC Logo (dark) | https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png |
+| NAC Logo (white, for dark themes) | https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png |
+| IMC Partner Badge | https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons.png |

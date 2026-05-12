@@ -31,7 +31,8 @@
   <header class="nac-hdr">
     <div class="nac-hdr-inner">
       <a href="https://nomadassetcollective.com" target="_blank" rel="noreferrer" class="nac-hdr-left">
-        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-hdr-logo">
+        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-hdr-logo nac-logo-light">
+        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png" alt="Nomad Asset Collective" class="nac-hdr-logo nac-logo-dark">
         <div class="nac-hdr-meta">
           <div class="nac-hdr-date" id="nac-date-display">—</div>
           <div class="nac-hdr-trail">
@@ -495,7 +496,8 @@
       <footer class="nac-foot">
         <div class="nac-foot-top">
           <div class="nac-foot-brand">
-            <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-foot-logo">
+            <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-light">
+            <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png" alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-dark">
             <span class="nac-foot-eyebrow"><span class="nac-foot-eb-mark">⌖</span><span class="nac-foot-eb-txt">The Property Hub</span><span class="nac-foot-eb-sep">·</span><span class="nac-foot-eb-txt">2026</span></span>
           </div>
           <div class="nac-foot-title-wrap">
@@ -648,6 +650,8 @@
 }
 .nac-pdp[data-lang="vi"] [data-en] { display:none; }
 .nac-pdp[data-lang="en"] [data-vi] { display:none; }
+.nac-pdp[data-theme="light"] .nac-logo-dark { display:none; }
+.nac-pdp[data-theme="dark"] .nac-logo-light { display:none; }
 
 .nac-prog { position:fixed; top:0; left:0; right:0; height:2px; z-index:200; pointer-events:none; }
 .nac-prog-fill { height:100%; width:0; background:linear-gradient(90deg, var(--orange), var(--gold)); transition:width .08s linear; }
