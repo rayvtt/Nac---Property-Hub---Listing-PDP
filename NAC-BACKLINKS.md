@@ -11,7 +11,7 @@ Canonical URLs for every NAC button, link, and asset across all PDPs. Source: NA
 | Social Media | Social Page | Facebook | https://www.facebook.com/profile.php?id=61582793351453 |
 | Social Media | Social Page | TikTok | https://tiktok.com/@nomadassetcollective |
 | Website | Website Page | Brochures | https://nomadassetcollective.com/brochures |
-| Website | Website Page | Index | https://nomadassetcollective.com/ |
+| Website | Website Page | NAC Residence Index | https://nomadassetcollective.com/nac-residence-index/ |
 | Website | NAC Tool | Tư vấn nhanh (Quick Consult) | https://nomadassetcollective.com/tu-van-nhanh |
 | Website | NAC Tool | So Sánh (Compare) | https://nomadassetcollective.com/so-sanh |
 | Website | Contact Button | WhatsApp | https://wa.me/447388646000 |
@@ -30,7 +30,7 @@ Canonical URLs for every NAC button, link, and asset across all PDPs. Source: NA
 | Footer logo (light/dark variants) | Nomad home (Main Website) | https://nomadassetcollective.com |
 | `THE NAC PROPERTY HUB` header mark | Property Hub page | https://nomadassetcollective.com/property-hub-bat-dong-san/ |
 | Footer big title (`NAC Property Listings`) | Property Hub page | https://nomadassetcollective.com/property-hub-bat-dong-san/ |
-| CTA pill — `NAC Index` button | Index page | https://nomadassetcollective.com/ |
+| CTA pill — `NAC Index` button | NAC Residence Index page | https://nomadassetcollective.com/nac-residence-index/ |
 | CTA pill — `WhatsApp` button | WhatsApp contact | https://wa.me/447388646000 |
 | CTA pill — `Blog` button | Blog | https://blog.nomadassetcollective.com |
 | Footer · NAC PAGES col — Blog | Blog | https://blog.nomadassetcollective.com |
@@ -38,12 +38,12 @@ Canonical URLs for every NAC button, link, and asset across all PDPs. Source: NA
 | Footer · NAC PAGES col — Main Website | Nomad home | https://nomadassetcollective.com |
 | Footer · NAC TOOLS col — Compare Tool | So Sánh | https://nomadassetcollective.com/so-sanh |
 | Footer · NAC TOOLS col — Quick Consult | Tư vấn nhanh | https://nomadassetcollective.com/tu-van-nhanh |
-| Footer · NAC TOOLS col — NAC Index | Index page | https://nomadassetcollective.com/ |
+| Footer · NAC TOOLS col — NAC Index | NAC Residence Index page | https://nomadassetcollective.com/nac-residence-index/ |
 | Footer · social row | Each social URL (above) | — |
 
 ---
 
 ## Notes
-- `Main Website` (no trailing slash) and `Index` (with trailing slash) both resolve to the Nomad home page, but the distinction is preserved so the source table maps cleanly to UI buttons. Convention: **Logo → no slash; "Index" button → with slash**.
+- `Main Website` → Nomad home (`https://nomadassetcollective.com`). `NAC Residence Index` → the curated property index page (`/nac-residence-index/`). Logos point to home; "NAC Index" buttons (sticky CTA + footer) point to the residence index.
 - `Calendly` is in the backlinks list as a contact destination; not currently wired into any PDP button. Available for future bookings flows.
 - Brand asset URLs (logos) are also documented in `NAC-FOOTER.md` and `NAC-STICKY-PILLS.md` where they're consumed.

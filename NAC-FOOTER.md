@@ -120,7 +120,7 @@ Reusable footer block used at the bottom of every NAC PDP. Mirrors the NAC Broch
         <li><a href="https://nomadassetcollective.com/tu-van-nhanh" target="_blank" rel="noreferrer">
           <span data-vi>Công Cụ Tư Vấn</span><span data-en>Quick Consult</span>
         </a></li>
-        <li><a href="https://nomadassetcollective.com/" target="_blank" rel="noreferrer">NAC Index</a></li>
+        <li><a href="https://nomadassetcollective.com/nac-residence-index/" target="_blank" rel="noreferrer">NAC Index</a></li>
       </ul>
     </div>
     <div class="nac-foot-col">
