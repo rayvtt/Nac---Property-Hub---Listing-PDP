@@ -51,16 +51,23 @@ jobs:
           NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
         run: node sync-notion.mjs
 
+      - name: Rebuild index.html from Notion
+        working-directory: scripts
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
+        run: node update-index.mjs
+
       - name: Commit and push (with rebase retry)
         run: |
           git config user.name "nac-notion-bot"
           git config user.email "nac-notion-bot@users.noreply.github.com"
-          git add properties/
+          git add properties/ index.html
           if git diff --cached --quiet; then
-            echo "No new PDP files to commit."
+            echo "No new PDP files or index changes to commit."
             exit 0
           fi
-          git commit -m "auto: scaffold PDP HTML for new Live listings"
+          git commit -m "auto: scaffold PDP HTML + rebuild index for new Live listings"
 
           for attempt in 1 2 3 4 5; do
             if git push origin main; then
