@@ -1173,8 +1173,13 @@
   border-color:rgba(255,255,255,.12);
   box-shadow:0 12px 40px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 rgba(255,255,255,.1), 0 0 60px rgba(196,146,60,.18);
 }
-.nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.55rem 1.1rem; border-radius:100px; font-family:var(--ff-body); font-size:.78rem; font-weight:600; color:#f4efdf; transition:all .2s ease; white-space:nowrap; background:transparent; }
+.nac-tool { display:inline-flex; align-items:center; gap:0; padding:.55rem .65rem; border-radius:100px; font-family:var(--ff-body); font-size:.78rem; font-weight:600; color:#f4efdf; transition:gap .28s cubic-bezier(.4,.0,.2,1), padding .28s cubic-bezier(.4,.0,.2,1), color .2s ease, background .2s ease; white-space:nowrap; background:transparent; }
 .nac-tool svg { opacity:1; flex-shrink:0; }
+.nac-tool-txt { display:inline-block; max-width:0; opacity:0; overflow:hidden; transform:translateX(-4px); transition:max-width .28s cubic-bezier(.4,.0,.2,1), opacity .22s ease, transform .28s cubic-bezier(.4,.0,.2,1); }
+.nac-tools:hover .nac-tool,
+.nac-tools.is-open .nac-tool { gap:.45rem; padding:.55rem 1.1rem; }
+.nac-tools:hover .nac-tool-txt,
+.nac-tools.is-open .nac-tool-txt { max-width:120px; opacity:1; transform:translateX(0); }
 .nac-tool:hover { color:#fff; background:rgba(255,255,255,.12); }
 .nac-tool--wa { color:#25D366; }
 .nac-tool--wa:hover { color:#3ee87b; background:rgba(37,211,102,.18); }
@@ -1183,7 +1188,9 @@
 
 @media(max-width:680px) {
   .nac-tools { padding:.4rem; gap:.2rem; bottom:.85rem; }
-  .nac-tool { padding:.45rem .6rem; font-size:.7rem; }
+  .nac-tool { padding:.45rem .55rem; font-size:.7rem; }
+  .nac-tools.is-open .nac-tool { padding:.45rem .8rem; }
+  .nac-tools.is-open .nac-tool-txt { max-width:100px; }
 }
 </style>
 
@@ -1653,6 +1660,24 @@
     [hold, ltv, rate, app].forEach(function(i){ i.addEventListener('input', recalc); });
     root.querySelectorAll('[data-lang-set]').forEach(function(btn){ btn.addEventListener('click', drawBars); });
     recalc();
+  }
+
+  // ---------- COLLAPSED CTA PILL: tap-to-expand on touch ----------
+  var tools = document.querySelector('.nac-tools');
+  if (tools) {
+    var isTouch = window.matchMedia('(hover: none)').matches;
+    if (isTouch) {
+      tools.addEventListener('click', function(e){
+        if (!tools.classList.contains('is-open')) {
+          e.preventDefault();
+          e.stopPropagation();
+          tools.classList.add('is-open');
+        }
+      }, true);
+      document.addEventListener('click', function(e){
+        if (!tools.contains(e.target)) tools.classList.remove('is-open');
+      });
+    }
   }
 })();
 </script>
