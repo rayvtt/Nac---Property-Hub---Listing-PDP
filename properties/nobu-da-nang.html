@@ -494,13 +494,27 @@
 
       <footer class="nac-foot">
         <div class="nac-foot-top">
-          <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-foot-logo">
-          <h2 class="nac-foot-title">
-            <a href="https://nomadassetcollective.com/property-hub-bat-dong-san/" target="_blank" rel="noreferrer" class="nac-foot-title-link"><span data-vi>NAC Danh Mục BĐS Chọn Lọc</span><span data-en>NAC Property Listings</span></a>
-          </h2>
-          <svg class="nac-foot-wave" viewBox="0 0 80 8" aria-hidden="true" focusable="false">
-            <path d="M0 4 Q 10 0 20 4 T 40 4 T 60 4 T 80 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
+          <div class="nac-foot-brand">
+            <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png" alt="Nomad Asset Collective" class="nac-foot-logo">
+            <span class="nac-foot-eyebrow"><span class="nac-foot-eb-mark">⌖</span><span class="nac-foot-eb-txt">The Property Hub</span><span class="nac-foot-eb-sep">·</span><span class="nac-foot-eb-txt">2026</span></span>
+          </div>
+          <div class="nac-foot-title-wrap">
+            <h2 class="nac-foot-title">
+              <a href="https://nomadassetcollective.com/property-hub-bat-dong-san/" target="_blank" rel="noreferrer" class="nac-foot-title-link"><span data-vi>NAC Danh Mục BĐS Chọn Lọc</span><span data-en>NAC Property Listings</span></a>
+            </h2>
+            <svg class="nac-foot-wave" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="foot-wave-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#c4922c" stop-opacity="0"/>
+                  <stop offset="0.12" stop-color="#c4922c" stop-opacity="1"/>
+                  <stop offset="0.5" stop-color="#d97c44" stop-opacity="1"/>
+                  <stop offset="0.88" stop-color="#c4922c" stop-opacity="1"/>
+                  <stop offset="1" stop-color="#c4922c" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 3 Q 6.25 0 12.5 3 T 25 3 T 37.5 3 T 50 3 T 62.5 3 T 75 3 T 87.5 3 T 100 3" fill="none" stroke="url(#foot-wave-grad)" stroke-width="1.4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+          </div>
           <p class="nac-foot-tagline"><span data-vi>Một danh mục bất động sản chọn lọc, đặt nhà đầu tư Việt vào quỹ đạo toàn cầu.</span><span data-en>A curated property catalogue, putting Vietnamese investors on a global trajectory.</span></p>
         </div>
 
@@ -1089,13 +1103,23 @@
 
 /* RICH FOOTER (mirrors NAC Brochures layout, gold underline accent) */
 .nac-foot { padding:5rem 0 2.5rem; border-top:1px solid var(--line); margin-top:3rem; text-align:left; }
-.nac-foot-top { margin-bottom:2.25rem; }
-.nac-foot-logo { width:56px; height:56px; margin-bottom:1.5rem; opacity:.92; display:block; }
-.nac-foot-title { font-family:var(--ff-display); font-size:clamp(2.2rem, 4.8vw, 3.4rem); font-weight:300; color:var(--display); margin:0 0 1rem; letter-spacing:-.012em; line-height:1.1; }
+.nac-foot-top { margin-bottom:2.5rem; }
+.nac-foot-brand { display:flex; align-items:center; gap:1rem; margin-bottom:1.6rem; }
+.nac-foot-logo { width:44px; height:44px; opacity:.92; display:block; flex-shrink:0; }
+.nac-foot-eyebrow { display:inline-flex; align-items:center; gap:.55rem; font-family:var(--ff-mono); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:500; }
+.nac-foot-eb-mark { font-size:.95rem; color:var(--gold); line-height:1; }
+.nac-foot-eb-sep { opacity:.4; }
+.nac-foot-title-wrap { width:fit-content; max-width:100%; margin-bottom:1.6rem; }
+.nac-foot-title { font-family:var(--ff-display); font-size:clamp(2.4rem, 5.2vw, 3.6rem); font-weight:300; color:var(--display); margin:0; letter-spacing:-.015em; line-height:1.08; }
 .nac-foot-title-link { color:inherit; text-decoration:none; transition:color .25s ease; }
 .nac-foot-title-link:hover { color:var(--gold); }
-.nac-foot-wave { width:72px; height:8px; color:var(--gold); display:block; margin:0 0 1.4rem; overflow:visible; }
-.nac-foot-tagline { font-family:var(--ff-display); font-style:italic; font-size:1.05rem; font-weight:300; color:var(--muted); margin:0; line-height:1.55; max-width:60ch; }
+.nac-foot-wave { width:100%; height:10px; display:block; margin-top:1rem; filter:drop-shadow(0 1px 4px rgba(196,146,60,.45)) drop-shadow(0 0 8px rgba(217,124,68,.22)); }
+.nac-foot-tagline { font-family:var(--ff-display); font-style:italic; font-size:1.1rem; font-weight:300; color:var(--muted); margin:0; line-height:1.55; max-width:60ch; }
+@media (max-width:780px) {
+  .nac-foot-brand { gap:.75rem; }
+  .nac-foot-logo { width:38px; height:38px; }
+  .nac-foot-eyebrow { font-size:.6rem; gap:.4rem; }
+}
 .nac-foot-mid { display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.5rem; }
 .nac-foot-contact-line { font-size:.95rem; color:var(--text); margin:0; line-height:1.6; }
 .nac-foot-social { display:flex; gap:.75rem; }
