@@ -1099,6 +1099,19 @@
   .nac-spine-section .nac-spine-left,
   .nac-spine-section .nac-spine-right { padding-bottom:2.5rem; }
 
+  /* Overview/Market facts: stack key over val so values get room to breathe */
+  .nac-fact {
+    grid-template-columns:24px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:.7rem;
+    row-gap:.15rem;
+    padding:.85rem 0;
+  }
+  .nac-fact-icon { grid-row:1 / 3; align-self:start; padding-top:.1rem; font-size:1.05rem; }
+  .nac-fact-key { grid-column:2; grid-row:1; font-size:.62rem; }
+  .nac-fact-val { grid-column:2; grid-row:2; font-size:.95rem; line-height:1.4; }
+  .nac-facts--tight .nac-fact { padding:.65rem 0; }
+
   /* Features: comfortable padding */
   .nac-feat { padding:1.1rem 1.15rem; font-size:.88rem; gap:.9rem; line-height:1.5; }
   .nac-feat-icon { font-size:1.25rem; }
