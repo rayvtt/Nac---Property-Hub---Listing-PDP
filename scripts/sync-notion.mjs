@@ -46,7 +46,12 @@ function readMultiSelect(prop) {
 }
 
 function readUrl(prop) {
-  return prop && prop.url ? prop.url : null;
+  if (!prop) return null;
+  if (prop.url) return prop.url;
+  // Fall back to rich_text content (handles Text-type fields used as URLs)
+  if (prop.rich_text && prop.rich_text.length) return prop.rich_text.map(t => t.plain_text).join('').trim() || null;
+  if (prop.title && prop.title.length) return prop.title.map(t => t.plain_text).join('').trim() || null;
+  return null;
 }
 
 function readJsonField(prop) {
