@@ -158,21 +158,28 @@ async function main() {
   }
   valid.sort((a, b) => (a.propertyIdNum ?? 999) - (b.propertyIdNum ?? 999));
 
-  const cards = valid.map(renderCard).join('\n');
   const html = await fs.readFile(INDEX_PATH, 'utf-8');
+  const re = /<!-- INDEX_CARDS_START[\s\S]*?<!-- INDEX_CARDS_END -->/;
+  if (!re.test(html)) {
+    console.error('Marker block (INDEX_CARDS_START/END) not found in index.html — cannot rebuild.');
+    process.exit(1);
+  }
+  if (!valid.length) {
+    console.log('No valid listings to render — leaving index.html untouched so manual cards survive.');
+    return;
+  }
+
+  const cards = valid.map(renderCard).join('\n');
   const markerStart = '<!-- INDEX_CARDS_START — rebuilt by scripts/update-index.mjs from Notion Live rows -->';
-  const updated = html.replace(
-    /<!-- INDEX_CARDS_START[\s\S]*?<!-- INDEX_CARDS_END -->/,
-    `${markerStart}\n${cards}\n      <!-- INDEX_CARDS_END -->`
-  );
+  const updated = html.replace(re, `${markerStart}\n${cards}\n      <!-- INDEX_CARDS_END -->`);
 
   if (updated === html) {
-    console.error('Marker block not found in index.html — nothing rebuilt.');
-    process.exit(1);
+    console.log(`No index change — ${valid.length} card(s) already match.`);
+    return;
   }
   await fs.writeFile(INDEX_PATH, updated, 'utf-8');
   console.log(`Done. Rebuilt index with ${valid.length} card(s).`);
-  for (const p of valid) console.log(`  • ${p.propertyId} ${p.propertyName} → properties/${p.slug}.html`);
+  for (const p of valid) console.log(`  • ${p.propertyId || '(no id)'} ${p.propertyName} → properties/${p.slug}.html`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
