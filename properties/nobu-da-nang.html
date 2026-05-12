@@ -101,16 +101,17 @@
 
   <!-- STICKY MINI-SPINE NAV -->
   <nav class="nac-mini" aria-label="Section navigation">
-    <button data-target="overview" data-vi="Tổng Quan" data-en="Overview"><span>01</span></button>
-    <button data-target="financials" data-vi="Tài Chính" data-en="Financials"><span>02</span></button>
-    <button data-target="market" data-vi="Thị Trường" data-en="Market"><span>03</span></button>
-    <button data-target="img-1" data-vi="Hình Ảnh" data-en="Gallery"><span>04</span></button>
-    <button data-target="analysis" data-vi="Phân Tích" data-en="Analysis"><span>05</span></button>
-    <button data-target="features" data-vi="Tiện Ích" data-en="Features"><span>06</span></button>
-    <button data-target="process" data-vi="Quy Trình" data-en="Process"><span>07</span></button>
-    <button data-target="proscons" data-vi="Ưu / Nhược" data-en="Pros / Cons"><span>08</span></button>
-    <button data-target="roi" data-vi="ROI Sim" data-en="ROI Sim"><span>09</span></button>
-    <button data-target="assessment" data-vi="Nhận Định" data-en="Assessment"><span>10</span></button>
+    <button data-target="overview"   data-vi="Tổng Quan"  data-en="Overview"><span>01</span></button>
+    <button data-target="location"   data-vi="Vị Trí"     data-en="Location"><span>02</span></button>
+    <button data-target="financials" data-vi="Tài Chính"  data-en="Financials"><span>03</span></button>
+    <button data-target="market"     data-vi="Thị Trường" data-en="Market"><span>04</span></button>
+    <button data-target="img-1"      data-vi="Hình Ảnh"   data-en="Gallery"><span>05</span></button>
+    <button data-target="analysis"   data-vi="Phân Tích"  data-en="Analysis"><span>06</span></button>
+    <button data-target="features"   data-vi="Tiện Ích"   data-en="Features"><span>07</span></button>
+    <button data-target="process"    data-vi="Quy Trình"  data-en="Process"><span>08</span></button>
+    <button data-target="proscons"   data-vi="Ưu / Nhược" data-en="Pros / Cons"><span>09</span></button>
+    <button data-target="roi"        data-vi="ROI Sim"    data-en="ROI Sim"><span>10</span></button>
+    <button data-target="assessment" data-vi="Nhận Định"  data-en="Assessment"><span>11</span></button>
   </nav>
 
   <!-- SPINE TOP (01-03) -->
@@ -135,9 +136,26 @@
       </div>
     </div>
 
-    <div class="nac-spine-section" id="nac-financials" data-side="right">
+    <div class="nac-spine-section" id="nac-location" data-side="full">
       <div class="nac-spine-marker">
         <div class="nac-spine-dot"></div><div class="nac-spine-num">02</div>
+        <div class="nac-spine-label"><span data-vi="">Vị Trí</span><span data-en="">Location</span></div>
+      </div>
+      <div class="nac-spine-content reveal">
+        <div class="nac-map-wrap">
+          <iframe src="https://maps.google.com/maps?q=Nobu+Residences+Da+Nang&output=embed&z=15" class="nac-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Nobu Residences Da Nang — Location" allowfullscreen="" tabindex="0"></iframe>
+        </div>
+        <div class="nac-facts nac-facts--tight">
+          <div class="nac-fact"><span class="nac-fact-icon">📍</span><span class="nac-fact-key"><span data-vi="">Địa Chỉ</span><span data-en="">Address</span></span><span class="nac-fact-val">Võ Nguyên Giáp, Mỹ Khê, Đà Nẵng</span></div>
+          <div class="nac-fact"><span class="nac-fact-icon">🌊</span><span class="nac-fact-key"><span data-vi="">Bãi Biển</span><span data-en="">Beach</span></span><span class="nac-fact-val"><span data-vi="">Mặt tiền biển trực tiếp</span><span data-en="">Direct beachfront access</span></span></div>
+          <div class="nac-fact"><span class="nac-fact-icon">🏙️</span><span class="nac-fact-key"><span data-vi="">Trung Tâm</span><span data-en="">City Centre</span></span><span class="nac-fact-val"><span data-vi="">7 phút xe hơi</span><span data-en="">7 min by car</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nac-spine-section" id="nac-financials" data-side="right">
+      <div class="nac-spine-marker">
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">03</div>
         <div class="nac-spine-label"><span data-vi="">Tài Chính</span><span data-en="">Financials</span></div>
       </div>
       <div class="nac-spine-content reveal">
@@ -163,7 +181,7 @@
 
     <div class="nac-spine-section" id="nac-market" data-side="left">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">03</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">04</div>
         <div class="nac-spine-label"><span data-vi="">Thị Trường</span><span data-en="">Market</span></div>
       </div>
       <div class="nac-spine-content reveal">
@@ -182,7 +200,7 @@
   <!-- 04 IMAGE BREAK -->
   <section class="nac-cine" id="nac-img-1">
     <div class="nac-cine-eye">
-      <span class="nac-cine-num">04</span>
+      <span class="nac-cine-num">05</span>
       <span class="nac-cine-h"><span data-vi="">Sky Bar tầng 43 · Tầm nhìn 270° ra biển Mỹ Khê</span><span data-en="">Sky Bar floor 43 · 270° Mỹ Khê coastline</span></span>
     </div>
     <div class="nac-cine-img" data-notion-bg="gallery_1" style="background-image:url('https://www.danangvillarealty.com/lp/images/8497720a8eb4ac1a6db862fb428b08e6964cda1c.jpg')"></div>
@@ -195,7 +213,7 @@
     <!-- 05 NAC ANALYSIS (donut) -->
     <div class="nac-spine-section" id="nac-analysis" data-side="full">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">05</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">06</div>
         <div class="nac-spine-label"><span data-vi="">Phân Tích</span><span data-en="">Analysis</span></div>
       </div>
       <div class="nac-spine-content reveal">
@@ -268,7 +286,7 @@
     <!-- 06 FEATURES -->
     <div class="nac-spine-section" id="nac-features" data-side="both">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">06</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">07</div>
         <div class="nac-spine-label"><span data-vi="">Tiện Ích</span><span data-en="">Features</span></div>
       </div>
       <div class="nac-spine-left reveal">
@@ -284,7 +302,7 @@
   <!-- 07 IMAGE BREAK -->
   <section class="nac-cine" id="nac-img-2">
     <div class="nac-cine-eye">
-      <span class="nac-cine-num">07</span>
+      <span class="nac-cine-num">08</span>
       <span class="nac-cine-h"><span data-vi="">Tháp 186m · Thiết kế Japandi độc quyền Nobu</span><span data-en="">186m tower · Japandi design by Nobu</span></span>
     </div>
     <div class="nac-cine-img" data-notion-bg="gallery_2" style="background-image:url('https://www.danangvillarealty.com/lp/images/e722ac1b3ddaaf3b57d4b58cb52bc3d1bb2755f1.jpg')"></div>
@@ -297,7 +315,7 @@
     <!-- 08 PROCESS -->
     <div class="nac-spine-section" id="nac-process" data-side="left">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">08</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">09</div>
         <div class="nac-spine-label"><span data-vi="">Quy Trình</span><span data-en="">Process</span></div>
       </div>
       <div class="nac-spine-content reveal">
@@ -343,7 +361,7 @@
     <!-- 09 PROS / CONS -->
     <div class="nac-spine-section" id="nac-proscons" data-side="both">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">09</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">10</div>
         <div class="nac-spine-label"><span data-vi="">Ưu / Nhược</span><span data-en="">Pros / Cons</span></div>
       </div>
       <div class="nac-spine-left reveal">
@@ -433,7 +451,7 @@
   <!-- 10 IMAGE BREAK — ASPIRATION -->
   <section class="nac-cine nac-cine--aspiration" id="nac-img-3">
     <div class="nac-cine-eye">
-      <span class="nac-cine-num">10</span>
+      <span class="nac-cine-num">11</span>
       <span class="nac-cine-h"><span data-vi="">Cuộc Sống Nobu · Biển Mỹ Khê</span><span data-en="">Life by Nobu · Mỹ Khê</span></span>
     </div>
     <div class="nac-cine-img" data-notion-bg="gallery_3" style="background-image:url('https://www.danangvillarealty.com/lp/images/5b13627d50e69d3b975241a09ce76a52b44a1144.jpg')"></div>
@@ -447,10 +465,10 @@
   <section class="nac-spine">
     <div class="nac-spine-line"></div>
 
-    <!-- 11 ASSESSMENT -->
+    <!-- 12 ASSESSMENT -->
     <div class="nac-spine-section" id="nac-assessment" data-side="full">
       <div class="nac-spine-marker">
-        <div class="nac-spine-dot"></div><div class="nac-spine-num">11</div>
+        <div class="nac-spine-dot"></div><div class="nac-spine-num">12</div>
         <div class="nac-spine-label"><span data-vi="">Nhận Định</span><span data-en="">Assessment</span></div>
       </div>
       <div class="nac-spine-content reveal">
@@ -973,6 +991,11 @@
 .nac-mkt-card:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
 .nac-mkt-val { font-family:var(--ff-display); font-size:1.85rem; font-weight:500; color:var(--gold); letter-spacing:-.015em; line-height:1; }
 .nac-mkt-key { font-family:var(--ff-mono); font-size:.66rem; color:var(--muted); margin-top:.55rem; letter-spacing:.05em; line-height:1.4; }
+
+/* LOCATION MAP */
+.nac-map-wrap { border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); margin-bottom:1.75rem; aspect-ratio:16/6; min-height:240px; }
+.nac-map { width:100%; height:100%; display:block; border:none; }
+@media(max-width:680px) { .nac-map-wrap { aspect-ratio:4/3; } }
 
 /* GALLERY */
 .nac-cine { position:relative; background:#0a1024; }
