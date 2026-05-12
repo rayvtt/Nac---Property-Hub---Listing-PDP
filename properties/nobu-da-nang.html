@@ -104,7 +104,7 @@
     <button data-target="overview" data-vi="Tổng Quan" data-en="Overview"><span>01</span></button>
     <button data-target="financials" data-vi="Tài Chính" data-en="Financials"><span>02</span></button>
     <button data-target="market" data-vi="Thị Trường" data-en="Market"><span>03</span></button>
-    <button data-target="gallery" data-vi="Hình Ảnh" data-en="Gallery"><span>04</span></button>
+    <button data-target="img-1" data-vi="Hình Ảnh" data-en="Gallery"><span>04</span></button>
     <button data-target="analysis" data-vi="Phân Tích" data-en="Analysis"><span>05</span></button>
     <button data-target="features" data-vi="Tiện Ích" data-en="Features"><span>06</span></button>
     <button data-target="process" data-vi="Quy Trình" data-en="Process"><span>07</span></button>
@@ -1653,7 +1653,7 @@
         }
       });
     }, { rootMargin:'-35% 0px -50% 0px' });
-    root.querySelectorAll('.nac-spine-section, #nac-img-1, #nac-img-2, #nac-img-3').forEach(function(s){ spineObs.observe(s); });
+    root.querySelectorAll('.nac-spine-section, #nac-img-1').forEach(function(s){ spineObs.observe(s); });
 
     // Hero count-up
     if (heroEl) {
@@ -1669,7 +1669,7 @@
     if (fin) {
       var finObs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if (e.isIntersecting) { fin.querySelectorAll('.nac-bench-fill').forEach(function(el){ el.style.width = el.getAttribute('data-fill') + '%'; }); finObs.disconnect(); }
+          if (e.isIntersecting) { fin.querySelectorAll('.nac-bench-fill').forEach(function(el, i){ el.style.transitionDelay = (i * 0.15) + 's'; el.style.width = el.getAttribute('data-fill') + '%'; }); finObs.disconnect(); }
         });
       }, { threshold:0.2 });
       finObs.observe(fin);
