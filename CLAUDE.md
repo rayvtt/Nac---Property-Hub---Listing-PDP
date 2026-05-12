@@ -63,7 +63,7 @@ Templates and references:
 
 ## WordPress sync
 
-- Triggered by every push to `main` that touches `properties/*.html`, plus an hourly cron and on-demand via `.github/workflows/sync-wp.yml`.
+- Triggered by every push to `main` that touches `properties/*.html`, plus a 15-min cron and on-demand via `.github/workflows/sync-wp.yml`.
 - Script: `scripts/sync-wp.mjs`. Posts the **full HTML** of each `properties/<slug>.html` into ACF field `raw_html_code` on the matching WP page.
 - Lookup: reads the Notion `Listing URL` field, parses the slug from the URL, and matches the WP page by slug + full URL. Property ID is Notion-only and not used for matching.
 - **Never creates pages.** Skips (not fails) if `Listing URL` is empty (normal for newly scaffolded listings). Fails loudly if `Listing URL` is set but no WP page matches — fix the URL or create the page, then re-run.
@@ -94,7 +94,7 @@ Notion Hub Status → Live
   └── Side B (within ~5 min):
         create-pdp.yml: scaffold properties/<slug>.html → patch with Notion → push
           └── sync-wp.yml: skips (Listing URL empty) on first push
-              ↳ hourly retry: once Listing URL is in Notion, push succeeds → WP page live
+              ↳ 15-min retry: once Listing URL is in Notion, push succeeds → WP page live
 ```
 
-The hourly `sync-wp.yml` cron ensures the WP push happens automatically once Side A finishes, with no manual intervention required.
+The 15-min `sync-wp.yml` cron ensures the WP push happens automatically once Side A finishes, with no manual intervention required.

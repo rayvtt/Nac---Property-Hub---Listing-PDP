@@ -9,9 +9,9 @@ on:
       - "scripts/package.json"
       - ".github/workflows/sync-wp.yml"
   schedule:
-    # Hourly retry — catches listings whose Listing URL was written back to
-    # Notion by the WP automation after the last push-triggered run.
-    - cron: "0 * * * *"
+    # Every 15 min retry — catches listings whose Listing URL was written back
+    # to Notion by the WP automation after the last push-triggered run.
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       only_slug:
