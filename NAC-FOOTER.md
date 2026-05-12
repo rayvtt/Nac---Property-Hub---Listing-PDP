@@ -24,10 +24,13 @@ Reusable footer block used at the bottom of every NAC PDP. Mirrors the NAC Broch
 <footer class="nac-foot">
   <div class="nac-foot-top">
     <div class="nac-foot-brand">
-      <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png"
-           alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-light">
-      <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png"
-           alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-dark">
+      <a href="https://nomadassetcollective.com" target="_blank" rel="noreferrer"
+         class="nac-foot-logo-link" aria-label="Nomad Asset Collective">
+        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png"
+             alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-light">
+        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png"
+             alt="Nomad Asset Collective" class="nac-foot-logo nac-logo-dark">
+      </a>
       <span class="nac-foot-eyebrow">
         <span class="nac-foot-eb-mark">⌖</span>
         <span class="nac-foot-eb-txt">The Property Hub</span>
@@ -156,6 +159,8 @@ Reusable footer block used at the bottom of every NAC PDP. Mirrors the NAC Broch
 /* TOP — brand + bilingual title + wave + tagline */
 .nac-foot-top { margin-bottom:2.5rem; }
 .nac-foot-brand { display:flex; align-items:center; gap:1rem; margin-bottom:1.6rem; }
+.nac-foot-logo-link { display:inline-flex; align-items:center; line-height:0; transition:transform .2s ease, filter .2s ease; }
+.nac-foot-logo-link:hover { transform:translateY(-1px); filter:brightness(1.05); }
 .nac-foot-logo { width:44px; height:44px; opacity:.92; display:block; flex-shrink:0; }
 .nac-foot-eyebrow { display:inline-flex; align-items:center; gap:.55rem; font-family:var(--ff-mono); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:500; }
 .nac-foot-eb-mark { font-size:.95rem; color:var(--gold); line-height:1; }
