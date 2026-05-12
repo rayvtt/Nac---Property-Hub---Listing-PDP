@@ -1,0 +1,51 @@
+name: Sync PDP HTML → WordPress
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "properties/*.html"
+      - "scripts/sync-wp.mjs"
+      - "scripts/package.json"
+      - ".github/workflows/sync-wp.yml"
+  workflow_dispatch:
+    inputs:
+      only_slug:
+        description: "Sync just one slug (e.g. nobu-da-nang). Leave empty to sync all."
+        required: false
+        default: ""
+
+concurrency:
+  group: sync-wp
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        working-directory: scripts
+        run: npm install --no-audit --no-fund
+
+      - name: Push to WordPress
+        working-directory: scripts
+        env:
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
+          WP_USER: ${{ vars.WP_USER || 'admin_web' }}
+          WP_BASE_URL: ${{ vars.WP_BASE_URL || 'https://nomadassetcollective.com' }}
+          WP_ACF_FIELD: ${{ vars.WP_ACF_FIELD || 'raw_html_code' }}
+          WP_PROPERTY_ID_FIELD: ${{ vars.WP_PROPERTY_ID_FIELD || 'nac_property_id' }}
+          NOTION_LISTING_URL_FIELD: ${{ vars.NOTION_LISTING_URL_FIELD || 'Listing URL' }}
+          ONLY_SLUG: ${{ github.event.inputs.only_slug }}
+        run: node sync-wp.mjs
