@@ -37,7 +37,7 @@ jobs:
           NOTION_DATABASE_ID: ${{ vars.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9' }}
         run: node sync-notion.mjs
 
-      - name: Commit changes
+      - name: Commit and push (with rebase retry)
         run: |
           git config user.name "nac-notion-bot"
           git config user.email "nac-notion-bot@users.noreply.github.com"
@@ -47,4 +47,23 @@ jobs:
           fi
           git add properties/
           git commit -m "chore(notion-sync): refresh PDP content from Notion"
-          git push origin main
+
+          # Retry push up to 5 times — rebase on top of main if it has moved
+          # while this run was working. This prevents silent skips when other
+          # commits land mid-run.
+          for attempt in 1 2 3 4 5; do
+            if git push origin main; then
+              echo "Push succeeded on attempt $attempt"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed — fetching and rebasing"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase conflict — bailing out so a future run can re-derive from Notion"
+              git rebase --abort
+              exit 1
+            fi
+            sleep $((attempt * 2))
+          done
+          echo "Push failed after 5 attempts"
+          exit 1
