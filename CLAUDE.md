@@ -60,3 +60,13 @@ Templates and references:
 - Source DB ID: `35848ec25e86803283acc7ad989649c9` (🏠 NAC - Property Listings).
 - Script: `scripts/sync-notion.mjs`. Filters by `Hub Status = Live`, patches HTML via cheerio targeting `data-notion="*"`, `data-notion-list="*"`, `data-notion-json="*"`, `data-notion-roi`, `data-notion-bg`.
 - Donut score (`.nac-donut-score`) is a special case — sync only updates `data-count-to`, never the inner text (preserves the count-up-from-0 animation).
+
+## WordPress sync
+
+- Triggered by every push to `main` that touches `properties/*.html` (and on demand) via `.github/workflows/sync-wp.yml`. So Notion edit → sync-notion commit → sync-wp run → WP page ACF updated, all automatic.
+- Script: `scripts/sync-wp.mjs`. Posts the **full HTML** of each `properties/<slug>.html` into ACF field `raw_html_code` on the matching WP page.
+- Lookup: reads the Notion `Listing URL` field, parses the slug from the URL, and matches the WP page by slug + full URL. Property ID is Notion-only and not used for matching.
+- **Never creates pages.** Fails loudly if `Listing URL` is missing or doesn't match — fix the Notion URL or create the WP page manually, then re-run.
+- Auth: HTTP Basic with `WP_USER` (default `admin_web`) and the `WP_APP_PASSWORD` secret (a WP Application Password). Also requires `NOTION_TOKEN` (already a secret for sync-notion).
+- WP-side requirement: ACF field `raw_html_code` (textarea) with **Show in REST API** enabled. Template echoes `<?php the_field('raw_html_code'); ?>`.
+- Manual single-slug sync: Actions tab → **Sync PDP HTML → WordPress** → **Run workflow** → enter `only_slug` (e.g. `nobu-da-nang`).
