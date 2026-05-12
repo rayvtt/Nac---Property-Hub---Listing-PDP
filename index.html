@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NAC Property Hub — PDP Previews</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --bg:#fafaf7; --surface:#fff; --display:#0f1a36; --text:#14181f;
+      --muted:#6b7280; --gold:#c4922c; --gold-2:#e8bf72; --orange:#d97c44;
+      --line:rgba(15,26,54,.08);
+      --ff-display:'Cormorant Garamond',serif;
+      --ff-body:'Inter',-apple-system,sans-serif;
+      --ff-mono:'JetBrains Mono',monospace;
+    }
+    body { font-family:var(--ff-body); background:var(--bg); color:var(--text); min-height:100vh; padding:3rem 1.5rem 5rem; }
+    .wrap { max-width:840px; margin:0 auto; }
+    header { text-align:center; margin-bottom:3rem; }
+    .mark { display:inline-flex; flex-direction:column; align-items:center; line-height:1; }
+    .mark .the { font-family:var(--ff-display); font-size:.78rem; letter-spacing:.32em; color:var(--muted); }
+    .mark .nac { font-family:var(--ff-display); font-size:2.3rem; font-weight:500; letter-spacing:.32em; color:var(--display); margin:.15rem 0 .2rem; padding-left:.32em; }
+    .mark .tag { font-family:var(--ff-display); font-size:.72rem; letter-spacing:.38em; color:var(--gold); font-weight:500; padding-left:.38em; }
+    h1 { font-family:var(--ff-display); font-size:1.6rem; font-weight:400; font-style:italic; color:var(--display); margin-top:1.5rem; letter-spacing:-.005em; }
+    .sub { font-family:var(--ff-mono); font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.5rem; }
+    .grid { display:grid; gap:1rem; }
+    .card { display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.5rem 1.75rem; text-decoration:none; color:inherit; box-shadow:0 1px 2px rgba(15,26,54,.04); transition:all .2s ease; }
+    .card:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(15,26,54,.10); border-color:rgba(196,146,60,.3); }
+    .row { display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; }
+    .id { font-family:var(--ff-mono); font-size:.7rem; padding:.2rem .55rem; border-radius:6px; background:rgba(196,146,60,.12); color:var(--gold); border:1px solid rgba(196,146,60,.2); }
+    .name { font-family:var(--ff-display); font-size:1.3rem; font-weight:500; color:var(--display); }
+    .arrow { margin-left:auto; color:var(--orange); font-family:var(--ff-mono); }
+    .meta { display:flex; gap:.85rem; flex-wrap:wrap; margin-top:.65rem; font-family:var(--ff-mono); font-size:.7rem; color:var(--muted); letter-spacing:.04em; }
+    .meta span { padding:.15rem 0; }
+    .meta .sep { opacity:.4; }
+    .score { color:var(--gold); font-weight:500; }
+    footer { text-align:center; margin-top:4rem; font-family:var(--ff-mono); font-size:.65rem; color:var(--muted); letter-spacing:.08em; }
+    footer a { color:var(--orange); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="mark">
+        <span class="the">THE</span>
+        <span class="nac">NAC</span>
+        <span class="tag">PROPERTY HUB</span>
+      </div>
+      <h1>PDP Preview Index</h1>
+      <p class="sub">On-the-go review · WIP listings</p>
+    </header>
+
+    <div class="grid">
+      <a href="properties/nobu-da-nang.html" class="card">
+        <div class="row">
+          <span class="id">NAC-4</span>
+          <span class="name">Nobu Residences Da Nang</span>
+          <span class="arrow">→</span>
+        </div>
+        <div class="meta">
+          <span>🇻🇳 Vietnam</span>
+          <span class="sep">·</span>
+          <span>Mỹ Khê Beach</span>
+          <span class="sep">·</span>
+          <span class="score">NAC Score 81/100</span>
+          <span class="sep">·</span>
+          <span>$280K · 6.2% yield</span>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      Built by <a href="https://nomadassetcollective.com" target="_blank">Nomad Asset Collective</a> · Updated automatically from the local PDP builder
+    </footer>
+  </div>
+</body>
+</html>
