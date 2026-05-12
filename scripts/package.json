@@ -1,0 +1,17 @@
+{
+  "name": "nac-sync-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sync NAC property data from Notion into the PDP HTML files",
+  "scripts": {
+    "sync": "node sync-notion.mjs"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "cheerio": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
