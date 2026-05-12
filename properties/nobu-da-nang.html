@@ -281,16 +281,18 @@
     </div>
 
     <!-- 06 FEATURES -->
-    <div class="nac-spine-section" id="nac-features" data-side="right">
+    <div class="nac-spine-section" id="nac-features" data-side="both">
       <div class="nac-spine-marker">
         <div class="nac-spine-dot"></div><div class="nac-spine-num">06</div>
         <div class="nac-spine-label"><span data-vi>Tiện Ích</span><span data-en>Features</span></div>
       </div>
-      <div class="nac-spine-content reveal">
-        <p class="nac-prose"><span data-vi>Nobu Hospitality — thương hiệu do Robert De Niro và Nobu Matsuhisa sáng lập — hiện vận hành 50+ khách sạn &amp; nhà hàng tại 35 quốc gia. Đây là dự án dân cư Nobu đầu tiên tại Đông Nam Á.</span><span data-en>Nobu Hospitality — founded by Robert De Niro and Nobu Matsuhisa — currently operates 50+ hotels and restaurants across 35 countries. This is Nobu&#39;s first residential project in Southeast Asia.</span></p>
+      <div class="nac-spine-left reveal">
         <div class="nac-feats">
           <div class="nac-feat"><span class="nac-feat-icon">🏨</span><span class="nac-feat-txt"><span data-vi>Chương trình cho thuê do Nobu quản lý, cam kết yield năm đầu</span><span data-en>Nobu-managed rental programme, guaranteed Year-1 yield</span></span></div><div class="nac-feat"><span class="nac-feat-icon">🌊</span><span class="nac-feat-txt"><span data-vi>Mặt tiền biển Mỹ Khê — 186m, 43 tầng</span><span data-en>Direct Mỹ Khê beachfront — 186m, 43 floors</span></span></div><div class="nac-feat"><span class="nac-feat-icon">🍱</span><span class="nac-feat-txt"><span data-vi>Nhà hàng Nobu &amp; Sky Bar tầng mái (tầng 43)</span><span data-en>Nobu Restaurant &amp; rooftop Sky Bar (floor 43)</span></span></div><div class="nac-feat"><span class="nac-feat-icon">🏊</span><span class="nac-feat-txt"><span data-vi>Khối đế đầy đủ: hồ vô cực, phòng gym, spa, co-working</span><span data-en>Full amenity podium: infinity pool, gym, spa, co-working</span></span></div><div class="nac-feat"><span class="nac-feat-icon">🎨</span><span class="nac-feat-txt"><span data-vi>Thiết kế Japandi — phong cách Nobu độc quyền, nghệ thuật tuyển chọn</span><span data-en>Japandi design — exclusive Nobu aesthetic, curated art</span></span></div><div class="nac-feat"><span class="nac-feat-icon">📱</span><span class="nac-feat-txt"><span data-vi>Smart home, dịch vụ ăn tối tại căn hộ theo yêu cầu</span><span data-en>Smart home integration, in-unit dining on demand</span></span></div>
         </div>
+      </div>
+      <div class="nac-spine-right reveal">
+        <p class="nac-prose nac-prose--feature"><span data-vi>Nobu Hospitality — thương hiệu do Robert De Niro và Nobu Matsuhisa sáng lập — hiện vận hành 50+ khách sạn &amp; nhà hàng tại 35 quốc gia. Đây là dự án dân cư Nobu đầu tiên tại Đông Nam Á.</span><span data-en>Nobu Hospitality — founded by Robert De Niro and Nobu Matsuhisa — currently operates 50+ hotels and restaurants across 35 countries. This is Nobu&#39;s first residential project in Southeast Asia.</span></p>
       </div>
     </div>
 
@@ -364,73 +366,72 @@
     </div>
 
     <!-- 09 ROI SIMULATOR -->
-    <div class="nac-spine-section" id="nac-roi" data-side="full">
+    <div class="nac-spine-section nac-roi" id="nac-roi" data-side="both"
+         data-price="280000"
+         data-yield="6.2"
+         data-irr="13.8"
+         data-rent="1447">
       <div class="nac-spine-marker">
         <div class="nac-spine-dot"></div><div class="nac-spine-num">09</div>
         <div class="nac-spine-label"><span data-vi>Mô Phỏng ROI</span><span data-en>ROI Sim</span></div>
       </div>
-      <div class="nac-spine-content reveal">
-        <div class="nac-roi"
-             data-price="280000"
-             data-yield="6.2"
-             data-irr="13.8"
-             data-rent="1447">
-          <div class="nac-roi-top">
-            <div class="nac-roi-inputs">
-              <div class="nac-roi-field">
-                <label>
-                  <span class="nac-roi-lbl"><span data-vi>Thời Gian Nắm Giữ</span><span data-en>Holding Period</span></span>
-                  <span class="nac-roi-val"><span id="nac-roi-hold-val">5</span><span class="nac-roi-suf"><span data-vi> năm</span><span data-en> yr</span></span></span>
-                </label>
-                <input type="range" id="nac-roi-hold" min="3" max="15" step="1" value="5">
-              </div>
-              <div class="nac-roi-field">
-                <label>
-                  <span class="nac-roi-lbl"><span data-vi>Tỷ Lệ Vay (LTV)</span><span data-en>Loan-to-Value</span></span>
-                  <span class="nac-roi-val"><span id="nac-roi-ltv-val">0</span><span class="nac-roi-suf">%</span></span>
-                </label>
-                <input type="range" id="nac-roi-ltv" min="0" max="70" step="5" value="0">
-              </div>
-              <div class="nac-roi-field">
-                <label>
-                  <span class="nac-roi-lbl"><span data-vi>Lãi Suất Vay</span><span data-en>Loan Interest</span></span>
-                  <span class="nac-roi-val"><span id="nac-roi-rate-val">5.5</span><span class="nac-roi-suf">%</span></span>
-                </label>
-                <input type="range" id="nac-roi-rate" min="3" max="9" step="0.25" value="5.5">
-              </div>
-              <div class="nac-roi-field">
-                <label>
-                  <span class="nac-roi-lbl"><span data-vi>Tăng Giá BĐS / năm</span><span data-en>Annual Appreciation</span></span>
-                  <span class="nac-roi-val"><span id="nac-roi-app-val">4</span><span class="nac-roi-suf">%</span></span>
-                </label>
-                <input type="range" id="nac-roi-app" min="0" max="10" step="0.5" value="4">
-              </div>
+      <div class="nac-spine-left reveal">
+        <div class="nac-roi-top">
+          <div class="nac-roi-inputs">
+            <div class="nac-roi-field">
+              <label>
+                <span class="nac-roi-lbl"><span data-vi>Thời Gian Nắm Giữ</span><span data-en>Holding Period</span></span>
+                <span class="nac-roi-val"><span id="nac-roi-hold-val">5</span><span class="nac-roi-suf"><span data-vi> năm</span><span data-en> yr</span></span></span>
+              </label>
+              <input type="range" id="nac-roi-hold" min="3" max="15" step="1" value="5">
             </div>
-
-            <div class="nac-roi-results">
-              <div class="nac-roi-result nac-roi-result--hi">
-                <div class="nac-roi-result-key"><span data-vi>Tổng Lợi Nhuận</span><span data-en>Total Return</span></div>
-                <div class="nac-roi-result-val" id="nac-roi-total">—</div>
-                <div class="nac-roi-result-sub" id="nac-roi-total-pct">—</div>
-              </div>
-              <div class="nac-roi-result">
-                <div class="nac-roi-result-key"><span data-vi>Dòng Tiền</span><span data-en>Cash-on-Cash</span></div>
-                <div class="nac-roi-result-val" id="nac-roi-coc">—</div>
-                <div class="nac-roi-result-sub"><span data-vi>Năm đầu</span><span data-en>Year 1</span></div>
-              </div>
-              <div class="nac-roi-result">
-                <div class="nac-roi-result-key"><span data-vi>IRR Năm Hóa</span><span data-en>Annualized IRR</span></div>
-                <div class="nac-roi-result-val" id="nac-roi-irr">—</div>
-                <div class="nac-roi-result-sub"><span data-vi>Mô phỏng</span><span data-en>Simulated</span></div>
-              </div>
+            <div class="nac-roi-field">
+              <label>
+                <span class="nac-roi-lbl"><span data-vi>Tỷ Lệ Vay (LTV)</span><span data-en>Loan-to-Value</span></span>
+                <span class="nac-roi-val"><span id="nac-roi-ltv-val">0</span><span class="nac-roi-suf">%</span></span>
+              </label>
+              <input type="range" id="nac-roi-ltv" min="0" max="70" step="5" value="0">
+            </div>
+            <div class="nac-roi-field">
+              <label>
+                <span class="nac-roi-lbl"><span data-vi>Lãi Suất Vay</span><span data-en>Loan Interest</span></span>
+                <span class="nac-roi-val"><span id="nac-roi-rate-val">5.5</span><span class="nac-roi-suf">%</span></span>
+              </label>
+              <input type="range" id="nac-roi-rate" min="3" max="9" step="0.25" value="5.5">
+            </div>
+            <div class="nac-roi-field">
+              <label>
+                <span class="nac-roi-lbl"><span data-vi>Tăng Giá BĐS / năm</span><span data-en>Annual Appreciation</span></span>
+                <span class="nac-roi-val"><span id="nac-roi-app-val">4</span><span class="nac-roi-suf">%</span></span>
+              </label>
+              <input type="range" id="nac-roi-app" min="0" max="10" step="0.5" value="4">
             </div>
           </div>
 
-          <div class="nac-roi-compare">
-            <div class="nac-roi-compare-title"><span data-vi>So Sánh Với Các Kênh Đầu Tư Khác</span><span data-en>Compared to Other Investment Channels</span></div>
-            <div class="nac-roi-bars" id="nac-roi-bars">
-              <!-- bars built by JS -->
+          <div class="nac-roi-results">
+            <div class="nac-roi-result nac-roi-result--hi">
+              <div class="nac-roi-result-key"><span data-vi>Tổng Lợi Nhuận</span><span data-en>Total Return</span></div>
+              <div class="nac-roi-result-val" id="nac-roi-total">—</div>
+              <div class="nac-roi-result-sub" id="nac-roi-total-pct">—</div>
             </div>
+            <div class="nac-roi-result">
+              <div class="nac-roi-result-key"><span data-vi>Dòng Tiền</span><span data-en>Cash-on-Cash</span></div>
+              <div class="nac-roi-result-val" id="nac-roi-coc">—</div>
+              <div class="nac-roi-result-sub"><span data-vi>Năm đầu</span><span data-en>Year 1</span></div>
+            </div>
+            <div class="nac-roi-result">
+              <div class="nac-roi-result-key"><span data-vi>IRR Năm Hóa</span><span data-en>Annualized IRR</span></div>
+              <div class="nac-roi-result-val" id="nac-roi-irr">—</div>
+              <div class="nac-roi-result-sub"><span data-vi>Mô phỏng</span><span data-en>Simulated</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nac-spine-right reveal">
+        <div class="nac-roi-compare">
+          <div class="nac-roi-compare-title"><span data-vi>So Sánh Với Các Kênh Đầu Tư Khác</span><span data-en>Compared to Other Investment Channels</span></div>
+          <div class="nac-roi-bars" id="nac-roi-bars">
+            <!-- bars built by JS -->
           </div>
         </div>
       </div>
@@ -500,7 +501,7 @@
 
   <!-- PH TOOLS PILL (3 buttons, dark grey) -->
   <div class="nac-tools">
-    <a href="https://nomadassetcollective.com/so-sanh" target="_blank" rel="noreferrer" class="nac-tool nac-tool--wa" aria-label="WhatsApp">
+    <a href="https://wa.me/447388646000" target="_blank" rel="noreferrer" class="nac-tool nac-tool--wa" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.21 8.21 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.21-.16-.46-.28z"/></svg>
       <span class="nac-tool-txt">WhatsApp</span>
     </a>
@@ -738,6 +739,8 @@
 .nac-prose { font-size:1.02rem; line-height:1.78; color:var(--text); margin-bottom:2rem; max-width:60ch; letter-spacing:.003em; }
 .nac-spine-section[data-side="right"] .nac-prose { margin-left:auto; }
 @media(max-width:900px) { .nac-spine-section[data-side="right"] .nac-prose { margin-left:0; } }
+.nac-prose--feature { font-family:var(--ff-display); font-size:clamp(1.35rem, 2.1vw, 1.75rem); font-weight:300; line-height:1.45; color:var(--display); max-width:38ch; margin-bottom:0; letter-spacing:-.005em; }
+@media(max-width:900px) { .nac-prose--feature { font-size:1.25rem; line-height:1.5; max-width:none; } }
 .nac-facts { display:flex; flex-direction:column; }
 .nac-fact { display:grid; grid-template-columns:28px 160px 1fr; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); font-size:.92rem; }
 .nac-fact:last-child { border-bottom:none; }
@@ -895,9 +898,7 @@
 .nac-pc-cons .nac-pc-dot { color:var(--red); }
 
 /* ROI SIMULATOR */
-.nac-roi { display:flex; flex-direction:column; gap:2rem; }
-.nac-roi-top { display:grid; grid-template-columns:1fr 320px; gap:2rem; align-items:start; }
-@media(max-width:780px) { .nac-roi-top { grid-template-columns:1fr; } }
+.nac-roi-top { display:flex; flex-direction:column; gap:1.5rem; min-width:0; max-width:100%; }
 .nac-roi-inputs { display:flex; flex-direction:column; gap:1.5rem; }
 .nac-roi-field label { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:.55rem; }
 .nac-roi-lbl { font-family:var(--ff-mono); font-size:.68rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; }
