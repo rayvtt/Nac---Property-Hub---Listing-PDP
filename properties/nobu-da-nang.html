@@ -591,8 +591,12 @@
     </div>
   </div>
 
-  <!-- PH TOOLS PILL (3 buttons, dark grey) -->
+  <!-- PH TOOLS PILL (4 buttons, dark grey) -->
   <div class="nac-tools">
+    <button type="button" class="nac-tool nac-tool--pdf" aria-label="Export PDF brochure" data-nac-pdf-trigger>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+      <span class="nac-tool-txt">PDF</span>
+    </button>
     <a href="https://wa.me/447388646000" target="_blank" rel="noreferrer" class="nac-tool nac-tool--wa" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01zm-7.01 15.24h-.01a8.21 8.21 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.21-.16-.46-.28z"></path></svg>
       <span class="nac-tool-txt">WhatsApp</span>
@@ -605,6 +609,43 @@
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
       <span class="nac-tool-txt">Blog</span>
     </a>
+  </div>
+
+  <!-- PDF LEAD-CAPTURE MODAL -->
+  <div class="nac-pdf-modal" id="nac-pdf-modal" role="dialog" aria-modal="true" aria-labelledby="nac-pdf-modal-title" aria-hidden="true">
+    <div class="nac-pdf-modal-backdrop" data-nac-pdf-close></div>
+    <form class="nac-pdf-modal-panel" id="nac-pdf-form" novalidate>
+      <button type="button" class="nac-pdf-modal-x" aria-label="Close" data-nac-pdf-close>×</button>
+      <div class="nac-pdf-modal-eye"><span data-vi>NAC · Brochure</span><span data-en>NAC · Brochure</span></div>
+      <h3 class="nac-pdf-modal-title" id="nac-pdf-modal-title">
+        <span data-vi>Nhận brochure Nobu Đà Nẵng</span>
+        <span data-en>Get the Nobu Da Nang brochure</span>
+      </h3>
+      <p class="nac-pdf-modal-sub">
+        <span data-vi>Để lại thông tin · chúng tôi gửi link bản PDF trong vòng 1 phút.</span>
+        <span data-en>Leave your details · we'll send the PDF link within a minute.</span>
+      </p>
+      <label class="nac-pdf-field">
+        <span class="nac-pdf-lbl"><span data-vi>Họ tên</span><span data-en>Full name</span></span>
+        <input type="text" name="name" required autocomplete="name" placeholder="Nguyễn Văn A">
+      </label>
+      <label class="nac-pdf-field">
+        <span class="nac-pdf-lbl"><span data-vi>Email</span><span data-en>Email</span></span>
+        <input type="email" name="email" required autocomplete="email" placeholder="you@email.com">
+      </label>
+      <label class="nac-pdf-field">
+        <span class="nac-pdf-lbl"><span data-vi>WhatsApp / Điện thoại</span><span data-en>WhatsApp / Phone</span></span>
+        <input type="tel" name="phone" required autocomplete="tel" placeholder="+84 90 000 0000">
+      </label>
+      <div class="nac-pdf-modal-msg" id="nac-pdf-msg" aria-live="polite"></div>
+      <button type="submit" class="nac-pdf-submit">
+        <span data-vi>Nhận brochure PDF</span><span data-en>Get the PDF</span>
+      </button>
+      <p class="nac-pdf-modal-fine">
+        <span data-vi>Bằng việc gửi, bạn đồng ý NAC liên hệ tư vấn qua các kênh trên.</span>
+        <span data-en>By submitting you agree NAC may contact you via the channels above.</span>
+      </p>
+    </form>
   </div>
 
 </div>
@@ -1273,6 +1314,8 @@
 .nac-pdp[data-theme="dark"] .nac-tool--wa:hover { color:#3ee87b; background:rgba(37,211,102,.18); }
 .nac-pdp[data-theme="dark"] .nac-tool--index { color:#f5d07a; }
 .nac-pdp[data-theme="dark"] .nac-tool--index:hover { color:#ffe49a; background:rgba(232,191,114,.18); }
+.nac-pdp[data-theme="dark"] .nac-tool--pdf { color:#e89a6a; }
+.nac-pdp[data-theme="dark"] .nac-tool--pdf:hover { color:#ffb380; background:rgba(217,124,68,.20); }
 /* LIGHT theme button colors */
 .nac-pdp[data-theme="light"] .nac-tool { color:#14181f; }
 .nac-pdp[data-theme="light"] .nac-tool:hover { color:#0f1a36; background:rgba(15,26,54,.06); }
@@ -1280,6 +1323,9 @@
 .nac-pdp[data-theme="light"] .nac-tool--wa:hover { color:#138a3e; background:rgba(30,185,85,.12); }
 .nac-pdp[data-theme="light"] .nac-tool--index { color:#c4922c; }
 .nac-pdp[data-theme="light"] .nac-tool--index:hover { color:#9a701f; background:rgba(196,146,60,.14); }
+.nac-pdp[data-theme="light"] .nac-tool--pdf { color:#d97c44; }
+.nac-pdp[data-theme="light"] .nac-tool--pdf:hover { color:#a85b28; background:rgba(217,124,68,.14); }
+.nac-tool--pdf { border:none; background:transparent; cursor:pointer; }
 
 @media(max-width:680px) {
   .nac-tools { padding:.4rem; gap:.2rem; bottom:.85rem; }
@@ -1348,6 +1394,81 @@
   .nac-settings button { padding:.3rem .4rem; font-size:.68rem; }
   .nac-settings:hover button:not(.on),
   .nac-settings.is-open button:not(.on) { padding-left:.4rem; padding-right:.4rem; }
+}
+
+/* ═══════════════════════ PDF LEAD-CAPTURE MODAL ═══════════════════════ */
+.nac-pdf-modal { position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .2s ease; padding:1.25rem; }
+.nac-pdf-modal[aria-hidden="false"] { opacity:1; pointer-events:auto; }
+.nac-pdf-modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.62); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+.nac-pdf-modal-panel { position:relative; width:100%; max-width:420px; padding:2.25rem 2rem 1.75rem; border-radius:18px; font-family:var(--ff-body); transform:translateY(8px); transition:transform .25s cubic-bezier(.4,.0,.2,1); display:flex; flex-direction:column; gap:.85rem; }
+.nac-pdf-modal[aria-hidden="false"] .nac-pdf-modal-panel { transform:translateY(0); }
+.nac-pdp[data-theme="dark"] .nac-pdf-modal-panel { background:#0d1226; color:#ede8dc; border:1px solid rgba(232,191,114,.18); box-shadow:0 30px 80px rgba(0,0,0,.7), 0 0 60px rgba(196,146,60,.12); }
+.nac-pdp[data-theme="light"] .nac-pdf-modal-panel { background:#fff; color:#14181f; border:1px solid rgba(15,26,54,.10); box-shadow:0 30px 80px rgba(15,26,54,.22); }
+.nac-pdf-modal-x { position:absolute; top:.65rem; right:.85rem; width:30px; height:30px; border:none; background:transparent; font-size:1.6rem; line-height:1; color:inherit; opacity:.55; transition:opacity .15s ease; }
+.nac-pdf-modal-x:hover { opacity:1; }
+.nac-pdf-modal-eye { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); margin-bottom:-.35rem; }
+.nac-pdf-modal-title { font-family:var(--ff-display); font-size:1.45rem; font-weight:500; line-height:1.2; letter-spacing:-.005em; margin:0; }
+.nac-pdp[data-theme="dark"] .nac-pdf-modal-title { color:#ede8dc; }
+.nac-pdp[data-theme="light"] .nac-pdf-modal-title { color:#0f1a36; }
+.nac-pdf-modal-sub { font-size:.82rem; line-height:1.5; opacity:.75; margin:0; }
+.nac-pdf-field { display:flex; flex-direction:column; gap:.3rem; }
+.nac-pdf-lbl { font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; opacity:.55; }
+.nac-pdf-field input { font:inherit; font-size:.92rem; padding:.65rem .8rem; border-radius:9px; background:transparent; transition:border-color .15s ease, background .15s ease; }
+.nac-pdp[data-theme="dark"] .nac-pdf-field input { border:1px solid rgba(255,255,255,.14); color:#ede8dc; }
+.nac-pdp[data-theme="dark"] .nac-pdf-field input::placeholder { color:rgba(237,232,220,.35); }
+.nac-pdp[data-theme="dark"] .nac-pdf-field input:focus { outline:none; border-color:var(--gold); background:rgba(196,146,60,.06); }
+.nac-pdp[data-theme="light"] .nac-pdf-field input { border:1px solid rgba(15,26,54,.16); color:#14181f; }
+.nac-pdp[data-theme="light"] .nac-pdf-field input::placeholder { color:rgba(20,24,31,.32); }
+.nac-pdp[data-theme="light"] .nac-pdf-field input:focus { outline:none; border-color:var(--gold); background:rgba(196,146,60,.05); }
+.nac-pdf-submit { font:inherit; font-family:var(--ff-mono); font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:.95rem 1rem; border:none; border-radius:10px; background:var(--gold); color:#0f1a36; cursor:pointer; transition:background .15s ease, transform .1s ease; margin-top:.25rem; }
+.nac-pdf-submit:hover { background:var(--gold-2); }
+.nac-pdf-submit:active { transform:translateY(1px); }
+.nac-pdf-submit[disabled] { opacity:.55; cursor:wait; }
+.nac-pdf-modal-fine { font-size:.66rem; line-height:1.5; opacity:.55; margin:.15rem 0 0; }
+.nac-pdf-modal-msg { font-size:.78rem; min-height:0; transition:min-height .2s ease; }
+.nac-pdf-modal-msg:not(:empty) { min-height:1.5em; padding:.55rem .7rem; border-radius:7px; }
+.nac-pdf-modal-msg[data-tone="error"] { background:rgba(217,124,68,.14); color:#d97c44; }
+.nac-pdf-modal-msg[data-tone="ok"] { background:rgba(30,185,85,.14); color:#1eb955; }
+@media(max-width:680px) {
+  .nac-pdf-modal-panel { padding:1.85rem 1.35rem 1.35rem; gap:.7rem; }
+  .nac-pdf-modal-title { font-size:1.2rem; }
+}
+
+/* ═══════════════════════ PRINT — BROCHURE OUTPUT ═══════════════════════ */
+@media print {
+  @page { size:A4; margin:14mm 12mm; }
+  html, body { background:#fff !important; color:#14181f !important; }
+  .nac-pdp { background:#fff !important; color:#14181f !important; }
+  /* Hide everything that doesn't belong in the brochure */
+  .nac-tools, .nac-settings, .nac-mini, .nac-pdf-modal,
+  .nac-hero-scroll, .nac-foot, .nac-anchors,
+  [data-parallax], .nac-hero-veil, .nac-hero-grain { display:none !important; }
+  /* Force single column, no fixed positions */
+  .nac-spine, .nac-spine-section { display:block !important; }
+  .nac-spine-marker { position:static !important; margin-bottom:.6rem; padding-left:0 !important; }
+  .nac-spine-dot { display:none !important; }
+  .nac-spine-line, .nac-proc-line { display:none !important; }
+  .nac-spine-content, .nac-spine-left, .nac-spine-right { width:100% !important; max-width:100% !important; margin:0 !important; padding:0 !important; }
+  /* Page breaks at major sections */
+  .nac-spine-section { break-inside:avoid; page-break-inside:avoid; padding:.6rem 0 !important; }
+  .nac-spine-section h2, .nac-spine-section h3 { break-after:avoid; page-break-after:avoid; }
+  /* Hero compresses to a banner */
+  .nac-hero { min-height:auto !important; padding:0 !important; }
+  .nac-hero-inner { padding:1rem 0 !important; }
+  .nac-hero-img { position:relative !important; height:140mm !important; inset:auto !important; }
+  /* Gallery: stack frames, smaller heights, no sticky */
+  .nac-cine-track, .nac-cine-stick { position:static !important; height:auto !important; }
+  .nac-cine-frame { position:static !important; height:auto !important; opacity:1 !important; transform:none !important; break-inside:avoid; }
+  .nac-cine-img { height:90mm !important; }
+  /* Drop body prose hides; show everything for print */
+  .nac-prose, .nac-prose--feature, .nac-assess-body, .nac-cert-txt, .nac-spine-mobile-note { display:block !important; color:#14181f !important; }
+  .nac-spine-mobile-note { display:none !important; }
+  /* Show only Vietnamese OR English (default: VI). JS toggles a body class. */
+  .nac-pdp[data-print-lang="en"] [data-vi] { display:none !important; }
+  .nac-pdp[data-print-lang="vi"] [data-en] { display:none !important; }
+  /* Strip backgrounds; keep typography */
+  .nac-stmt, .nac-card, .nac-cert, .nac-signoff { background:#fff !important; border-color:rgba(15,26,54,.08) !important; }
+  a[href]::after { content:""; }
 }
 </style>
 
@@ -1811,6 +1932,120 @@
   }
   wireCollapsePill(document.querySelector('.nac-tools'));
   wireCollapsePill(document.querySelector('.nac-settings'));
+
+  // ---------- PDF EXPORT: lead capture → Notion → window.print() ----------
+  var NAC_PDF_CONFIG = {
+    workerUrl:    'https://nac-notion-proxy.ray-vtt.workers.dev/',
+    leadCrmDbId:  '2fe48ec25e8680efa3a3fb8113cf6657',
+    propertyName: 'Nobu Residences Da Nang',
+    propertyId:   'NAC-4',
+    source:       'Listing Brochure'
+  };
+  var pdfTrigger = document.querySelector('[data-nac-pdf-trigger]');
+  var pdfModal   = document.getElementById('nac-pdf-modal');
+  var pdfForm    = document.getElementById('nac-pdf-form');
+  var pdfMsg     = document.getElementById('nac-pdf-msg');
+
+  function openPdfModal() {
+    if (!pdfModal) return;
+    pdfModal.setAttribute('aria-hidden', 'false');
+    var firstInput = pdfForm && pdfForm.querySelector('input');
+    if (firstInput) setTimeout(function(){ firstInput.focus(); }, 60);
+  }
+  function closePdfModal() {
+    if (!pdfModal) return;
+    pdfModal.setAttribute('aria-hidden', 'true');
+    if (pdfMsg) { pdfMsg.textContent = ''; pdfMsg.removeAttribute('data-tone'); }
+  }
+  if (pdfTrigger) {
+    pdfTrigger.addEventListener('click', function(e){
+      // On touch, the .nac-tools click-capture handler opens the pill on first tap
+      // and lets the second tap reach here — same UX as WhatsApp/Index links.
+      if (isTouch && pdfTrigger.closest('.nac-tools') && !pdfTrigger.closest('.nac-tools').classList.contains('is-open')) return;
+      e.preventDefault();
+      openPdfModal();
+    });
+  }
+  if (pdfModal) {
+    pdfModal.addEventListener('click', function(e){
+      if (e.target.matches('[data-nac-pdf-close]')) closePdfModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && pdfModal.getAttribute('aria-hidden') === 'false') closePdfModal();
+    });
+  }
+
+  function submitLead(payload) {
+    return fetch(NAC_PDF_CONFIG.workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      return res.json().then(function(data){
+        if (!res.ok) throw new Error(data && (data.message || data.error) || ('HTTP ' + res.status));
+        return data;
+      });
+    });
+  }
+
+  if (pdfForm) {
+    pdfForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var fd = new FormData(pdfForm);
+      var name  = (fd.get('name')  || '').toString().trim();
+      var email = (fd.get('email') || '').toString().trim();
+      var phone = (fd.get('phone') || '').toString().trim();
+      if (!name || !email || !phone) {
+        pdfMsg.textContent = root.getAttribute('data-lang') === 'en'
+          ? 'Please fill in all fields.'
+          : 'Vui lòng điền đầy đủ thông tin.';
+        pdfMsg.setAttribute('data-tone', 'error');
+        return;
+      }
+      var submit = pdfForm.querySelector('.nac-pdf-submit');
+      submit.disabled = true;
+      pdfMsg.textContent = root.getAttribute('data-lang') === 'en' ? 'Sending …' : 'Đang gửi …';
+      pdfMsg.removeAttribute('data-tone');
+
+      var today = new Date().toISOString().slice(0,10);
+      var notePayload = NAC_PDF_CONFIG.source + ' · ' + NAC_PDF_CONFIG.propertyName + ' · ' + NAC_PDF_CONFIG.propertyId;
+      var notionBody = {
+        parent: { database_id: NAC_PDF_CONFIG.leadCrmDbId },
+        properties: {
+          'Tên khách hàng': { title: [{ text: { content: name } }] },
+          'Email':          { email: email },
+          'Số điện thoại':  { phone_number: phone },
+          'Nguồn lead':     { select: { name: NAC_PDF_CONFIG.source } },
+          'Status':         { select: { name: '🆕 Mới' } },
+          'Property':       { checkbox: true },
+          'Ngày liên hệ':   { date: { start: today } },
+          'Ghi chú':        { rich_text: [{ text: { content: notePayload } }] }
+        }
+      };
+
+      submitLead(notionBody).then(function(){
+        pdfMsg.textContent = root.getAttribute('data-lang') === 'en'
+          ? 'Done — generating your PDF …'
+          : 'Hoàn tất — đang tạo PDF …';
+        pdfMsg.setAttribute('data-tone', 'ok');
+        // Print uses current language for the brochure
+        root.setAttribute('data-print-lang', root.getAttribute('data-lang') || 'vi');
+        setTimeout(function(){
+          closePdfModal();
+          window.print();
+          submit.disabled = false;
+          pdfForm.reset();
+        }, 600);
+      }).catch(function(err){
+        console.error('NAC lead submit failed', err);
+        pdfMsg.textContent = root.getAttribute('data-lang') === 'en'
+          ? 'Submission failed — please try again or message us on WhatsApp.'
+          : 'Gửi không thành công — vui lòng thử lại hoặc nhắn WhatsApp.';
+        pdfMsg.setAttribute('data-tone', 'error');
+        submit.disabled = false;
+      });
+    });
+  }
 })();
 </script>
 
