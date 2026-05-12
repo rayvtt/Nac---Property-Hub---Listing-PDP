@@ -25,8 +25,10 @@
     h1 { font-family:var(--ff-display); font-size:1.6rem; font-weight:400; font-style:italic; color:var(--display); margin-top:1.5rem; letter-spacing:-.005em; }
     .sub { font-family:var(--ff-mono); font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.5rem; }
     .grid { display:grid; gap:1rem; }
-    .card { display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.5rem 1.75rem; text-decoration:none; color:inherit; box-shadow:0 1px 2px rgba(15,26,54,.04); transition:all .2s ease; }
+    .card { display:flex; align-items:center; gap:1.25rem; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.25rem 1.75rem 1.25rem 1.25rem; text-decoration:none; color:inherit; box-shadow:0 1px 2px rgba(15,26,54,.04); transition:all .2s ease; overflow:hidden; }
     .card:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(15,26,54,.10); border-color:rgba(196,146,60,.3); }
+    .card-thumb { width:76px; height:76px; flex-shrink:0; border-radius:8px; object-fit:cover; background-size:cover; background-position:center; }
+    .card-body { flex:1; min-width:0; }
     .row { display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; }
     .id { font-family:var(--ff-mono); font-size:.7rem; padding:.2rem .55rem; border-radius:6px; background:rgba(196,146,60,.12); color:var(--gold); border:1px solid rgba(196,146,60,.2); }
     .name { font-family:var(--ff-display); font-size:1.3rem; font-weight:500; color:var(--display); }
@@ -53,35 +55,41 @@
 
     <div class="grid">
       <a href="properties/nobu-da-nang.html" class="card">
-        <div class="row">
-          <span class="id">NAC-4</span>
-          <span class="name">Nobu Residences Da Nang</span>
-          <span class="arrow">→</span>
-        </div>
-        <div class="meta">
-          <span>🇻🇳 Vietnam</span>
-          <span class="sep">·</span>
-          <span>Mỹ Khê Beach</span>
-          <span class="sep">·</span>
-          <span class="score">NAC Score 81/100</span>
-          <span class="sep">·</span>
-          <span>$280K · 6.2% yield</span>
+        <img class="card-thumb" src="https://www.danangvillarealty.com/lp/images/62671d41bc04d02e24b4db4460d425124a097d65.jpg" alt="Nobu Residences Da Nang" loading="lazy">
+        <div class="card-body">
+          <div class="row">
+            <span class="id">NAC-4</span>
+            <span class="name">Nobu Residences Da Nang</span>
+            <span class="arrow">→</span>
+          </div>
+          <div class="meta">
+            <span>🇻🇳 Vietnam</span>
+            <span class="sep">·</span>
+            <span>Mỹ Khê Beach</span>
+            <span class="sep">·</span>
+            <span class="score">NAC Score 81/100</span>
+            <span class="sep">·</span>
+            <span>$280K · 6.2% yield</span>
+          </div>
         </div>
       </a>
       <a href="properties/pullman-panama-city.html" class="card">
-        <div class="row">
-          <span class="id">NAC-19</span>
-          <span class="name">Pullman Panama City</span>
-          <span class="arrow">→</span>
-        </div>
-        <div class="meta">
-          <span>🇵🇦 Panama</span>
-          <span class="sep">·</span>
-          <span>Punta Pacifica</span>
-          <span class="sep">·</span>
-          <span class="score">NAC Score 79/100</span>
-          <span class="sep">·</span>
-          <span>$320K · 7.1% yield · FNV</span>
+        <img class="card-thumb" src="https://mundo.expert/images/RealEstate/Pullman%201.jpg" alt="Pullman Panama City" loading="lazy">
+        <div class="card-body">
+          <div class="row">
+            <span class="id">NAC-19</span>
+            <span class="name">Pullman Panama City</span>
+            <span class="arrow">→</span>
+          </div>
+          <div class="meta">
+            <span>🇵🇦 Panama</span>
+            <span class="sep">·</span>
+            <span>Punta Pacifica</span>
+            <span class="sep">·</span>
+            <span class="score">NAC Score 79/100</span>
+            <span class="sep">·</span>
+            <span>$320K · 7.1% yield · FNV</span>
+          </div>
         </div>
       </a>
     </div>
