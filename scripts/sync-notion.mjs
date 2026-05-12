@@ -104,6 +104,15 @@ function extractProperty(page) {
 
 const pct = (n) => (n == null ? null : n * 100);
 
+const COUNTRY_FLAGS = {
+  'Vietnam': '🇻🇳', 'Panama': '🇵🇦', 'Japan': '🇯🇵',
+  'Thailand': '🇹🇭', 'Indonesia': '🇮🇩', 'Philippines': '🇵🇭',
+  'Malaysia': '🇲🇾', 'Singapore': '🇸🇬', 'Cambodia': '🇰🇭',
+  'Spain': '🇪🇸', 'Portugal': '🇵🇹', 'UAE': '🇦🇪',
+  'Mexico': '🇲🇽', 'Colombia': '🇨🇴', 'Costa Rica': '🇨🇷',
+};
+const countryFlag = (c) => (c && COUNTRY_FLAGS[c]) || null;
+
 // ─── Formatters ─────────────────────────────────────────────────────────────
 
 function fmtMoneyShort(n) {
@@ -225,6 +234,7 @@ function patch(html, prop) {
   // data-count-to when present.
   const textMap = {
     property_id: prop.propertyId,
+    flag: countryFlag(prop.country),
     property_name_en: prop.propertyNameEn,
     property_name_vi: prop.propertyNameVi,
     tagline_en: prop.taglineEn,
