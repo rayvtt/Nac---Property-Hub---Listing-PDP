@@ -116,6 +116,10 @@
   <section class="nac-spine">
     <div class="nac-spine-line"></div>
 
+    <p class="nac-spine-mobile-note" aria-hidden="false">
+      <span data-vi>** Đọc bản đầy đủ trên trình duyệt máy tính.</span><span data-en>** Read the full editorial on desktop.</span>
+    </p>
+
     <div class="nac-spine-section" id="nac-overview" data-side="left">
       <div class="nac-spine-marker">
         <div class="nac-spine-dot"></div><div class="nac-spine-num">01</div>
@@ -878,12 +882,23 @@
 .nac-prose--feature { font-family:var(--ff-display); font-size:clamp(1.35rem, 2.1vw, 1.75rem); font-weight:300; line-height:1.45; color:var(--display); max-width:38ch; margin-bottom:0; letter-spacing:-.005em; }
 @media(max-width:900px) { .nac-prose--feature { font-size:1.25rem; line-height:1.5; max-width:none; } }
 
-/* MOBILE SENTENCE-CLIP — show 1st sentence + Đọc thêm/Read more toggle on phones */
-.nac-clip-more { display:none; background:none; border:0; padding:0; margin-left:.25em; color:var(--gold); font:inherit; font-weight:500; cursor:pointer; text-decoration:underline; text-underline-offset:3px; letter-spacing:inherit; }
-.nac-clip-more:hover { color:var(--display); }
+/* MOBILE: hide body prose entirely — keep mobile pristine, full editorial on desktop */
+.nac-spine-mobile-note { display:none; }
 @media(max-width:680px) {
-  .nac-clip-mobile:not(.is-open) .nac-clip-rest { display:none; }
-  .nac-clip-mobile .nac-clip-more { display:inline; }
+  .nac-prose, .nac-prose--feature, .nac-assess-body, .nac-cert-txt { display:none; }
+  .nac-spine-mobile-note {
+    display:block;
+    font-family:var(--ff-display);
+    font-style:italic;
+    font-size:.78rem;
+    line-height:1.5;
+    color:var(--gold);
+    text-align:center;
+    max-width:32ch;
+    margin:0 auto 2.5rem;
+    padding:0 1.25rem;
+    letter-spacing:.005em;
+  }
 }
 .nac-facts { display:flex; flex-direction:column; }
 .nac-fact { display:grid; grid-template-columns:28px 160px 1fr; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); font-size:.92rem; }
@@ -1814,51 +1829,6 @@
   }
   wireCollapsePill(document.querySelector('.nac-tools'));
   wireCollapsePill(document.querySelector('.nac-settings'));
-
-  // ---------- MOBILE SENTENCE-CLIP for body prose ----------
-  // Splits the first sentence from the rest in each [data-vi]/[data-en] span,
-  // appends a toggle. CSS hides .nac-clip-rest under 680px when not open.
-  function setupMobileClip() {
-    var paras = document.querySelectorAll('.nac-prose, .nac-prose--feature, .nac-assess-body, .nac-cert-txt');
-    paras.forEach(function(p) {
-      if (p.dataset.clipDone) return;
-      var langSpans = p.querySelectorAll(':scope > span[data-vi], :scope > span[data-en]');
-      if (!langSpans.length) return;
-      var splittable = false;
-      langSpans.forEach(function(s) {
-        var html = s.innerHTML.trim();
-        var m = html.match(/^([\s\S]*?[.!?])\s+([\s\S]+)$/);
-        if (m && m[2].length > 0) {
-          splittable = true;
-          s.innerHTML = m[1] + '<span class="nac-clip-rest"> ' + m[2] + '</span>';
-        }
-      });
-      if (!splittable) return;
-      p.classList.add('nac-clip-mobile');
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'nac-clip-more';
-      btn.innerHTML = '… <span data-vi>Đọc thêm</span><span data-en>Read more</span>';
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var open = p.classList.toggle('is-open');
-        var vi = btn.querySelector('[data-vi]');
-        var en = btn.querySelector('[data-en]');
-        if (open) {
-          btn.firstChild.textContent = '';
-          vi.textContent = 'Thu gọn';
-          en.textContent = 'Show less';
-        } else {
-          btn.firstChild.textContent = '… ';
-          vi.textContent = 'Đọc thêm';
-          en.textContent = 'Read more';
-        }
-      });
-      p.appendChild(btn);
-      p.dataset.clipDone = '1';
-    });
-  }
-  setupMobileClip();
 })();
 </script>
 
