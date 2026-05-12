@@ -1118,7 +1118,8 @@
 .nac-foot-title-link { color:inherit; text-decoration:none; transition:color .25s ease; }
 .nac-foot-title-link:hover { color:var(--gold); }
 .nac-foot-wave { width:100%; height:10px; display:block; margin-top:1rem; filter:drop-shadow(0 1px 4px rgba(196,146,60,.45)) drop-shadow(0 0 8px rgba(217,124,68,.22)); }
-.nac-foot-tagline { font-family:var(--ff-display); font-style:italic; font-size:1.1rem; font-weight:300; color:var(--muted); margin:0; line-height:1.55; max-width:60ch; }
+.nac-foot-tagline { font-family:var(--ff-display); font-style:italic; font-size:1.1rem; font-weight:300; color:var(--muted); margin:0; line-height:1.55; max-width:none; white-space:nowrap; }
+@media (max-width:780px) { .nac-foot-tagline { white-space:normal; max-width:60ch; } }
 @media (max-width:780px) {
   .nac-foot-brand { gap:.75rem; }
   .nac-foot-logo { width:38px; height:38px; }
