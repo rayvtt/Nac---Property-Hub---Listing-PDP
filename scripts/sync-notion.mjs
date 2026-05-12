@@ -91,6 +91,7 @@ function extractProperty(page) {
     galleryImg1: readUrl(p['🖼️ Image 1']),
     galleryImg2: readUrl(p['🖼️ Image 2']),
     galleryImg3: readUrl(p['🖼️ Image 3']),
+    galleryImg4: readUrl(p['🖼️ Image 4']),
     features: readJsonField(p['✨ Features JSON']),
     pros: readJsonField(p['✅ Pros JSON']),
     cons: readJsonField(p['⚠️ Cons JSON']),
@@ -271,7 +272,7 @@ function patch(html, prop) {
   if (prop.heroImg) {
     $(`[data-notion-bg="hero_img"]`).attr('style', `background-image:url('${prop.heroImg}')`);
   }
-  const galleryImgs = [prop.galleryImg1, prop.galleryImg2, prop.galleryImg3];
+  const galleryImgs = [prop.galleryImg1, prop.galleryImg2, prop.galleryImg3, prop.galleryImg4];
   galleryImgs.forEach((url, i) => {
     if (!url) return;
     $(`[data-notion-bg="gallery_${i + 1}"]`).attr('style', `background-image:url('${url}')`);
