@@ -96,12 +96,15 @@ async function fetchLiveProperties() {
       heroImg: readUrl(p['Image URL']),
       tags: readMultiSelect(p['Tags']),
     };
-  }).filter(p => p.slug && p.propertyId);
+  }).filter(p => p.slug);
 }
 
 function renderCard(p) {
   const flag = (p.country && COUNTRY_FLAGS[p.country]) || '🌍';
   const district = p.district || p.regionCity || '';
+  const idHtml = p.propertyId
+    ? `\n            <span class="id">${esc(p.propertyId)}</span>`
+    : '';
   const scoreHtml = p.nacScore != null
     ? `\n            <span class="sep">·</span>\n            <span class="score">NAC Score ${Math.round(p.nacScore)}/100</span>`
     : '';
@@ -124,8 +127,7 @@ function renderCard(p) {
   return `      <a href="properties/${esc(p.slug)}.html" class="card">
         ${imgHtml}
         <div class="card-body">
-          <div class="row">
-            <span class="id">${esc(p.propertyId)}</span>
+          <div class="row">${idHtml}
             <span class="name">${esc(p.propertyName)}</span>
             <span class="arrow">→</span>
           </div>
@@ -139,14 +141,22 @@ function renderCard(p) {
 async function main() {
   const properties = await fetchLiveProperties();
   console.log(`Found ${properties.length} Live propert(ies) in Notion.`);
+  for (const p of properties) {
+    console.log(`  • slug=${p.slug || '(missing)'} id=${p.propertyId || '(missing)'} name="${p.propertyName || ''}"`);
+  }
 
   // Keep only listings whose HTML file exists on disk
   const valid = [];
   for (const p of properties) {
     const filepath = path.join(PROPERTIES_DIR, `${p.slug}.html`);
-    try { await fs.access(filepath); valid.push(p); } catch { /* skip */ }
+    try {
+      await fs.access(filepath);
+      valid.push(p);
+    } catch {
+      console.log(`  ⤳ ${p.slug}: no HTML file at properties/${p.slug}.html — skipped`);
+    }
   }
-  valid.sort((a, b) => (a.propertyIdNum ?? 0) - (b.propertyIdNum ?? 0));
+  valid.sort((a, b) => (a.propertyIdNum ?? 999) - (b.propertyIdNum ?? 999));
 
   const cards = valid.map(renderCard).join('\n');
   const html = await fs.readFile(INDEX_PATH, 'utf-8');
