@@ -25,7 +25,7 @@ Both share the same design DNA: collapsed-by-default, expand on hover (desktop) 
     <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><!-- WA glyph --></svg>
     <span class="nac-tool-txt">WhatsApp</span>
   </a>
-  <a href="https://nomadassetcollective.com/" target="_blank" rel="noreferrer"
+  <a href="https://nomadassetcollective.com/nac-residence-index/" target="_blank" rel="noreferrer"
      class="nac-tool nac-tool--index" aria-label="NAC Index">
     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
          stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
