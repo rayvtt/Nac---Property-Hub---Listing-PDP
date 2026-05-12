@@ -217,12 +217,21 @@
             <g class="nac-donut-segs"></g>
             <g class="nac-donut-dividers"></g>
             <g class="nac-donut-labels"></g>
+            <g class="nac-donut-hits"></g>
           </svg>
           <div class="nac-donut-center">
-            <div class="nac-donut-score" data-count-to="81">0</div>
-            <div class="nac-donut-out">/ 100</div>
-            <div class="nac-donut-cap">NAC Composite</div>
-            <div class="nac-donut-grade">★★★★ <span data-vi>Xuất Sắc</span><span data-en>Excellent</span></div>
+            <div class="nac-donut-default">
+              <div class="nac-donut-score" data-count-to="81">0</div>
+              <div class="nac-donut-out">/ 100</div>
+              <div class="nac-donut-cap">NAC Composite</div>
+              <div class="nac-donut-grade">★★★★ <span data-vi>Xuất Sắc</span><span data-en>Excellent</span></div>
+            </div>
+            <div class="nac-donut-hover" id="nac-donut-hover" aria-hidden="true">
+              <div class="nac-donut-hover-val"></div>
+              <div class="nac-donut-hover-out">/ 10</div>
+              <div class="nac-donut-hover-cap"></div>
+              <div class="nac-donut-hover-grade"></div>
+            </div>
           </div>
           <script type="application/json" id="nac-donut-data">[{"label_vi":"Thương Hiệu","label_en":"Brand","val":9.4,"val_pct":94,"delay":0,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Yield","label_en":"Yield","val":8.6,"val_pct":86,"delay":80,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Vị Trí","label_en":"Location","val":8.8,"val_pct":88,"delay":160,"grade_vi":"Tốt","grade_en":"Good"},{"label_vi":"Quản Lý","label_en":"Management","val":9,"val_pct":90,"delay":240,"grade_vi":"Xuất Sắc","grade_en":"Excellent"},{"label_vi":"Thanh Khoản","label_en":"Liquidity","val":6.2,"val_pct":62,"delay":320,"grade_vi":"Khá","grade_en":"Fair"},{"label_vi":"Rủi Ro","label_en":"Risk","val":7.5,"val_pct":75,"delay":400,"grade_vi":"Tốt","grade_en":"Good"}]</script>
 
@@ -479,28 +488,6 @@
         </div>
       </div>
 
-      <div class="nac-final-cta">
-        <h3 class="nac-final-h"><span data-vi>Bước tiếp theo của bạn</span><span data-en>Your next step</span></h3>
-        <p class="nac-final-sub"><span data-vi>Đội ngũ NAC sẵn sàng hỗ trợ — tiếng Việt, minh bạch, từ đặt cọc đến bàn giao chìa khóa.</span><span data-en>NAC is ready — Vietnamese-speaking, transparent, from deposit to key handover.</span></p>
-        <div class="nac-end">
-          <a href="https://calendly.com/ray-vtt/30min" target="_blank" rel="noreferrer" class="nac-end-card nac-end-card--primary">
-            <div class="nac-end-icon">✦</div>
-            <div class="nac-end-title"><span data-vi>Đặt Tư Vấn 30'</span><span data-en>Book 30' Consult</span></div>
-            <div class="nac-end-sub"><span data-vi>Miễn phí · Tiếng Việt</span><span data-en>Free · Vietnamese</span></div>
-          </a>
-          <a href="https://wa.me/447388646000" target="_blank" rel="noreferrer" class="nac-end-card nac-end-card--wa">
-            <div class="nac-end-icon">💬</div>
-            <div class="nac-end-title">WhatsApp</div>
-            <div class="nac-end-sub">+44 738 864 6000</div>
-          </a>
-          <a href="https://nomadassetcollective.com/tu-van-nhanh/" target="_blank" rel="noreferrer" class="nac-end-card">
-            <div class="nac-end-icon">🏠</div>
-            <div class="nac-end-title"><span data-vi>Tư Vấn Nhanh</span><span data-en>Quick Assessment</span></div>
-            <div class="nac-end-sub"><span data-vi>8 câu hỏi · 2 phút</span><span data-en>8 questions · 2 min</span></div>
-          </a>
-        </div>
-      </div>
-
       <footer class="nac-foot">
         <div class="nac-foot-mark"><span class="wm-the">THE</span><span class="wm-nac">NAC</span><span class="wm-tag">PROPERTY HUB</span></div>
         <p class="nac-foot-line">© 2026 Nomad Asset Collective · NAC-4</p>
@@ -563,8 +550,8 @@
   --shadow:0 4px 16px rgba(15,26,54,.06);
   --shadow-lg:0 24px 60px rgba(15,26,54,.12);
   --hdr-bg:rgba(255,255,255,.78);
-  --tools-bg:rgba(38,38,42,.94);
-  --tools-fg:#ede8dc;
+  --tools-bg:rgba(24,24,28,.96);
+  --tools-fg:#fbf6e8;
   --signoff-bg:linear-gradient(180deg, var(--surface-2), var(--bg));
   background:var(--bg); color:var(--text);
 }
@@ -731,8 +718,8 @@
 .reveal.visible { opacity:1 !important; transform:translate(0) !important; }
 
 @media(max-width:900px) {
-  .nac-spine { grid-template-columns:36px 1fr; gap:1.25rem; padding:2.5rem 1rem; }
-  .nac-spine-line { left:18px; }
+  .nac-spine { grid-template-columns:32px 1fr; gap:.9rem; padding:2.5rem 1rem 2.5rem .9rem; }
+  .nac-spine-line { left:16px; }
   .nac-spine-marker { grid-column:1; align-items:flex-start; padding-top:0; margin-bottom:2rem; }
   .nac-spine-dot { box-shadow:0 0 0 4px var(--bg); }
   .nac-spine-num { font-size:1.15rem; }
@@ -820,13 +807,28 @@
 .nac-donut-segs path[data-i="4"] { stroke:#d97c44; }
 .nac-donut-segs path[data-i="5"] { stroke:#ed8a52; }
 .nac-donut-dividers line { stroke:var(--bg); stroke-width:4; }
-.nac-donut-labels text { font-family:var(--ff-mono); font-size:9.5px; fill:var(--muted); font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+.nac-donut-labels text { font-family:var(--ff-mono); font-size:9.5px; fill:var(--muted); font-weight:500; letter-spacing:.08em; text-transform:uppercase; transition:fill .2s ease, font-size .2s ease, opacity .2s ease; }
 .nac-donut-labels text.val { font-family:var(--ff-display); font-size:17px; fill:var(--gold); font-weight:600; letter-spacing:0; text-transform:none; }
+.nac-donut-labels g.active text.lbl { fill:var(--display); opacity:1; }
+.nac-donut-labels g.active text.val { font-size:20px; }
+.nac-donut-labels g.dim text { opacity:.35; }
+.nac-donut-hits path { fill:none; stroke:transparent; stroke-width:54; cursor:pointer; }
+.nac-donut-segs path { transition:stroke-width .2s ease, filter .2s ease, opacity .25s ease; }
+.nac-donut-segs.has-active path:not(.active) { opacity:.32; }
+.nac-donut-segs path.active { stroke-width:34; filter:drop-shadow(0 0 6px rgba(196,146,60,.35)); }
 .nac-donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+.nac-donut-default, .nac-donut-hover { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity .2s ease; }
+.nac-donut-hover { opacity:0; pointer-events:none; text-align:center; padding:0 10%; }
+.nac-donut-wrap.is-hover .nac-donut-default { opacity:0; }
+.nac-donut-wrap.is-hover .nac-donut-hover { opacity:1; }
 .nac-donut-score { font-family:var(--ff-display); font-size:3.8rem; font-weight:500; color:var(--display); letter-spacing:-.02em; line-height:1; }
 .nac-donut-out { font-family:var(--ff-mono); font-size:.72rem; color:var(--muted); margin-top:.15rem; }
 .nac-donut-cap { font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:.85rem; }
 .nac-donut-grade { font-family:var(--ff-display); font-style:italic; font-size:.98rem; color:var(--gold); margin-top:.4rem; }
+.nac-donut-hover-val { font-family:var(--ff-display); font-size:3.4rem; font-weight:500; color:var(--gold); line-height:1; letter-spacing:-.02em; }
+.nac-donut-hover-out { font-family:var(--ff-mono); font-size:.7rem; color:var(--muted); margin-top:.2rem; }
+.nac-donut-hover-cap { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--display); margin-top:.9rem; font-weight:500; }
+.nac-donut-hover-grade { font-family:var(--ff-display); font-style:italic; font-size:.95rem; color:var(--gold); margin-top:.35rem; }
 /* Donut mobile list fallback */
 .nac-donut-list { display:none; margin-top:1.5rem; flex-direction:column; gap:.85rem; }
 .nac-donut-row { display:grid; grid-template-columns:110px 1fr 38px; align-items:center; gap:.85rem; padding:.65rem .85rem; border-radius:10px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
@@ -838,9 +840,11 @@
 @media(max-width:680px) {
   .nac-donut-wrap { width:min(280px, 80vw); }
   .nac-donut-labels { display:none; }
+  .nac-donut-hits { display:none; }
   .nac-donut-dividers line { stroke-width:3; }
   .nac-donut-score { font-size:2.4rem; }
-  .nac-donut-cap { font-size:.55rem; }
+  .nac-donut-hover-val { font-size:2.2rem; }
+  .nac-donut-cap, .nac-donut-hover-cap { font-size:.55rem; }
   .nac-donut-list { display:flex; }
 }
 
@@ -964,9 +968,6 @@
   .nac-cert-txt { font-size:.88rem; line-height:1.7; }
   .nac-cert-tag { padding:.32rem .7rem; }
   .nac-cert-tag-val { font-size:.78rem; }
-  .nac-final-cta { margin-bottom:2.5rem; }
-  .nac-final-h { font-size:1.5rem; }
-  .nac-end-card { padding:1.5rem 1rem; }
 
   /* Tools pill bottom-spacing accommodate mini-nav above */
   .nac-tools { bottom:.85rem; }
@@ -1006,21 +1007,6 @@
 .nac-cert-tag-key { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; }
 .nac-cert-tag-val { font-family:var(--ff-display); font-size:.85rem; font-weight:500; color:var(--gold); }
 
-.nac-final-cta { text-align:center; margin-bottom:4rem; }
-.nac-final-h { font-family:var(--ff-display); font-size:clamp(1.7rem, 3vw, 2.2rem); font-weight:400; color:var(--display); letter-spacing:-.01em; margin-bottom:.85rem; }
-.nac-final-sub { font-size:.95rem; color:var(--muted); line-height:1.75; max-width:48ch; margin:0 auto 2rem; }
-.nac-end { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:.85rem; }
-.nac-end-card { display:flex; flex-direction:column; align-items:center; gap:.45rem; padding:2rem 1.25rem; border-radius:18px; background:var(--surface); border:1px solid var(--line); text-align:center; transition:all .25s ease; box-shadow:var(--shadow-sm); }
-.nac-end-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:var(--line-2); }
-.nac-end-card--primary { background:linear-gradient(180deg, rgba(217,124,68,.10), var(--surface)); border-color:rgba(217,124,68,.3); }
-.nac-end-card--wa { background:linear-gradient(180deg, rgba(37,211,102,.06), var(--surface)); border-color:rgba(37,211,102,.25); }
-.nac-end-icon { font-size:1.8rem; }
-.nac-end-card--primary .nac-end-icon { color:var(--orange); }
-.nac-end-title { font-family:var(--ff-display); font-size:1.08rem; font-weight:500; color:var(--display); }
-.nac-end-card--primary .nac-end-title { color:var(--orange); }
-.nac-end-card--wa .nac-end-title { color:#1aae53; }
-.nac-end-sub { font-size:.78rem; color:var(--muted); }
-
 .nac-foot { padding-top:3rem; border-top:1px solid var(--line); text-align:center; }
 .nac-foot-mark { display:inline-flex; flex-direction:column; align-items:center; margin-bottom:1.5rem; opacity:.65; }
 .nac-foot-line { font-family:var(--ff-mono); font-size:.7rem; color:var(--muted); letter-spacing:.04em; line-height:1.7; }
@@ -1038,16 +1024,15 @@
   border-radius:100px;
   box-shadow:0 18px 48px rgba(0,0,0,.32), 0 0 0 1px rgba(255,255,255,.03), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.nac-tools-label { font-family:var(--ff-display); font-size:.82rem; font-weight:500; letter-spacing:.28em; color:#f0ece1; text-transform:uppercase; }
-.nac-tools-divider { width:1px; height:18px; background:rgba(255,255,255,.22); margin:0 .65rem 0 .25rem; }
-.nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .95rem; border-radius:100px; font-family:var(--ff-body); font-size:.76rem; font-weight:500; color:#e8e4d8; transition:all .2s ease; white-space:nowrap; background:transparent; }
-.nac-tool svg { stroke-width:2; opacity:.95; }
-.nac-tool:hover { color:#fff; background:rgba(255,255,255,.08); }
-.nac-tool:hover svg { opacity:1; }
-.nac-tool--wa { color:#6fdfa0; }
-.nac-tool--wa:hover { color:#88efb5; background:rgba(95,211,145,.12); }
-.nac-tool--index { color:#f1cc89; }
-.nac-tool--index:hover { color:#ffd89a; background:rgba(232,191,114,.12); }
+.nac-tools-label { font-family:var(--ff-display); font-size:.82rem; font-weight:500; letter-spacing:.28em; color:var(--tools-fg); text-transform:uppercase; }
+.nac-tools-divider { width:1px; height:18px; background:rgba(255,255,255,.28); margin:0 .65rem 0 .25rem; }
+.nac-tool { display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .95rem; border-radius:100px; font-family:var(--ff-body); font-size:.76rem; font-weight:500; color:var(--tools-fg); transition:all .2s ease; white-space:nowrap; background:transparent; }
+.nac-tool svg { stroke-width:2; opacity:1; }
+.nac-tool:hover { color:#fff; background:rgba(255,255,255,.10); }
+.nac-tool--wa { color:#84e6ad; }
+.nac-tool--wa:hover { color:#9cf2bf; background:rgba(95,211,145,.16); }
+.nac-tool--index { color:#f5d294; }
+.nac-tool--index:hover { color:#ffdfa6; background:rgba(232,191,114,.16); }
 
 @media(max-width:680px) {
   .nac-tools { padding:.45rem; gap:.25rem; bottom:.85rem; }
@@ -1305,7 +1290,43 @@
     var segs = donut.querySelector('.nac-donut-segs');
     var divs = donut.querySelector('.nac-donut-dividers');
     var labels = donut.querySelector('.nac-donut-labels');
+    var hits = donut.querySelector('.nac-donut-hits');
+    var wrap = donut.parentElement;
+    var hoverBox = document.getElementById('nac-donut-hover');
+    var hoverVal = hoverBox && hoverBox.querySelector('.nac-donut-hover-val');
+    var hoverCap = hoverBox && hoverBox.querySelector('.nac-donut-hover-cap');
+    var hoverGrade = hoverBox && hoverBox.querySelector('.nac-donut-hover-grade');
     var segArc = (Math.PI * 2 * r) / 6;  // arc length for 60° at r
+    var labelGroups = [];
+
+    function arcPath(rr, a0, a1) {
+      var x1 = (rr * Math.cos(a0)).toFixed(2), y1 = (rr * Math.sin(a0)).toFixed(2);
+      var x2 = (rr * Math.cos(a1)).toFixed(2), y2 = (rr * Math.sin(a1)).toFixed(2);
+      var large = (a1 - a0) > Math.PI ? 1 : 0;
+      return 'M ' + x1 + ' ' + y1 + ' A ' + rr + ' ' + rr + ' 0 ' + large + ' 1 ' + x2 + ' ' + y2;
+    }
+
+    function setActive(i) {
+      if (i == null) {
+        wrap.classList.remove('is-hover');
+        segs.classList.remove('has-active');
+        segs.querySelectorAll('path').forEach(function(p){ p.classList.remove('active'); });
+        labelGroups.forEach(function(g){ g.classList.remove('active', 'dim'); });
+        return;
+      }
+      var s = scores[i]; if (!s) return;
+      var lang = root.getAttribute('data-lang');
+      if (hoverVal) hoverVal.textContent = s.val.toFixed(1);
+      if (hoverCap) hoverCap.textContent = lang === 'en' ? s.label_en : s.label_vi;
+      if (hoverGrade) hoverGrade.textContent = lang === 'en' ? s.grade_en : s.grade_vi;
+      wrap.classList.add('is-hover');
+      segs.classList.add('has-active');
+      segs.querySelectorAll('path').forEach(function(p){ p.classList.toggle('active', +p.getAttribute('data-i') === i); });
+      labelGroups.forEach(function(g, gi){
+        g.classList.toggle('active', gi === i);
+        g.classList.toggle('dim', gi !== i);
+      });
+    }
 
     scores.forEach(function(s, i){
       var startA = i * 60 * Math.PI / 180;     // radians, in svg space (after -90 rotation it's clockwise from top)
@@ -1345,6 +1366,8 @@
       // SVG is rotated -90° so we need to UN-rotate the text to read horizontally
       var labelTransform = 'rotate(90 ' + lx.toFixed(1) + ' ' + ly.toFixed(1) + ')';
 
+      var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('data-i', i);
       var t1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       t1.setAttribute('x', lx.toFixed(1));
       t1.setAttribute('y', ly.toFixed(1));
@@ -1356,7 +1379,7 @@
       t1.setAttribute('data-en', s.label_en);
       var lang = root.getAttribute('data-lang');
       t1.textContent = lang === 'en' ? s.label_en : s.label_vi;
-      labels.appendChild(t1);
+      g.appendChild(t1);
 
       var t2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       t2.setAttribute('x', lx.toFixed(1));
@@ -1366,12 +1389,32 @@
       t2.setAttribute('dy', '11');
       t2.classList.add('val');
       t2.textContent = s.val.toFixed(1);
-      labels.appendChild(t2);
+      g.appendChild(t2);
+      labels.appendChild(g);
+      labelGroups.push(g);
+
+      // Invisible full-wedge hit area for hover (covers the entire 60° arc, not just the filled portion)
+      var hit = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      hit.setAttribute('d', arcPath(r, startA, endA));
+      hit.setAttribute('data-i', i);
+      hit.addEventListener('mouseenter', function(){ setActive(i); });
+      hit.addEventListener('focus', function(){ setActive(i); });
+      hits.appendChild(hit);
     });
+
+    // Clear active when leaving the donut area
+    wrap.addEventListener('mouseleave', function(){ setActive(null); });
 
     root._refreshDonutLabels = function() {
       var lang = root.getAttribute('data-lang');
       labels.querySelectorAll('text.lbl').forEach(function(t){ t.textContent = lang === 'en' ? t.getAttribute('data-en') : t.getAttribute('data-vi'); });
+      // refresh hover popup contents if currently shown
+      if (wrap.classList.contains('is-hover')) {
+        var idx = -1;
+        var act = segs.querySelector('path.active');
+        if (act) idx = +act.getAttribute('data-i');
+        if (idx >= 0) setActive(idx);
+      }
     };
   }
 
