@@ -746,11 +746,11 @@
 .nac-hero-stats { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:flex-start; }
 @media(max-width:680px) { .nac-hero-stats { justify-content:center; } }
 .nac-stat { padding:.85rem 1.25rem; border-radius:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(20px); min-width:108px; color:#fff; }
-.nac-stat-hero { background:rgba(196,146,60,.18); border-color:rgba(232,191,114,.35); }
+.nac-stat-hero { background:rgba(30,122,74,.25); border-color:rgba(167,230,192,.4); }
 .nac-stat-val { font-family:var(--ff-display); font-size:1.55rem; font-weight:500; line-height:1; }
 .nac-stat-unit { font-size:.65em; font-weight:400; opacity:.7; margin-left:.05em; }
 .nac-stat-key { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-top:.45rem; }
-.nac-stat-hero .nac-stat-val { color:#e8bf72; }
+.nac-stat-hero .nac-stat-val { color:#5fd391; }
 .nac-hero-scroll { position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:.6rem; color:rgba(255,255,255,.6); font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; }
 .nac-hero-scroll-line { width:1px; height:32px; background:linear-gradient(to bottom, transparent, rgba(255,255,255,.6), transparent); animation:nacScroll 2.4s ease-in-out infinite; }
 @keyframes nacScroll { 0%,100%{ opacity:0; transform:translateY(-6px) } 50%{ opacity:1; transform:translateY(6px) } }
@@ -882,6 +882,14 @@
 @media(max-width:900px) { .nac-spine-section[data-side="right"] .nac-prose { margin-left:0; } }
 .nac-prose--feature { font-family:var(--ff-display); font-size:clamp(1.35rem, 2.1vw, 1.75rem); font-weight:300; line-height:1.45; color:var(--display); max-width:38ch; margin-bottom:0; letter-spacing:-.005em; }
 @media(max-width:900px) { .nac-prose--feature { font-size:1.25rem; line-height:1.5; max-width:none; } }
+
+/* MOBILE SENTENCE-CLIP — show 1st sentence + Đọc thêm/Read more toggle on phones */
+.nac-clip-more { display:none; background:none; border:0; padding:0; margin-left:.25em; color:var(--gold); font:inherit; font-weight:500; cursor:pointer; text-decoration:underline; text-underline-offset:3px; letter-spacing:inherit; }
+.nac-clip-more:hover { color:var(--display); }
+@media(max-width:680px) {
+  .nac-clip-mobile:not(.is-open) .nac-clip-rest { display:none; }
+  .nac-clip-mobile .nac-clip-more { display:inline; }
+}
 .nac-facts { display:flex; flex-direction:column; }
 .nac-fact { display:grid; grid-template-columns:28px 160px 1fr; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); font-size:.92rem; }
 .nac-fact:last-child { border-bottom:none; }
@@ -1804,6 +1812,51 @@
   }
   wireCollapsePill(document.querySelector('.nac-tools'));
   wireCollapsePill(document.querySelector('.nac-settings'));
+
+  // ---------- MOBILE SENTENCE-CLIP for body prose ----------
+  // Splits the first sentence from the rest in each [data-vi]/[data-en] span,
+  // appends a toggle. CSS hides .nac-clip-rest under 680px when not open.
+  function setupMobileClip() {
+    var paras = document.querySelectorAll('.nac-prose, .nac-prose--feature, .nac-assess-body, .nac-cert-txt');
+    paras.forEach(function(p) {
+      if (p.dataset.clipDone) return;
+      var langSpans = p.querySelectorAll(':scope > span[data-vi], :scope > span[data-en]');
+      if (!langSpans.length) return;
+      var splittable = false;
+      langSpans.forEach(function(s) {
+        var html = s.innerHTML.trim();
+        var m = html.match(/^([\s\S]*?[.!?])\s+([\s\S]+)$/);
+        if (m && m[2].length > 0) {
+          splittable = true;
+          s.innerHTML = m[1] + '<span class="nac-clip-rest"> ' + m[2] + '</span>';
+        }
+      });
+      if (!splittable) return;
+      p.classList.add('nac-clip-mobile');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nac-clip-more';
+      btn.innerHTML = '… <span data-vi>Đọc thêm</span><span data-en>Read more</span>';
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var open = p.classList.toggle('is-open');
+        var vi = btn.querySelector('[data-vi]');
+        var en = btn.querySelector('[data-en]');
+        if (open) {
+          btn.firstChild.textContent = '';
+          vi.textContent = 'Thu gọn';
+          en.textContent = 'Show less';
+        } else {
+          btn.firstChild.textContent = '… ';
+          vi.textContent = 'Đọc thêm';
+          en.textContent = 'Read more';
+        }
+      });
+      p.appendChild(btn);
+      p.dataset.clipDone = '1';
+    });
+  }
+  setupMobileClip();
 })();
 </script>
 
