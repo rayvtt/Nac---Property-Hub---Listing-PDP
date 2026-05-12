@@ -2,12 +2,11 @@
 // Pushes each properties/<slug>.html to its EXISTING WordPress page,
 // writing the full HTML into the ACF field "raw_html_code".
 //
-// Page lookup (in order):
-//   1. Notion field "Listing URL"   → parse slug, match WP page by slug + full URL
-//   2. Notion field "Property ID"   → match WP page whose ACF "nac_property_id" equals NAC-N
+// Page lookup: Notion field "Listing URL" → parse slug from the URL,
+// match the WP page by slug + full URL.
 //
-// NEVER creates pages. If neither lookup finds a match, the run fails so a
-// human can create the WP page or fix the Notion field.
+// NEVER creates pages. If the lookup finds no match, the run fails so a
+// human can fix the Notion URL or create the WP page.
 //
 // Auth: HTTP Basic with WP_USER + WP_APP_PASSWORD (Application Password).
 
@@ -25,7 +24,6 @@ const WP_API = `${WP_BASE}/wp-json/wp/v2`;
 const WP_USER = process.env.WP_USER || 'admin_web';
 const WP_PASS = process.env.WP_APP_PASSWORD;
 const ACF_HTML_FIELD = process.env.WP_ACF_FIELD || 'raw_html_code';
-const ACF_PROPERTY_ID_FIELD = process.env.WP_PROPERTY_ID_FIELD || 'nac_property_id';
 const NOTION_LISTING_URL_FIELD = process.env.NOTION_LISTING_URL_FIELD || 'Listing URL';
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '35848ec25e86803283acc7ad989649c9';
@@ -73,28 +71,9 @@ async function findByListingUrl(listingUrl) {
   const target = normalizeUrl(listingUrl);
   const exact = candidates.find(p => normalizeUrl(p.link) === target);
   if (exact) return exact;
-  // If only one candidate exists and the slug matches uniquely, accept it.
+  // If only one candidate has that slug, accept it.
   if (candidates.length === 1) return candidates[0];
   return null;
-}
-
-let allPagesCache = null;
-async function getAllPages() {
-  if (allPagesCache) return allPagesCache;
-  const out = [];
-  for (let p = 1; p <= 50; p++) {
-    const batch = await wp(`/pages?per_page=100&page=${p}&_fields=id,slug,link,acf,parent&status=publish,draft,private,future,pending`);
-    out.push(...batch);
-    if (batch.length < 100) break;
-  }
-  allPagesCache = out;
-  return out;
-}
-
-async function findByPropertyId(propertyId) {
-  if (!propertyId) return null;
-  const pages = await getAllPages();
-  return pages.find(p => p.acf && p.acf[ACF_PROPERTY_ID_FIELD] === propertyId) || null;
 }
 
 async function updatePageAcf(pageId, html) {
@@ -112,8 +91,6 @@ function richText(prop) {
   if (prop.rich_text) return prop.rich_text.map(t => t.plain_text).join('');
   return '';
 }
-
-function readNumber(prop) { return prop && typeof prop.number === 'number' ? prop.number : null; }
 
 function readUrl(prop) {
   if (!prop) return '';
@@ -136,10 +113,8 @@ async function fetchLiveProperties() {
   } while (cursor);
   return results.map(page => {
     const p = page.properties;
-    const idNum = readNumber(p['Property ID']);
     return {
       slug: richText(p['🔗 Slug']),
-      propertyId: idNum != null ? `NAC-${idNum}` : null,
       listingUrl: readUrl(p[NOTION_LISTING_URL_FIELD]),
     };
   }).filter(p => p.slug);
@@ -156,22 +131,17 @@ async function syncOne(prop) {
     return { slug: prop.slug, skipped: 'no HTML file at properties/' + prop.slug + '.html' };
   }
 
-  let page = await findByListingUrl(prop.listingUrl);
-  let how = 'listing-url';
-  if (!page && prop.propertyId) {
-    page = await findByPropertyId(prop.propertyId);
-    how = 'property-id';
+  if (!prop.listingUrl) {
+    return { slug: prop.slug, error: `no "${NOTION_LISTING_URL_FIELD}" set in Notion — cannot locate WP page` };
   }
+
+  const page = await findByListingUrl(prop.listingUrl);
   if (!page) {
-    const why = [
-      prop.listingUrl ? `URL "${prop.listingUrl}" did not match any WP page` : 'no Listing URL in Notion',
-      prop.propertyId ? `Property ID "${prop.propertyId}" not found in ACF.${ACF_PROPERTY_ID_FIELD}` : 'no Property ID in Notion',
-    ].join('; ');
-    return { slug: prop.slug, error: 'no matching WP page — ' + why };
+    return { slug: prop.slug, error: `Listing URL "${prop.listingUrl}" did not match any WP page` };
   }
 
   await updatePageAcf(page.id, html);
-  return { slug: prop.slug, pageId: page.id, link: page.link, how };
+  return { slug: prop.slug, pageId: page.id, link: page.link };
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────
@@ -195,7 +165,7 @@ async function main() {
         fail++;
         failures.push(r);
       } else {
-        console.log(`  ✓ ${r.slug} → page ${r.pageId} via ${r.how} (${r.link})`);
+        console.log(`  ✓ ${r.slug} → page ${r.pageId} (${r.link})`);
         ok++;
       }
     } catch (err) {

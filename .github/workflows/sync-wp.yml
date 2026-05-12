@@ -45,7 +45,6 @@ jobs:
           WP_USER: ${{ vars.WP_USER || 'admin_web' }}
           WP_BASE_URL: ${{ vars.WP_BASE_URL || 'https://nomadassetcollective.com' }}
           WP_ACF_FIELD: ${{ vars.WP_ACF_FIELD || 'raw_html_code' }}
-          WP_PROPERTY_ID_FIELD: ${{ vars.WP_PROPERTY_ID_FIELD || 'nac_property_id' }}
           NOTION_LISTING_URL_FIELD: ${{ vars.NOTION_LISTING_URL_FIELD || 'Listing URL' }}
           ONLY_SLUG: ${{ github.event.inputs.only_slug }}
         run: node sync-wp.mjs

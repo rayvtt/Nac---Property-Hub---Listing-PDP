@@ -120,12 +120,9 @@ Notion edit ─► sync-notion commit on main ─► sync-wp run ─► WP page 
 
 ## How pages are matched
 
-For each Live row in the Notion DB, the script tries two lookups in order:
+For each Live row in the Notion DB, the script reads the **Listing URL** field (URL or text type, full WP URL such as `https://…/property-hub-bat-dong-san/vietnam/nobu-da-nang/`), parses the slug from the URL, queries `GET /wp-json/wp/v2/pages?slug=nobu-da-nang`, and picks the candidate whose full WP `link` matches the Notion URL exactly. If only one candidate exists for that slug, it's accepted.
 
-1. **Listing URL** (Notion field `Listing URL`, URL or text type) — parses the slug from the URL (`https://…/property-hub-bat-dong-san/vietnam/nobu-da-nang/` → `nobu-da-nang`), queries `GET /wp-json/wp/v2/pages?slug=nobu-da-nang`, and picks the candidate whose full WP `link` matches the Notion URL exactly. If only one candidate exists, it's accepted.
-2. **Property ID** (Notion `Property ID` → `NAC-<n>`) — fallback. Paginates `/wp-json/wp/v2/pages` and matches the WP page whose ACF field `nac_property_id` equals `NAC-<n>`.
-
-If neither lookup finds a match, the run **fails loudly** so you can either fix the Notion field or create the WP page. The script never creates pages.
+If the lookup finds no match (or `Listing URL` is empty), the run **fails loudly** so you can either fix the Notion field or create the WP page. The script never creates pages.
 
 ## One-time setup
 
@@ -146,25 +143,23 @@ Settings → **Secrets and variables → Actions → Secrets**:
 | `WP_APP_PASSWORD` | The application password from step 1 (spaces are part of the password). |
 | `NOTION_TOKEN` | Already present (used by the Notion sync). Re-used by sync-wp to look up the Listing URL / Property ID. |
 
-### 3. Notion fields
+### 3. Notion field
 
-The Notion DB needs two fields the sync reads:
+The Notion DB needs one field the sync reads:
 
 | Field | Type | Notes |
 |---|---|---|
-| `Listing URL` | URL (or text) | Full WP URL, e.g. `https://nomadassetcollective.com/property-hub-bat-dong-san/vietnam/nobu-da-nang/`. Primary lookup key. Empty values fall back to Property ID. |
-| `Property ID` | Number | Already in use — produces `NAC-<n>`. Fallback lookup key. |
+| `Listing URL` | URL (or text) | Full WP URL, e.g. `https://nomadassetcollective.com/property-hub-bat-dong-san/vietnam/nobu-da-nang/`. The only lookup key. Empty/missing values cause the row to fail. |
 
-If you've named `Listing URL` differently (e.g. `🔗 Listing URL`), set the `NOTION_LISTING_URL_FIELD` repo variable to that name.
+If you've named it differently (e.g. `🔗 Listing URL`), set the `NOTION_LISTING_URL_FIELD` repo variable to that name.
 
-### 4. WordPress: ACF fields on PDP pages
+### 4. WordPress: ACF field on PDP pages
 
-Two ACF fields on the WP page (both should have **Show in REST API** enabled):
+One ACF field on each WP PDP page, with **Show in REST API** enabled:
 
 | ACF field name | Type | Purpose |
 |---|---|---|
-| `raw_html_code` | Textarea (or WYSIWYG with formatting OFF) | Receives the full HTML from sync-wp. The WP page template echoes it: `<?php the_field('raw_html_code'); ?>`. |
-| `nac_property_id` | Text | Stores `NAC-<n>` so sync-wp can find the page via the Property-ID fallback when the Listing URL is missing or doesn't match. Optional, but recommended. |
+| `raw_html_code` | Textarea (or WYSIWYG with formatting OFF) | Receives the full HTML from sync-wp. The WP page template echoes it raw: `<?php the_field('raw_html_code'); ?>`. |
 
 ACF Pro 5.11+ exposes ACF fields under `acf` on the REST page resource by default. ACF Free needs the *ACF to REST API* plugin.
 
@@ -177,7 +172,6 @@ Settings → **Variables** tab:
 | `WP_USER` | `admin_web` | WP username that owns the application password. |
 | `WP_BASE_URL` | `https://nomadassetcollective.com` | Site root, no trailing slash. |
 | `WP_ACF_FIELD` | `raw_html_code` | ACF field key that receives the HTML. |
-| `WP_PROPERTY_ID_FIELD` | `nac_property_id` | ACF field key used for the Property ID fallback. |
 | `NOTION_LISTING_URL_FIELD` | `Listing URL` | Name of the Notion field that holds the WP URL. |
 
 ## Running locally
@@ -196,6 +190,7 @@ NOTION_TOKEN=secret_… WP_APP_PASSWORD='xxxx yyyy zzzz' ONLY_SLUG=nobu-da-nang 
 |---|---|
 | `401 incorrect_password` | App password copied wrong, or `WP_USER` doesn't match the password owner. |
 | `rest_cannot_edit` | The WP user lacks `edit_pages`. Promote to editor/admin. |
-| `no matching WP page — URL "…" did not match any WP page; Property ID "NAC-4" not found in ACF.nac_property_id` | Neither lookup worked. Either: (a) the Listing URL in Notion doesn't match an existing WP page (typo? draft slug? wrong domain?), or (b) the WP page exists but doesn't have `nac_property_id` set. Create/fix the WP page, then re-run. |
+| `Listing URL "…" did not match any WP page` | The URL in Notion points at a page that doesn't exist (typo, draft-only, wrong domain). Fix the Notion URL or create the WP page, then re-run. |
+| `no "Listing URL" set in Notion` | The Notion row is missing its `Listing URL`. The Notion → WP automation should populate this when the WP page is created. |
 | ACF field doesn't update but page does | `raw_html_code` isn't exposed via REST. Enable **Show in REST API** on the field group, or install *ACF to REST API*. |
-| Listing URL lookup matches the wrong page | Slug collides across the site. Fix by populating `nac_property_id` on the right WP page and removing the Notion Listing URL (forces the ID fallback), or rename the colliding page slug. |
+| Listing URL lookup matches the wrong page | Slug collides across the site. Rename the colliding page's slug, or correct the Notion URL to disambiguate. |

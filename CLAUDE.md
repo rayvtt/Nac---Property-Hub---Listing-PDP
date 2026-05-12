@@ -65,8 +65,8 @@ Templates and references:
 
 - Triggered by every push to `main` that touches `properties/*.html` (and on demand) via `.github/workflows/sync-wp.yml`. So Notion edit → sync-notion commit → sync-wp run → WP page ACF updated, all automatic.
 - Script: `scripts/sync-wp.mjs`. Posts the **full HTML** of each `properties/<slug>.html` into ACF field `raw_html_code` on the matching WP page.
-- Lookup is via Notion fields, in order: (1) `Listing URL` — parses slug from the URL and matches the WP page by slug + full URL; (2) `Property ID` (NAC-N) — falls back to scanning pages whose ACF `nac_property_id` matches.
-- **Never creates pages.** Fails loudly if no match — fix Notion (URL/ID) or create the WP page manually, then re-run.
-- Auth: HTTP Basic with `WP_USER` (default `admin_web`) and `WP_APP_PASSWORD` secret (a WP Application Password). Also requires `NOTION_TOKEN` (already a secret for sync-notion).
-- WP-side requirements: ACF fields `raw_html_code` (textarea) and `nac_property_id` (text), both with **Show in REST API** enabled. Template echoes `<?php the_field('raw_html_code'); ?>`.
+- Lookup: reads the Notion `Listing URL` field, parses the slug from the URL, and matches the WP page by slug + full URL. Property ID is Notion-only and not used for matching.
+- **Never creates pages.** Fails loudly if `Listing URL` is missing or doesn't match — fix the Notion URL or create the WP page manually, then re-run.
+- Auth: HTTP Basic with `WP_USER` (default `admin_web`) and the `WP_APP_PASSWORD` secret (a WP Application Password). Also requires `NOTION_TOKEN` (already a secret for sync-notion).
+- WP-side requirement: ACF field `raw_html_code` (textarea) with **Show in REST API** enabled. Template echoes `<?php the_field('raw_html_code'); ?>`.
 - Manual single-slug sync: Actions tab → **Sync PDP HTML → WordPress** → **Run workflow** → enter `only_slug` (e.g. `nobu-da-nang`).
