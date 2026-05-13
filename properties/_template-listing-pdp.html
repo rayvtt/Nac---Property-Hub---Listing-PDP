@@ -1011,7 +1011,7 @@
 
 /* SPINE LAYOUT — each section is its own grid so they stack cleanly */
 .nac-spine { position:relative; max-width:1320px; margin:0 auto; padding:5rem 2rem; }
-.nac-spine-line { position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent 0%, rgba(196,146,60,.4) 6%, rgba(196,146,60,.4) 94%, transparent 100%); transform:translateX(-.5px); }
+.nac-spine-line { position:absolute; left:0; right:0; top:0; bottom:0; width:1px; margin:0 auto; background:linear-gradient(to bottom, transparent 0%, rgba(196,146,60,.4) 6%, rgba(196,146,60,.4) 94%, transparent 100%); }
 .nac-spine-section { display:grid; grid-template-columns:1fr 140px 1fr; gap:2.5rem; align-items:start; }
 .nac-spine-marker { grid-column:2; align-self:start; display:flex; flex-direction:column; align-items:center; padding-top:.5rem; margin-bottom:5rem; position:relative; z-index:2; }
 .nac-spine-dot { width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--gold); box-shadow:0 0 0 6px var(--bg), 0 0 0 7px rgba(196,146,60,.18); margin-bottom:.85rem; transition:transform .35s ease, box-shadow .35s ease, background .35s ease; }
@@ -1031,7 +1031,7 @@
   .nac-spine { padding:2.5rem 1.25rem 2.5rem 1rem; }
   /* single-column layout; marker becomes a horizontal header strip above content */
   .nac-spine-section { grid-template-columns:1fr; gap:0; }
-  .nac-spine-line { left:14px; }
+  .nac-spine-line { left:14px; right:auto; margin:0; }
   /* prevent any spine content from overflowing into the spine column */
   .nac-spine-content, .nac-spine-left, .nac-spine-right { min-width:0; }
   .nac-spine-marker {
