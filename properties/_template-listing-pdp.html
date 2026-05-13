@@ -639,7 +639,7 @@
         <div class="nac-cert-seal" aria-hidden="true">
           <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/cropped-OTG-Passport-Icons.png" alt="NAC" class="nac-cert-logo">
           <span class="nac-cert-x">×</span>
-          <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons.png" alt="IMC" class="nac-cert-logo">
+          <img src="https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons.png" alt="IMC" class="nac-cert-logo nac-cert-logo--imc">
         </div>
         <div class="nac-cert-body">
           <div class="nac-cert-lbl"><span data-vi="">Chứng Nhận NAC</span><span data-en="">NAC Certification</span></div>
@@ -1419,7 +1419,7 @@
 .nac-signoff::before { content:''; display:block; height:1px; margin:0 auto 3rem; width:min(480px,60%); background:linear-gradient(to right, transparent, var(--line) 30%, var(--line) 70%, transparent); }
 .nac-signoff-inner { max-width:1080px; margin:0 auto; }
 
-.nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); margin-bottom:4rem; }
+.nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:center; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); margin-bottom:4rem; }
 @media(max-width:680px) { .nac-cert { grid-template-columns:1fr; gap:1.75rem; padding:2rem 1.4rem; } }
 .nac-cert-reviewer { display:flex; align-items:center; gap:.85rem; margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--line); }
 .nac-cert-reviewer-img { width:52px; height:68px; border-radius:10px; object-fit:cover; object-position:top center; flex-shrink:0; border:1px solid var(--line); }
@@ -1428,8 +1428,9 @@
 .nac-cert-reviewer-org { font-family:var(--ff-display); font-size:.85rem; color:var(--muted); margin-top:.2rem; }
 .nac-cert-seal { display:flex; flex-direction:column; align-items:center; gap:.6rem; flex-shrink:0; }
 .nac-cert-logo { width:64px; height:64px; object-fit:contain; }
+.nac-cert-logo--imc { width:74px; height:74px; }
 .nac-cert-x { font-family:var(--ff-display); font-size:1.6rem; color:var(--muted); opacity:.5; font-weight:300; }
-@media(max-width:680px) { .nac-cert-seal { flex-direction:row; gap:.85rem; } .nac-cert-logo { width:54px; height:54px; } }
+@media(max-width:680px) { .nac-cert-seal { flex-direction:row; gap:.85rem; } .nac-cert-logo { width:54px; height:54px; } .nac-cert-logo--imc { width:64px; height:64px; } }
 .nac-cert-lbl { font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); font-weight:500; margin-bottom:.85rem; }
 .nac-cert-title { font-family:var(--ff-display); font-size:1.55rem; font-weight:500; color:var(--display); letter-spacing:-.005em; line-height:1.2; margin-bottom:.9rem; }
 .nac-cert-txt { font-size:.92rem; line-height:1.75; color:var(--text); margin-bottom:1.5rem; }
