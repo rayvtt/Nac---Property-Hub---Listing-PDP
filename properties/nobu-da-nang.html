@@ -639,8 +639,8 @@
   <section class="nac-signoff">
     <div class="nac-signoff-inner">
 
+      <div class="nac-cert-wrap">
       <div class="nac-cert">
-        <img src="https://nomadassetcollective.com/wp-content/uploads/2026/03/ray-transparent.png" alt="" aria-hidden="true" class="nac-cert-face">
         <div class="nac-cert-seal" aria-hidden="true">
           <img src="https://nomadassetcollective.com/wp-content/uploads/2026/04/cropped-OTG-Passport-Icons.png" alt="NAC" class="nac-cert-logo">
           <span class="nac-cert-x">×</span>
@@ -660,6 +660,8 @@
             <div class="nac-cert-tag"><span class="nac-cert-tag-key">Status</span><span class="nac-cert-tag-val">Listed</span></div>
           </div>
         </div>
+      </div>
+      <img src="https://nomadassetcollective.com/wp-content/uploads/2026/03/ray-transparent.png" alt="Ray — NAC Founder" aria-hidden="true" class="nac-cert-face">
       </div>
 
       <footer class="nac-foot">
@@ -1384,7 +1386,7 @@
   .nac-assess-body { font-size:.86rem; line-height:1.6; margin-bottom:0; }
   /* Sign-off: tighter */
   .nac-signoff { padding:3.5rem .85rem 2.5rem; }
-  .nac-cert { margin-bottom:2.5rem; }
+  .nac-cert-wrap { margin-bottom:2.5rem; }
   .nac-cert-title { font-size:1.25rem; }
   .nac-cert-txt { font-size:.88rem; line-height:1.7; }
   .nac-cert-tag { padding:.32rem .7rem; }
@@ -1414,9 +1416,11 @@
 .nac-signoff::before { content:''; display:block; height:1px; margin:0 auto 3rem; width:min(480px,60%); background:linear-gradient(to right, transparent, var(--line) 30%, var(--line) 70%, transparent); }
 .nac-signoff-inner { max-width:1080px; margin:0 auto; }
 
-.nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); margin-bottom:4rem; position:relative; overflow:hidden; }
-.nac-cert-face { position:absolute; right:-1rem; bottom:0; height:115%; max-width:42%; object-fit:contain; object-position:bottom right; opacity:.11; pointer-events:none; user-select:none; }
+.nac-cert-wrap { display:grid; grid-template-columns:1fr auto; align-items:end; gap:0; margin-bottom:4rem; }
+.nac-cert { display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start; padding:2.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); }
+.nac-cert-face { display:block; height:300px; width:auto; object-fit:contain; object-position:bottom center; margin-left:-2rem; pointer-events:none; user-select:none; position:relative; z-index:1; }
 @media(max-width:680px) { .nac-cert { grid-template-columns:1fr; gap:1.75rem; padding:2rem 1.4rem; } }
+@media(max-width:900px) { .nac-cert-wrap { display:block; } .nac-cert-face { display:none; } }
 .nac-cert-seal { display:flex; align-items:center; gap:.85rem; flex-shrink:0; }
 .nac-cert-logo { width:64px; height:64px; object-fit:contain; }
 .nac-cert-x { font-family:var(--ff-display); font-size:1.6rem; color:var(--muted); opacity:.5; font-weight:300; }
