@@ -109,7 +109,7 @@
         </div>
         <div class="tile-btns">
           <a href="properties/nobu-da-nang.html" class="tile-btn tile-btn-preview" target="_blank">Preview ↗</a>
-          <a href="https://nomadassetcollective.com/property-hub-bat-dong-san/vietnam/nobu-da-nang/" class="tile-btn tile-btn-live" target="_blank" rel="noreferrer">Live ↗</a>
+          <a href="https://nomadassetcollective.com/property-hub-bat-dong-san/vietnam/nobu-dn/" class="tile-btn tile-btn-live" target="_blank" rel="noreferrer">Live ↗</a>
         </div>
       </div>
       <!-- INDEX_CARDS_END -->
@@ -124,30 +124,20 @@
       const W = 'https://nac-pdp-counters.ray-vtt.workers.dev';
       function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n); }
 
-      // Display click counts per tile
+      // Fetch GA4 pageviews per path and match to tiles via their Live button URL
       try {
-        const counts = await fetch(W + '/counts').then(r => r.json());
+        const views = await fetch(W + '/views').then(r => r.json());
         document.querySelectorAll('.tile[data-slug]').forEach(tile => {
-          const c = counts[tile.dataset.slug];
-          if (!c) return;
-          const total = (c.preview || 0) + (c.live || 0);
-          if (!total) return;
+          const liveBtn = tile.querySelector('.tile-btn-live[href]');
+          if (!liveBtn) return;
+          // Normalize path: strip trailing slash, lowercase
+          const path = new URL(liveBtn.href).pathname.replace(/\/$/, '').toLowerCase();
+          const count = views[path] || views[path + '/'] || views[path.replace(/\/$/, '')] || 0;
+          if (!count) return;
           const el = tile.querySelector('.tile-stats');
-          if (el) el.textContent = fmt(total) + (total === 1 ? ' click' : ' clicks');
+          if (el) el.textContent = fmt(count) + (count === 1 ? ' view' : ' views');
         });
       } catch (_) {}
-
-      // Track button clicks via sendBeacon (fires even as page navigates away)
-      document.querySelectorAll('.tile-btn[href]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tile = btn.closest('[data-slug]');
-          if (!tile) return;
-          navigator.sendBeacon(W + '/track', JSON.stringify({
-            slug: tile.dataset.slug,
-            type: btn.classList.contains('tile-btn-preview') ? 'preview' : 'live',
-          }));
-        });
-      });
     })();
   </script>
 </body>
