@@ -107,11 +107,12 @@ function renderCard(p) {
     ? `<a href="${esc(p.listingUrl)}" class="tile-btn tile-btn-live" target="_blank" rel="noreferrer">Live ↗</a>`
     : `<span class="tile-btn tile-btn-live tile-btn-disabled">Live</span>`;
 
-  return `      <div class="tile">
+  return `      <div class="tile" data-slug="${esc(p.slug)}">
         <div class="tile-img"${bgStyle}></div>
         <div class="tile-info">
           <span class="tile-country">${flag} ${esc(p.country || '')}</span>
           <span class="tile-name">${esc(p.propertyName)}</span>
+          <span class="tile-stats"></span>
         </div>
         <div class="tile-btns">
           <a href="properties/${esc(p.slug)}.html" class="tile-btn tile-btn-preview" target="_blank">Preview ↗</a>
