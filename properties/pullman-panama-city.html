@@ -1023,7 +1023,7 @@
 
 /* SPINE LAYOUT — each section is its own grid so they stack cleanly */
 .nac-spine { position:relative; max-width:1320px; margin:0 auto; padding:5rem 2rem; }
-.nac-spine-line { position:absolute; left:50%; top:0; bottom:0; width:2px; z-index:1; transform:translateX(-50%); pointer-events:none; background:linear-gradient(to bottom, transparent 0%, rgba(196,146,60,.8) 2%, rgba(196,146,60,.8) 98%, transparent 100%); }
+.nac-spine-line { position:absolute; left:50%; top:0; bottom:0; width:2px; transform:translateX(-50%); pointer-events:none; background:linear-gradient(to bottom, transparent 0%, rgba(196,146,60,.5) 2%, rgba(196,146,60,.5) 98%, transparent 100%); }
 .nac-spine-section { display:grid; grid-template-columns:minmax(0,1fr) 140px minmax(0,1fr); gap:2.5rem; align-items:start; }
 .nac-spine-marker { grid-column:2; align-self:start; display:flex; flex-direction:column; align-items:center; padding-top:.5rem; margin-bottom:5rem; position:relative; z-index:2; }
 .nac-spine-dot { width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--gold); box-shadow:0 0 0 6px var(--bg), 0 0 0 7px rgba(196,146,60,.18); margin-bottom:.85rem; transition:transform .35s ease, box-shadow .35s ease, background .35s ease; }
