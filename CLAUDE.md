@@ -38,6 +38,23 @@ The mobile breakpoint is `@media(max-width:900px)`. Some component-level rules a
 
 5. **Image breaks** — the old single cinematic gallery (`#nac-gallery`) was replaced with 3 individual full-bleed image sections (`#nac-img-1`, `#nac-img-2`, `#nac-img-3`) distributed at §04, §07, §10 in the spine. `#nac-img-3` has class `nac-cine--aspiration` (gradient overlay + CTA button). These are standard `position:relative` blocks — no sticky scroll.
 
+## Aspiration CTA line (last image section)
+
+Formula: **"Sở hữu [property_type] [Brand name] tại [City]."** / **"Own a [property_type_en] in [City]."**
+
+Rules:
+- `property_type` matches the asset class: `căn hộ` (apartment/residence), `biệt thự` (villa), `căn hộ dịch vụ` (serviced apartment), etc.
+- `City` = the city proper name, **never** a neighbourhood, beach, or district (e.g. `Đà Nẵng` not `Mỹ Khê`, `Panama City` not `Punta Pacífica`).
+- Brand name = short brand, not the full property name (e.g. `Nobu`, `Mandarin Oriental`, `Pullman`).
+
+| Listing | VI | EN |
+|---------|----|----|
+| Nobu Da Nang | Sở hữu căn hộ Nobu tại Đà Nẵng. | Own a Nobu residence in Da Nang. |
+| Mandarin Oriental Da Nang | Sở hữu biệt thự Mandarin Oriental tại Đà Nẵng. | Own a Mandarin Oriental villa in Da Nang. |
+| Pullman Panama City | Sở hữu căn hộ Pullman tại Panama City. | Own a Pullman residence in Panama City. |
+
+Also: `data-stmt` highlight words use `&#91;word&#93;` (HTML-escaped brackets) — **not** `[word]` — to prevent WordPress shortcode processing. The browser decodes entities before JS reads `getAttribute('data-stmt')`, so the gold animation is unaffected.
+
 ## Workflow
 
 - Develop on a feature branch (`claude/<slug>-qarsn`).
