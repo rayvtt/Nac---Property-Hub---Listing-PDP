@@ -471,7 +471,7 @@ That's the full template loop.
 
 ## 14. Open questions / future work
 
-- **Calendly wiring** — `https://calendly.com/ray-vtt/30min` is in the backlinks but not currently bound to a button. Reserved for a future "Book a call" flow.
+- **Booking button** — `https://calendar.app.google/owGkBM8Q5owKYwDd9` (Google Meet) is wired to the aspiration CTA button in every PDP.
 - **Per-PDP theme defaults** — every PDP currently boots `data-theme="light"`. Could be Notion-driven (e.g. "dark by default" for night-mode-vibe properties).
 - **Mobile prose alternative** — current state hides prose entirely. Future: an optional `data-mobile-prose="show"` per PDP if certain properties need the narrative on phones.
 - **ROI persistence** — slider values reset on reload. Could persist in `localStorage` per property.

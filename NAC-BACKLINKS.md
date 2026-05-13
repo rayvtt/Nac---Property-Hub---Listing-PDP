@@ -15,7 +15,7 @@ Canonical URLs for every NAC button, link, and asset across all PDPs. Source: NA
 | Website | NAC Tool | Tư vấn nhanh (Quick Consult) | https://nomadassetcollective.com/tu-van-nhanh |
 | Website | NAC Tool | So Sánh (Compare) | https://nomadassetcollective.com/so-sanh |
 | Website | Contact Button | WhatsApp | https://wa.me/447388646000 |
-| Website | Contact Button | Calendly | https://calendly.com/ray-vtt/30min |
+| Website | Contact Button | Google Meet | https://calendar.app.google/owGkBM8Q5owKYwDd9 |
 | Asset | Logo | White Logo — for dark view | https://nomadassetcollective.com/wp-content/uploads/2026/04/OTG-Passport-Icons-1.png |
 | Asset | Logo | Color Logo — for light view | https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons-4.png |
 | Asset | Logo | IMC Logo | https://nomadassetcollective.com/wp-content/uploads/2026/05/OTG-Passport-Icons.png |
@@ -45,5 +45,5 @@ Canonical URLs for every NAC button, link, and asset across all PDPs. Source: NA
 
 ## Notes
 - `Main Website` → Nomad home (`https://nomadassetcollective.com`). `NAC Residence Index` → the curated property index page (`/nac-residence-index/`). Logos point to home; "NAC Index" buttons (sticky CTA + footer) point to the residence index.
-- `Calendly` is in the backlinks list as a contact destination; not currently wired into any PDP button. Available for future bookings flows.
+- `Google Meet` booking link is wired to the aspiration/CTA section button ("Đặt Lịch Tư Vấn") in every PDP.
 - Brand asset URLs (logos) are also documented in `NAC-FOOTER.md` and `NAC-STICKY-PILLS.md` where they're consumed.
