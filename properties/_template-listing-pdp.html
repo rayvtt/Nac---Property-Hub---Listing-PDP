@@ -9,7 +9,144 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <title>{Property} — NAC Property Hub</title>
+
+  <!-- ═══ SEO / GEO / LLM PACKAGE — replace all {…} tokens ═══ -->
+  <!-- TITLE: include property name + key differentiators + NAC-{ID} -->
+  <title>{Property Name} — {Key Differentiator} · {Location} · NAC-{ID}</title>
+  <meta name="description" content="{1–2 sentence factual summary: brand, location, entry price, yield, NAC score. Max 155 chars.}">
+  <meta name="keywords" content="{Property Name}, {brand} {city}, branded residences {country}, NAC Property Hub, {investment type}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nomadassetcollective.com/property-hub-bat-dong-san/{country-slug}/{property-slug}/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="NAC Property Hub">
+  <meta property="og:title" content="{Property Name} — {Tagline EN}">
+  <meta property="og:description" content="{2-sentence EN summary for social sharing}">
+  <meta property="og:image" content="{Hero image URL — 1200×630 preferred}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://nomadassetcollective.com/property-hub-bat-dong-san/{country-slug}/{property-slug}/">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nac.global">
+  <meta name="twitter:title" content="{Property Name} · ${Price} entry · {Yield}% yield">
+  <meta name="twitter:description" content="{Short EN hook for Twitter. ~120 chars.}">
+  <meta name="twitter:image" content="{Hero image URL}">
+
+  <!-- Schema.org — RealEstateListing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": "{Property Name EN}",
+    "alternateName": "{Property Name VI}",
+    "description": "{2-sentence factual EN description}",
+    "url": "https://nomadassetcollective.com/property-hub-bat-dong-san/{country-slug}/{property-slug}/",
+    "image": "{Hero image URL}",
+    "datePosted": "{YYYY-MM-DD}",
+    "validThrough": "2026-12-31",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{Street / district}",
+      "addressLocality": "{City}",
+      "addressCountry": "{ISO 2-letter country code}"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "{lat}",
+      "longitude": "{lng}"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "{purchase price as number}",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "{Hotel/Brand name}"
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "{Amenity 1}"},
+      {"@type": "LocationFeatureSpecification", "name": "{Amenity 2}"},
+      {"@type": "LocationFeatureSpecification", "name": "{Amenity 3}"}
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nomad Asset Collective",
+      "url": "https://nomadassetcollective.com"
+    }
+  }
+  </script>
+
+  <!-- Schema.org — FAQPage (GEO / LLM visibility — include 4–6 Q&As) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the price of {Property Name}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{Property Name} starts from USD {price} for a {unit type} in {location}. {Ownership structure — leasehold / freehold}."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the rental yield for {Property Name}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{Property Name} offers an estimated {yield}% gross rental yield with a {holding period}-year IRR of {irr}% and Cash-on-Cash return of {coc}% per year. Monthly rental income is approximately USD {monthly rent}."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can foreigners buy {Property Name}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{Ownership rules, residency program if any, key legal facts for foreign buyers.}"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is {Property Name} located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{Property Name} is located at {address}, {city}, {country} — {key location facts: beach proximity, airport distance, landmarks}."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the NAC Score for {Property Name}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{Property Name} holds a NAC Composite Score of {score}/100, rated '{grade}'. Sub-scores: Brand {b}/10, Yield {y}/10, Location {l}/10, Management {m}/10, Liquidity {liq}/10, Risk {r}/10."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "NAC Property Hub", "item": "https://nomadassetcollective.com/property-hub-bat-dong-san/"},
+      {"@type": "ListItem", "position": 2, "name": "{Country}", "item": "https://nomadassetcollective.com/property-hub-bat-dong-san/{country-slug}/"},
+      {"@type": "ListItem", "position": 3, "name": "{Property Name}", "item": "https://nomadassetcollective.com/property-hub-bat-dong-san/{country-slug}/{property-slug}/"}
+    ]
+  }
+  </script>
+  <!-- ═══ END SEO PACKAGE ═══ -->
+
   <style>body { margin:0; background:#07091a; }</style>
 </head>
 <body>
