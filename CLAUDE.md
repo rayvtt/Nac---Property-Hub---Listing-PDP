@@ -53,7 +53,7 @@ Rules:
 | Mandarin Oriental Da Nang | Sở hữu biệt thự Mandarin Oriental tại Đà Nẵng. | Own a Mandarin Oriental villa in Da Nang. |
 | Pullman Panama City | Sở hữu căn hộ Pullman tại Panama City. | Own a Pullman residence in Panama City. |
 
-Also: `data-stmt` highlight words use `&#91;word&#93;` (HTML-escaped brackets) — **not** `[word]` — to prevent WordPress shortcode processing. The browser decodes entities before JS reads `getAttribute('data-stmt')`, so the gold animation is unaffected.
+Also: `data-stmt` highlight words use `«word»` (guillemet quotes) — **not** `[word]` and **not** `&#91;word&#93;` — to prevent WordPress shortcode processing. cheerio `decodeEntities:false` was silently decoding `&#91;` → `[` on every sync, causing WP to strip the brackets. The JS parser splits on `/(«[^»]+»)/g` and checks `part.charAt(0) === '«'`.
 
 ## Workflow
 
