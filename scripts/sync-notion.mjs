@@ -93,6 +93,7 @@ function extractProperty(page) {
     nacNoteEn: richText(p['💬 NAC Note EN']),
     nacNoteVi: richText(p['💬 NAC Note VI']),
     heroImg: readUrl(p['Image URL']),
+    heroImgMobile: readUrl(p['Mobile Image URL']),
     galleryImg1: readUrl(p['🖼️ Image 1']),
     galleryImg2: readUrl(p['🖼️ Image 2']),
     galleryImg3: readUrl(p['🖼️ Image 3']),
@@ -285,7 +286,9 @@ function patch(html, prop) {
 
   // Background images
   if (prop.heroImg) {
-    $(`[data-notion-bg="hero_img"]`).attr('style', `background-image:url('${prop.heroImg}')`);
+    const heroStyle = `background-image:url('${prop.heroImg}')`
+      + (prop.heroImgMobile ? `;--bg-mobile:url('${prop.heroImgMobile}')` : '');
+    $(`[data-notion-bg="hero_img"]`).attr('style', heroStyle);
   }
   const galleryImgs = [prop.galleryImg1, prop.galleryImg2, prop.galleryImg3, prop.galleryImg4];
   galleryImgs.forEach((url, i) => {
