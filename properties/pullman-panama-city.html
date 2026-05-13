@@ -239,8 +239,8 @@
   <!-- CENTERED OPENING STATEMENT -->
   <section class="nac-stmt" id="nac-statement">
     <div class="nac-stmt-eye"><span data-vi="">Định Vị NAC</span><span data-en="">NAC Positioning</span></div>
-    <p class="nac-stmt-text" id="nac-stmt-vi" data-vi="" data-stmt="Pullman Panama. [Cửa ngõ Mỹ Latinh] cho hộ chiếu thứ hai, dòng tiền 7.1% và đồng USD."></p>
-    <p class="nac-stmt-text" id="nac-stmt-en" data-en="" data-stmt="Pullman Panama. [The Latin gateway] to a second residency, 7.1% cash flow, and USD-denominated returns."></p>
+    <p class="nac-stmt-text" id="nac-stmt-vi" data-vi="" data-stmt="Pullman Panama. «Cửa ngõ Mỹ Latinh» cho hộ chiếu thứ hai, dòng tiền 7.1% và đồng USD."></p>
+    <p class="nac-stmt-text" id="nac-stmt-en" data-en="" data-stmt="Pullman Panama. «The Latin gateway» to a second residency, 7.1% cash flow, and USD-denominated returns."></p>
     <p class="nac-spine-mobile-note" aria-hidden="false">
       <span data-vi="">** Đọc bản đầy đủ trên trình duyệt máy tính.</span><span data-en="">** Read the full editorial on desktop.</span>
     </p>
@@ -1172,6 +1172,7 @@
 .nac-cine-asp-line { font-family:var(--ff-display); font-size:clamp(1.9rem,4vw,3.4rem); font-weight:500; color:#f8f3ea; letter-spacing:-.015em; line-height:1.22; text-shadow:0 2px 30px rgba(0,0,0,.85), 0 0 60px rgba(0,0,0,.55); }
 .nac-cine-asp-btn { font-family:var(--ff-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:#000; background:var(--gold-2); border:none; padding:.9rem 2.5rem; border-radius:50px; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s,box-shadow .2s; white-space:nowrap; box-shadow:0 4px 24px rgba(196,146,60,.5); }
 .nac-cine-asp-btn:hover { background:#f5d48a; transform:translateY(-2px); }
+.nac-pdp[data-theme="dark"] .nac-cine-asp-btn { color:#000; }
 
 /* ROI sub-marker (no section number) */
 .nac-spine-marker--sub .nac-spine-num { display:none; }
@@ -1744,9 +1745,9 @@
       var el = document.getElementById(id); if (!el) return;
       var raw = el.getAttribute('data-stmt') || ''; if (!raw) { el.innerHTML = ''; return; }
       var html = '';
-      raw.split(/(\[[^\]]+\])/g).forEach(function(part){
+      raw.split(/(«[^»]+»)/g).forEach(function(part){
         if (!part) return;
-        var hl = part.charAt(0) === '[' && part.charAt(part.length-1) === ']';
+        var hl = part.charAt(0) === '«' && part.charAt(part.length-1) === '»';
         var text = hl ? part.slice(1, -1) : part;
         text.split(/\s+/).filter(Boolean).forEach(function(w){ html += '<span class="word' + (hl ? ' hl' : '') + '">' + w + '</span> '; });
       });
