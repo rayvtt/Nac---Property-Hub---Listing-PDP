@@ -931,6 +931,7 @@
 /* HERO (unchanged) */
 .nac-hero { position:relative; min-height:94vh; overflow:hidden; display:flex; align-items:flex-end; }
 .nac-hero-img { position:absolute; inset:-10% 0 0; height:120%; background-size:cover; background-position:center; will-change:transform; }
+@media(max-width:900px) { .nac-hero-img[style*="--bg-mobile"] { background-image: var(--bg-mobile) !important; } }
 .nac-pdp[data-theme="light"] .nac-hero-veil { background:linear-gradient(180deg, rgba(15,26,54,0) 0%, rgba(15,26,54,.18) 40%, rgba(15,26,54,.92) 100%); }
 .nac-pdp[data-theme="dark"]  .nac-hero-veil { background:linear-gradient(180deg, rgba(7,9,26,0) 0%, rgba(7,9,26,.3) 40%, rgba(7,9,26,.95) 100%); }
 .nac-hero-veil { position:absolute; inset:0; }
