@@ -74,7 +74,7 @@ Templates and references:
 
 ## Notion sync
 
-- Cron every 2 minutes via `.github/workflows/sync-notion.yml` (GitHub may drift to ~2–7 min under load). Use Actions tab → "Run workflow" for immediate sync.
+- Cron every 5 minutes via `.github/workflows/sync-notion.yml` (GitHub's reliable minimum — `*/2` gets silently throttled to 15–30 min under load). Use Actions tab → "Run workflow" for immediate sync.
 - Source DB ID: `35848ec25e86803283acc7ad989649c9` (🏠 NAC - Property Listings).
 - Script: `scripts/sync-notion.mjs`. Filters by `Hub Status = Live`, patches HTML via cheerio targeting `data-notion="*"`, `data-notion-list="*"`, `data-notion-json="*"`, `data-notion-roi`, `data-notion-bg`.
 - Donut score (`.nac-donut-score`) is a special case — sync only updates `data-count-to`, never the inner text (preserves the count-up-from-0 animation).
