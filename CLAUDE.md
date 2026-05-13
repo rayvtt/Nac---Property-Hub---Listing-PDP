@@ -78,6 +78,7 @@ Templates and references:
 - Source DB ID: `35848ec25e86803283acc7ad989649c9` (🏠 NAC - Property Listings).
 - Script: `scripts/sync-notion.mjs`. Filters by `Hub Status = Live`, patches HTML via cheerio targeting `data-notion="*"`, `data-notion-list="*"`, `data-notion-json="*"`, `data-notion-roi`, `data-notion-bg`.
 - Donut score (`.nac-donut-score`) is a special case — sync only updates `data-count-to`, never the inner text (preserves the count-up-from-0 animation).
+- **Mobile hero image** — optional Notion URL field `Mobile Image URL`. When set, sync appends `--bg-mobile:url(...)` to the hero element's inline style alongside the desktop `background-image`. A CSS rule `@media(max-width:900px) { .nac-hero-img[style*="--bg-mobile"] { background-image:var(--bg-mobile) !important; } }` swaps to the mobile image on viewports ≤900px. Field left blank = single-image behavior unchanged.
 
 ## WordPress sync
 
