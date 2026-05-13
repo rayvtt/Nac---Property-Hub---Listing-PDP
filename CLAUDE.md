@@ -70,6 +70,7 @@ Templates and references:
 - [`NAC-STICKY-PILLS.md`](./NAC-STICKY-PILLS.md) — bottom-center CTA pill + top-right settings pill (theme + lang). Both collapsed-by-default, expand on hover/tap.
 - [`NAC-FOOTER.md`](./NAC-FOOTER.md) — bilingual gold title, wave underline, 5-icon social row, 3-col nav.
 - [`NAC-BACKLINKS.md`](./NAC-BACKLINKS.md) — canonical URLs for every NAC button across all PDPs.
+- [`NAC-CERTIFICATION-BOX.md`](./NAC-CERTIFICATION-BOX.md) — closing sign-off block: NAC × IMC seal (vertical on desktop, horizontal on mobile), IMC compliance prose, meta tag row, 3-line reviewer card (Ray Vũ).
 
 ## Notion sync
 
