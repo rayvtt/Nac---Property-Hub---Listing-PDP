@@ -95,47 +95,29 @@ async function fetchLiveProperties() {
       yieldPct: readNumber(p['Yield %']),
       heroImg: readUrl(p['Image URL']),
       tags: readMultiSelect(p['Tags']),
+      listingUrl: readUrl(p['Listing URL']),
     };
   }).filter(p => p.slug);
 }
 
 function renderCard(p) {
   const flag = (p.country && COUNTRY_FLAGS[p.country]) || '🌍';
-  const district = p.district || p.regionCity || '';
-  const idHtml = p.propertyId
-    ? `\n            <span class="id">${esc(p.propertyId)}</span>`
-    : '';
-  const scoreHtml = p.nacScore != null
-    ? `\n            <span class="sep">·</span>\n            <span class="score">NAC Score ${Math.round(p.nacScore)}/100</span>`
-    : '';
-  const yieldPctScaled = p.yieldPct != null ? p.yieldPct * 100 : null;
-  const priceYieldBits = [
-    p.purchasePrice != null ? fmtMoneyShort(p.purchasePrice) : null,
-    yieldPctScaled != null ? `${fmt1(yieldPctScaled)}% yield` : null,
-    ...(p.tags || []).slice(0, 1),
-  ].filter(Boolean);
-  const priceYield = priceYieldBits.length
-    ? `\n            <span class="sep">·</span>\n            <span>${esc(priceYieldBits.join(' · '))}</span>`
-    : '';
-  const districtHtml = district
-    ? `\n            <span class="sep">·</span>\n            <span>${esc(district)}</span>`
-    : '';
-  const imgHtml = p.heroImg
-    ? `<img class="card-thumb" src="${esc(p.heroImg)}" alt="${esc(p.propertyName)}" loading="lazy">`
-    : `<div class="card-thumb" aria-hidden="true"></div>`;
+  const bgStyle = p.heroImg ? ` style="background-image:url('${esc(p.heroImg)}')"` : '';
+  const liveBtn = p.listingUrl
+    ? `<a href="${esc(p.listingUrl)}" class="tile-btn tile-btn-live" target="_blank" rel="noreferrer">Live ↗</a>`
+    : `<span class="tile-btn tile-btn-live tile-btn-disabled">Live</span>`;
 
-  return `      <a href="properties/${esc(p.slug)}.html" class="card">
-        ${imgHtml}
-        <div class="card-body">
-          <div class="row">${idHtml}
-            <span class="name">${esc(p.propertyName)}</span>
-            <span class="arrow">→</span>
-          </div>
-          <div class="meta">
-            <span>${flag} ${esc(p.country || '')}</span>${districtHtml}${scoreHtml}${priceYield}
-          </div>
+  return `      <div class="tile">
+        <div class="tile-img"${bgStyle}></div>
+        <div class="tile-info">
+          <span class="tile-country">${flag} ${esc(p.country || '')}</span>
+          <span class="tile-name">${esc(p.propertyName)}</span>
         </div>
-      </a>`;
+        <div class="tile-btns">
+          <a href="properties/${esc(p.slug)}.html" class="tile-btn tile-btn-preview" target="_blank">Preview ↗</a>
+          ${liveBtn}
+        </div>
+      </div>`;
 }
 
 async function main() {
