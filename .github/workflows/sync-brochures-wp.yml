@@ -18,6 +18,10 @@ on:
       - "properties/uk-innovator-visa.html"
       - "scripts/sync-brochures-wp.mjs"
       - ".github/workflows/sync-brochures-wp.yml"
+  schedule:
+    # Every 5 min — bridge until brochures land in Notion and the Notion-driven
+    # sync-wp.yml workflow takes over (matches GitHub Actions reliable minimum).
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       only_slug:
