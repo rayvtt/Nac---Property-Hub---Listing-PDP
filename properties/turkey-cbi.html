@@ -103,7 +103,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Be Vietnam Pro',
 .nav-cta:hover { background: #ea6c0a; }
 
 /* ── HERO ── */
-.hero { position: relative; border-bottom: 1px solid var(--border); overflow: hidden; min-height: 380px; }
+.hero { position: relative; overflow: hidden; min-height: 380px; }
 .hero-bg {
   position: absolute; inset: 0;
   background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=85&fit=crop');
@@ -117,10 +117,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Be Vietnam Pro',
   background:
     linear-gradient(to right, rgba(60,5,5,0.82) 0%, rgba(60,5,5,0.38) 60%, rgba(60,5,5,0.12) 100%),
     linear-gradient(to top,   rgba(60,5,5,0.65) 0%, transparent 55%);
-}
-.hero-overlay::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(to right, var(--country), #e63946, transparent);
 }
 .hero-content { position: relative; z-index: 2; padding: 52px 32px 48px; }
 .hero-i { max-width: 1300px; margin: 0 auto; }
@@ -733,7 +729,11 @@ body.nac-paywall-unlocked .toc-item.is-locked .toc-link::after { content: none !
 body.nac-paywall-unlocked .toc-item.is-locked .toc-link { color: var(--text3); font-weight: 500; }
 
 /* ── NAC PROPERTY HUB LISTING CARDS ─────────────────────────────── */
-.listing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-top:1.5rem; }
+.listing-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; margin-top:1.5rem; }
+@media (max-width:720px) { .listing-grid { grid-template-columns:1fr; } }
+.listing-card-placeholder { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.5rem; border-radius:12px; border:1px dashed var(--border,#e5e7eb); background:var(--bg2,#f9fafb); padding:2rem 1.25rem; min-height:280px; text-align:center; color:var(--text3,#6b7280); }
+.listing-card-placeholder-label { font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--country); font-weight:600; opacity:.7; }
+.listing-card-placeholder-text { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text2,#374151); }
 .listing-card { display:flex; flex-direction:column; border-radius:12px; overflow:hidden; border:1px solid var(--border,#e5e7eb); text-decoration:none; color:inherit; transition:transform .18s,box-shadow .18s; background:#fff; }
 .listing-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.12); }
 .listing-card-img { height:180px; background-size:cover; background-position:center; }
@@ -1080,6 +1080,10 @@ body.nac-paywall-unlocked .toc-item.is-locked .toc-link { color: var(--text3); f
             <div class="listing-card-cta">Xem phân tích đầy đủ →</div>
           </div>
         </a>
+        <div class="listing-card-placeholder">
+          <div class="listing-card-placeholder-label">Sắp ra mắt</div>
+          <div class="listing-card-placeholder-text">Đang xác minh thêm tài sản</div>
+        </div>
       </div>
       <div class="hub-browse">
         <a href="https://nomadassetcollective.com/property-hub-bat-dong-san/" target="_blank" class="cta-btn cta-btn-outline">🏠 Khám phá toàn bộ Property Hub →</a>
